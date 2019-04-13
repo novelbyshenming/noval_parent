@@ -5,6 +5,14 @@ package bean;
  * @date 2019/4/13 - 17:06
  */
 public class User {
+    public User() {
+    }
+
+    public User(String username, String password) {
+
+        this.username = username;
+        this.password = password;
+    }
 
     private Integer id;
     private String username;

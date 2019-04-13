@@ -17,10 +17,14 @@ import service.UserService;
  * @date 2019/4/13 - 17:06
  */
 @Controller
-@RequestMapping(value = "/user.s")
 public class UserController {
 
+    public UserController() {
+        System.out.println(userServiceImpl);
+    }
+
     @Autowired
+
     private UserService userServiceImpl;
 
     @RequestMapping("/login")
@@ -29,6 +33,7 @@ public class UserController {
         User user1 = userServiceImpl.selForLogin(user);
 
         if(user1 ==null){
+
             return "redirect:login.jsp";
         }else{
             return "index.jsp";
