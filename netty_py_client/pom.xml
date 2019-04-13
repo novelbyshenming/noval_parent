@@ -15,6 +15,12 @@
     <!-- FIXME change it to the project's website -->
 
     <dependencies>
+    
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+      </dependency>
+    
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
