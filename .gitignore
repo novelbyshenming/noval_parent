@@ -6,3 +6,8 @@
 .settings/
 /*/.classpath
 .project
+.build
+/build/
+*.class
+/*/.class
+/*/build
