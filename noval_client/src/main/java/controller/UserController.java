@@ -26,6 +26,12 @@ public class UserController {
     @RequestMapping("/login")
     public String login(User user){
 
-        return null;
+        User user1 = userServiceImpl.selForLogin(user);
+
+        if(user1 ==null){
+            return "redirect:login.jsp";
+        }else{
+            return "index.jsp";
+        }
     }
 }

@@ -17,6 +17,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
@@ -70,10 +75,10 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <!-- jackson -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
+        </dependency>-->
         <!-- apache 图片上传 -->
         <dependency>
             <groupId>commons-fileupload</groupId>
