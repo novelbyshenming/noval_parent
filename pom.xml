@@ -14,6 +14,7 @@
     <module>noval_backstage</module>
     <module>netty_webSocket_server</module>
     <module>jedis</module>
+      <module>upload</module>
   </modules>
 
   <!--对依赖的坐标的版本做集中的管理-->

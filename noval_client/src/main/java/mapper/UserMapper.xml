@@ -7,4 +7,5 @@
     <select id="selForLogin" parameterType="User" resultType="User">
         SELECT * FROM user WHERE username = #{username} AND password = #{password}
     </select>
+
 </mapper>
