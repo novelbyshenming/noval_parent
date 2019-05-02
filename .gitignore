@@ -11,3 +11,5 @@
 *.class
 /*/.class
 /*/build
+/jedis
+/upload
