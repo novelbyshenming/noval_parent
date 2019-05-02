@@ -15,25 +15,25 @@ public class User {
         this.password = password;
     }
 
-    private Integer id;
+    private Integer uid;
     private String username;
     private String password;
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + uid +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
 
     public Integer getId() {
-        return id;
+        return uid;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.uid = id;
     }
 
     public String getUsername() {
