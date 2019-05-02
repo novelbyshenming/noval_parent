@@ -5,13 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 <!--shenming -->
   <groupId>com.yc</groupId>
-  <artifactId>noval_parent</artifactId>
+  <artifactId>novel_parent</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>noval_client</module>
+    <module>novel_client</module>
     <module>netty_py_client</module>
-    <module>noval_backstage</module>
+    <module>novel_backstage</module>
     <module>netty_webSocket_server</module>
     <module>jedis</module>
       <module>upload</module>
