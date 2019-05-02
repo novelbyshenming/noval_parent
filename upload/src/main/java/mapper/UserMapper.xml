@@ -13,7 +13,7 @@
              <if test="sex !=null">sex=#{sex}</if>
              <if test="tel !=null">tel=#{tel}</if>
              <if test="email !=null">email=#{email}</if>
-             <if test="age > 0 and age <200">age = #{age}</if>
+
          </set>
 
         WHERE id = #{id}
