@@ -1,5 +1,3 @@
-import bean.User;
-import mapper.UserMapper;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

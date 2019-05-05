@@ -85,6 +85,27 @@
             <artifactId>commons-fileupload</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+
     </dependencies>
 
 <build>
@@ -98,7 +119,7 @@
                 <!-- 项目发布到tomcat后的名称 -->
                 <!-- / 相当于把项目发布名称为ROOT -->
                 <!-- /abc -->
-                <path>/noval</path>
+                <path>/novel</path>
             </configuration>
         </plugin>
     </plugins>
