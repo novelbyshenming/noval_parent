@@ -17,6 +17,11 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
@@ -85,9 +90,49 @@
             <artifactId>commons-fileupload</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+
     </dependencies>
 
 <build>
+
+    <!--配置资源拷贝插件-->
+    <resources>
+        <resource>
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </resource>
+
+        <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.xml</include>
+                <include>**/*.properties</include>
+            </includes>
+        </resource>
+    </resources>
+
     <plugins>
         <plugin>
             <groupId>org.apache.tomcat.maven</groupId>
@@ -98,7 +143,7 @@
                 <!-- 项目发布到tomcat后的名称 -->
                 <!-- / 相当于把项目发布名称为ROOT -->
                 <!-- /abc -->
-                <path>/noval</path>
+                <path>/novel</path>
             </configuration>
         </plugin>
     </plugins>
