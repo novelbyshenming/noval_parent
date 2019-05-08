@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -227,7 +228,27 @@
 
             </tbody></table>
     </div>
-    <ul class="pagination" id="pagelink"><li class="disabled"><span>1/1</span></li><li><a href="https://www.biqukan.cc/modules/article/search.php?searchkey=%B6%B7%C2%DE&amp;page=1" class="first">1</a></li><li><a href="https://www.biqukan.cc/modules/article/search.php?searchkey=%B6%B7%C2%DE&amp;page=1" class="pgroup">&lt;&lt;</a></li><li class="active"><span>1</span></li><li><a href="https://www.biqukan.cc/modules/article/search.php?searchkey=%B6%B7%C2%DE&amp;page=1" class="ngroup">&gt;&gt;</a></li><li><a href="https://www.biqukan.cc/modules/article/search.php?searchkey=%B6%B7%C2%DE&amp;page=1" class="last">1</a></li></ul>
+    <ul class="pagination" id="pagelink">
+        <li class="disabled">
+            <span>1/1</span>
+        </li>
+        <li>
+            <a href="https://www.biqukan.cc/modules/article/search.php?searchkey=%B6%B7%C2%DE&amp;page=1" class="first">1</a>
+        </li>
+        <li>
+            <a href="https://www.biqukan.cc/modules/article/search.php?searchkey=%B6%B7%C2%DE&amp;page=1" class="pgroup">&lt;&lt;</a>
+        </li>
+        <li class="active">
+            <span>1</span>
+        </li>
+        <li>
+            <a href="https://www.biqukan.cc/modules/article/search.php?searchkey=%B6%B7%C2%DE&amp;page=1" class="ngroup">&gt;&gt;</a>
+        </li>
+        <li>
+            <a href="https://www.biqukan.cc/modules/article/search.php?searchkey=%B6%B7%C2%DE&amp;page=1" class="last">1</a>
+        </li>
+    </ul>
+
     <footer>
         <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
         <p>Copyright &#169; 2019 <a href="https://www.biqukan.cc/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>

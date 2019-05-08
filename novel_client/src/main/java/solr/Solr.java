@@ -18,6 +18,8 @@ public class Solr {
 
         long start = System.currentTimeMillis();
 
+        System.out.println(start);
+
         SolrServer solrServer = new HttpSolrServer("http://39.107.116.158:8080/solr/collection1");
 
         SolrQuery solrQuery = new SolrQuery();
@@ -30,8 +32,10 @@ public class Solr {
         // 过滤条件
         solrQuery.set("fq","novel_name:斗罗");
 
-        solrQuery.setStart(0);//设置起始位置
+        solrQuery.setStart(10);//设置起始位置
         solrQuery.setRows(10);//设置条数
+
+        solrQuery.addSort("date", SolrQuery.ORDER.desc);
         // 默认域
 //        solrQuery.set("df","novel_name");
 
@@ -39,6 +43,7 @@ public class Solr {
         solrQuery.set("fl","id,novel_name,novel_type,novel_author,novel_introduction,novel_url,novel_image");
 
         QueryResponse query = solrServer.query(solrQuery);
+
 
         SolrDocumentList documents = query.getResults();
 

@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 
     <title>笔趣阁</title>
@@ -90,36 +90,49 @@ pageEncoding="UTF-8"%>
     <div class="row mt20 mb20">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-user fa-fw"></i>用户登录
-                    <a href="https://www.biqukan.cc/register.php" class="pull-right">新用户注册</a></div>
+                <div class="panel-heading"><i class="fa fa-user fa-fw"></i>用户注册
+                    <a href="https://www.biqukan.cc/login.php" class="pull-right">已有用户？立即登录</a></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="post" action="https://www.biqukan.cc/login.php?do=submit">
+                    <form class="form-horizontal" method="post" action="https://www.biqukan.cc/register.php?do=submit">
                         <div class="form-group mt10">
-                            <label class="col-sm-2 control-label">用户名</label>
-                            <div class="col-sm-10">
+                            <label class="col-md-3 control-label">用户名(必填)</label>
+                            <div class="col-md-9">
                                 <input type="text" name="username" class="form-control" placeholder="请输入用户名">
                             </div>
                         </div>
                         <div class="form-group mt20">
-                            <label class="col-sm-2 control-label">密码</label>
-                            <div class="col-sm-10">
+                            <label class="col-md-3 control-label">密码(必填)</label>
+                            <div class="col-md-9">
                                 <input type="password" name="password" class="form-control" placeholder="请输入密码">
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="usecookie" checked="" value="315360000"> 记住登录状态
-                                    </label>
-                                </div>
+                        <div class="form-group mt20">
+                            <label class="col-md-3 control-label">重复密码(必填)</label>
+                            <div class="col-md-9">
+                                <input type="password" name="repassword" class="form-control" placeholder="请再次输入密码">
+                            </div>
+                        </div>
+                        <div class="form-group mt10">
+                            <label class="col-md-3 control-label">邮箱(必填)</label>
+                            <div class="col-md-9">
+                                <input type="text" name="email" class="form-control" placeholder="请输入邮箱">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
+                            <label class="col-md-3 control-label">性别</label>
+                            <div class="col-md-9">
+                                <div class="radio">
+                                    <label class="mr10"><input type="radio" name="usecookie" value="1"> 男</label>
+                                    <label class="mr10"><input type="radio" name="usecookie" value="2"> 女</label>
+                                    <label><input type="radio" name="usecookie" checked="" value="0"> 保密</label>
+                                </div>
+                            </div>
+                        </div>
 
-                                <button type="submit" class="btn btn-primary">登 录</button>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-9">
+
+                                <button type="submit" class="btn btn-primary">立即注册</button>
                             </div>
                         </div>
                     </form>
