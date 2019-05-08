@@ -46,12 +46,12 @@ pageEncoding="UTF-8"%>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
-                <li><a href="https://www.biqukan.cc/fenlei1/1.html" title="玄幻魔法">玄幻魔法</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei2/1.html" title="武侠修真">武侠修真</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei3/1.html" title="都市言情">都市言情</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei4/1.html" title="历史军事">历史军事</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei5/1.html" title="侦探推理">侦探推理</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei6/1.html" title="网游动漫">网游动漫</a></li>
+                <li><a href="#" title="玄幻魔法">玄幻魔法</a></li>
+                <li><a href="#" title="武侠修真">武侠修真</a></li>
+                <li><a href="#" title="都市言情">都市言情</a></li>
+                <li><a href="#" title="历史军事">历史军事</a></li>
+                <li><a href="#" title="侦探推理">侦探推理</a></li>
+                <li><a href="#" title="网游动漫">网游动漫</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">更多分类<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -128,10 +128,15 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <footer>
-        <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
+        <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请
+            <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
         <p>Copyright &#169; 2019 <a href="https://www.biqukan.cc/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
     </footer>
-    <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1263px;"><i class="fa fa-chevron-up"></i></div>
+    <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1263px;">
+        <i class="fa fa-chevron-up">
+
+        </i>
+    </div>
 
 </div>
 
