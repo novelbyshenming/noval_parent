@@ -5,29 +5,29 @@ pageEncoding="UTF-8"%>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>第二百九十四章 樱落红(1/2)_斗罗大陆4终极斗罗_笔趣阁</title>
-    <link href="https://www.biqukan.cc/book/50783/32183769.html" rel="canonical">
+    <%--<link href="https://www.biqukan.cc/book/50783/32183769.html" rel="canonical">--%>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="applicable-device" content="pc,mobile">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="keywords" content="第二百九十四章 樱落红,斗罗大陆4终极斗罗,笔趣阁">
-    <meta name="description" content="笔趣阁提供斗罗大陆4终极斗罗最新章节《第二百九十四章 樱落红》免费在线阅读，页面清爽无弹窗，笔趣阁还提供斗罗大陆4终极斗罗全本txt下载。">
+   <%-- <meta name="keywords" content="第二百九十四章 樱落红,斗罗大陆4终极斗罗,笔趣阁">
+    <meta name="description" content="笔趣阁提供斗罗大陆4终极斗罗最新章节《第二百九十四章 樱落红》免费在线阅读，页面清爽无弹窗，笔趣阁还提供斗罗大陆4终极斗罗全本txt下载。">--%>
 
     <link href="https://www.biqukan.cc/novel/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://www.biqukan.cc/novel/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://www.biqukan.cc/novel/css/site.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
-    <meta name="apple-mobile-web-app-title" content="斗罗大陆4终极斗罗">
+    <%--<link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
+    <meta name="apple-mobile-web-app-title" content="斗罗大陆4终极斗罗">--%>
 
 
 
     <!--[if lt IE 9]><script src="/novel/js/respond.min.js"></script><![endif]-->
-
+<%--
 
     <link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.biqukan.cc" as="script">
-    <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190501/r20190131/show_ads_impl.js" as="script">
+    <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190501/r20190131/show_ads_impl.js" as="script">--%>
 </head>
 <body>
 <div class="navbar navbar-inverse" id="header">

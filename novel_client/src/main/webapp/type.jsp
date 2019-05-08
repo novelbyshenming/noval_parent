@@ -24,7 +24,9 @@
     <link href="https://www.biqukan.cc/novel/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://www.biqukan.cc/novel/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://www.biqukan.cc/novel/css/site.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
+
+   <%-- <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">--%>
+
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
 
 

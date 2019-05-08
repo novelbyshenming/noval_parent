@@ -16,10 +16,13 @@ pageEncoding="UTF-8"%>
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
 
-    <link href="https://www.biqukan.cc/novel/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://www.biqukan.cc/novel/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://www.biqukan.cc/novel/css/site.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
+    <link href="/novel/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/novel/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/novel/css/site.css" rel="stylesheet" type="text/css">
+    <%--  url 的 图片     --%>
+    <link rel="apple-touch-icon-precomposed" href="#">
+
+
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
 
 

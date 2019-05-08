@@ -5,12 +5,9 @@ pageEncoding="UTF-8"%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
     <title>笔趣阁</title>
 
-
     <meta name="keywords" content="笔趣阁,笔趣看">
-
 
     <meta name="description" content="">
 
@@ -20,12 +17,13 @@ pageEncoding="UTF-8"%>
     <meta name="applicable-device" content="pc,mobile">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-
-    <link href="https://www.biqukan.cc/novel/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://www.biqukan.cc/novel/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://www.biqukan.cc/novel/css/site.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
+
+    <link href="/novel/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/novel/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/novel/css/site.css" rel="stylesheet">
+    <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
+
 
 
 

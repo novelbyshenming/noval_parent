@@ -5,7 +5,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>笔趣阁-笔趣看小说网，值得您收藏的小说网</title>
-    <link href="https://www.biqukan.cc/" rel="canonical">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta name="viewport"
@@ -13,14 +12,20 @@
     <meta name="applicable-device" content="pc,mobile">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="keywords" content="笔趣阁,笔趣看">
-    <meta name="description" content="笔趣阁(www.biqukan.cc)为您提供一个最舒适的小说阅读平台，为您推荐最好看的网络热门小说，找好看的热门的小说，就上笔趣阁。">
-    <link href="https://www.biqukan.cc/novel/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://www.biqukan.cc/novel/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://www.biqukan.cc/novel/css/site.css" rel="stylesheet">
+
+  <%--  <meta name="keywords" content="笔趣阁,笔趣看">
+    <meta name="description" content="笔趣阁(www.biqukan.cc)为您提供一个最舒适的小说阅读平台，为您推荐最好看的网络热门小说，找好看的热门的小说，就上笔趣阁。">--%>
+
+    <link href="/novel/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/novel/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/novel/css/site.css" rel="stylesheet">
+
+
     <link rel="apple-touch-icon-precomposed"
           href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
+
+
     <!--[if lt IE 9]>
     <script src="/novel/js/respond.min.js"></script><![endif]--></head>
 <body>
@@ -28,8 +33,11 @@
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
-                    data-target=".bs-navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span
-                    class="icon-bar"></span></button>
+                    data-target=".bs-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span><span
+                    class="icon-bar"></span>
+            </button>
             <a href="https://www.biqukan.cc/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a></div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
@@ -194,7 +202,7 @@
             </div>
         </div>
         <div class="col-md-4 pl0">
-            <span class="visible-xs mb10">
+           <%-- <span class="visible-xs mb10">
             <form
                 action="https://www.biqukan.cc/modules/article/search.php" target="_blank">
                 <div
@@ -207,7 +215,7 @@
                     </button></span>
                 </div>
             </form>
-</span>
+            </span>--%>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
                     <a href="https://www.biqukan.cc/#tab-weekvisit" role="tab"
