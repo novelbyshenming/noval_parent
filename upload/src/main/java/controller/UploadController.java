@@ -28,7 +28,6 @@ public class UploadController {
     @ResponseBody
     @RequestMapping("upload.u")
     public String upload(User user, MultipartFile fileName){
-
         // 返回给上传页面的结果信息  默认为 上传成功
         String message = "上传成功";
         try {
