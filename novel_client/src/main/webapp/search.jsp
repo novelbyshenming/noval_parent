@@ -22,10 +22,9 @@ pageEncoding="UTF-8"%>
     <%--  url 的 图片     --%>
     <link rel="apple-touch-icon-precomposed" href="#">
 
-
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
-
-
+    <script src="/novel/js/jquery-1.7.2.min.js"></script>
+    <script src="/novel/js/search.js"></script>
 
     <!--[if lt IE 9]><script src="/novel/js/respond.min.js"></script><![endif]-->
 

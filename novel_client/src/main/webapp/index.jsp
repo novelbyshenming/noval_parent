@@ -24,6 +24,8 @@
     <link rel="apple-touch-icon-precomposed"
           href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
+    <script src="/novel/js/index.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
 
 
     <!--[if lt IE 9]>

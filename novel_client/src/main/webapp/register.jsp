@@ -23,7 +23,8 @@ pageEncoding="UTF-8"%>
     <link href="/novel/css/site.css" rel="stylesheet">
     <%--<link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">--%>
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
-
+    <script src="/novel/js/register.js"></script>
+    <script src="/novel/js/jquery-1.7.2.min.js"></script>
     <!--[if lt IE 9]><script src="/novel/js/respond.min.js"></script><![endif]-->
 
 </head>
@@ -40,12 +41,12 @@ pageEncoding="UTF-8"%>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
-                <li><a href="https://www.biqukan.cc/fenlei1/1.html" title="玄幻魔法">玄幻魔法</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei2/1.html" title="武侠修真">武侠修真</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei3/1.html" title="都市言情">都市言情</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei4/1.html" title="历史军事">历史军事</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei5/1.html" title="侦探推理">侦探推理</a></li>
-                <li><a href="https://www.biqukan.cc/fenlei6/1.html" title="网游动漫">网游动漫</a></li>
+                <li><a href="#" title="玄幻魔法">玄幻魔法</a></li>
+                <li><a href="#" title="武侠修真">武侠修真</a></li>
+                <li><a href="#" title="都市言情">都市言情</a></li>
+                <li><a href="#" title="历史军事">历史军事</a></li>
+                <li><a href="#" title="侦探推理">侦探推理</a></li>
+                <li><a href="#" title="网游动漫">网游动漫</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">更多分类<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -55,22 +56,7 @@ pageEncoding="UTF-8"%>
                         <li><a href="https://www.biqukan.cc/fenlei10/1.html" title="其他类型">其他类型</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">排行榜<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="https://www.biqukan.cc/topallvisit/1.html" title="点击总榜">点击总榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topallvote/1.html" title="推荐总榜">推荐总榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topmonthvisit/1.html" title="点击月榜">点击月榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topmonthvote/1.html" title="推荐月榜">推荐月榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topweekvisit/1.html" title="周排行榜">周排行榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topweekvote/1.html" title="周推荐榜">周推荐榜</a></li>
-                        <li><a href="https://www.biqukan.cc/topgoodnum/1.html" title="总收藏榜">总收藏榜</a></li>
-                        <li><a href="https://www.biqukan.cc/toptoptime/1.html" title="本站推荐">本站推荐</a></li>
-                        <li><a href="https://www.biqukan.cc/topsize/1.html" title="字数排行">字数排行</a></li>
-                        <li><a href="https://www.biqukan.cc/toplastupdate/1.html" title="最近更新">最近更新</a></li>
-                        <li><a href="https://www.biqukan.cc/toppostdate/1.html" title="最新入库">最新入库</a></li>
-                    </ul>
-                </li>
+
                 <li><a href="https://www.biqukan.cc/wanben/" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
