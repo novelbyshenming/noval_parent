@@ -21,7 +21,7 @@
             <artifactId>junit</artifactId>
         </dependency>
 
-        <dependency>
+      <!--  <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>5.0.8.RELEASE</version>
@@ -43,7 +43,7 @@
     		<groupId>io.jsonwebtoken</groupId>
     		<artifactId>jjwt</artifactId>
     		<version>0.9.0</version>
-		</dependency>
+		</dependency>-->
 		
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -113,6 +113,25 @@
     </dependencies>
 
     <build>
+
+        <!--配置资源拷贝插件-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+
     <plugins>
         <plugin>
             <groupId>org.apache.tomcat.maven</groupId>
