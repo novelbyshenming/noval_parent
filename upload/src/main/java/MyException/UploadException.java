@@ -6,7 +6,12 @@ package MyException;
  */
 public class UploadException extends Exception {
 
-    public UploadException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UploadException() {
         super();
     }
 
