@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +11,8 @@
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
 
-  <%--  <meta name="keywords" content="笔趣阁,笔趣看">
-    <meta name="description" content="笔趣阁(www.biqukan.cc)为您提供一个最舒适的小说阅读平台，为您推荐最好看的网络热门小说，找好看的热门的小说，就上笔趣阁。">--%>
+  <!--<meta name="keywords" content="笔趣阁,笔趣看">-->
+    <meta name="description" content="笔趣阁(www.biqukan.cc)为您提供一个最舒适的小说阅读平台，为您推荐最好看的网络热门小说，找好看的热门的小说，就上笔趣阁。">
 
     <link href="/novel/css/bootstrap.min.css" rel="stylesheet">
     <link href="/novel/css/font-awesome.min.css" rel="stylesheet">
@@ -23,20 +22,21 @@
     <link rel="apple-touch-icon-precomposed"
           href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
-    <%--<script src="/novel/js/index.js"></script>--%>
+    <script src="/novel/js/index.js"></script>
     <script src="/novel/js/jquery-1.7.2.min.js"></script>
 
 
     <!--[if lt IE 9]>
     <script src="/novel/js/respond.min.js"></script><![endif]-->
     <script type="text/javascript">
+
+        function search() {
+            var data = document.getElementById("bdcsMain").value
+            window.location.href="/search.html?"+data
+        }
         $(function () {
 
-
-
-
         })
-        
     </script>
 
 </head>
@@ -84,21 +84,22 @@
         <div class="col-md-8">
             <div class="panel panel-default hidden-xs">
                 <div class="panel-heading">
-                    <div class="row"><h5 class="pull-left col-xs-4"><i class="fa fa-diamond fa-fw"></i>本站推荐</h5>
+                    <div class="row">
+                        <h5 class="pull-left col-xs-4">
+                        <i class="fa fa-diamond fa-fw"></i>本站推荐
+                        </h5>
                         <div class="col-md-6 col-xs-8 pull-right">
-                            <form action="#" target="_blank">
                                 <div class="input-group">
                                     <input type="text" class="form-control"
                                                                 placeholder="请输入您需要搜索的关键字" id="bdcsMain"
                                                                 name="searchkey">
                                     <span class="input-group-btn">
 
-                                    <button  class="btn btn-default" type="submit">
-                                        <i class="fa fa-search fa-fw"></i>
+                                    <button  class="btn btn-default"  onclick="search()">
+                                        <i class="fa fa-search fa-fw"> </i>
                                     </button>
                                     </span>
                                 </div>
-                            </form>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -117,21 +118,27 @@
                                 class="text-warning fs-12">11247人在看</span></div>
                     </a>
                     </div>
-                    <div class="col-md-3 col-xs-6 mb10 mt10"><a class="thumbnail"
+                    <div class="col-md-3 col-xs-6 mb10 mt10">
+                        <a class="thumbnail"
                                                                 href="https://www.biqukan.cc/book/51990/"
                                                                 title="仙宫">
                         <img
                             src="https://www.biqukan.cc/files/article/image/51/51990/51990s.jpg" alt="仙宫"
                             style="height:182px;">
-                        <div class="caption"><strong>仙宫</strong><br><span
-                                class="text-muted fs-12">打眼 / 著</span><br><span
-                                class="text-warning fs-12">7390人在看</span></div>
+                        <div class="caption">
+                            <strong>仙宫</strong><br>
+                            <span
+                                class="text-muted fs-12">打眼 / 著</span><br>
+                            <span
+                                class="text-warning fs-12">7390人在看</span>
+                        </div>
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
                         <a class="thumbnail"
                                                                 href="https://www.biqukan.cc/book/41888/"
-                                                                title="天下第九"><img
+                                                                title="天下第九">
+                            <img
                             src="https://www.biqukan.cc/files/article/image/41/41888/41888s.jpg" alt="天下第九"
                             style="height:182px;">
                         <div class="caption">
@@ -145,13 +152,15 @@
                     <div class="col-md-3 col-xs-6 mb10 mt10">
                         <a class="thumbnail"
                                                                 href="https://www.biqukan.cc/book/42287/"
-                                                                title="三寸人间"><img
+                                                                title="三寸人间">
+                            <img
                             src="https://www.biqukan.cc/files/article/image/42/42287/42287s.jpg" alt="三寸人间"
                             style="height:182px;">
                         <div class="caption">
-                            <strong>三寸人间</strong><br><span
-                                class="text-muted fs-12">耳根 / 著</span><br><span
-                                class="text-warning fs-12">10619人在看</span>
+                            <strong>三寸人间</strong>
+                            <br>
+                            <span class="text-muted fs-12">耳根 / 著</span><br>
+                            <span  class="text-warning fs-12">10619人在看</span>
                         </div>
                     </a>
                     </div>
@@ -161,18 +170,16 @@
                                                                 title="重生之都市仙尊"><img
                             src="https://www.biqukan.cc/files/article/image/40/40091/40091s.jpg" alt="重生之都市仙尊"
                             style="height:182px;">
-                        <div class="caption"><strong>重生之都市仙尊</strong><br><span
-                                class="text-muted fs-12">洛书 / 著</span><br><span
-                                class="text-warning fs-12">493992人在看</span></div>
+                        <div class="caption">
+                            <strong>重生之都市仙尊</strong><br>
+                            <span class="text-muted fs-12">洛书 / 著</span><br>
+                            <span class="text-warning fs-12">493992人在看</span>
+                        </div>
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"
-                                                                href="https://www.biqukan.cc/book/20216/"
-                                                                title="飞剑问道">
-                            <img
-                            src="https://www.biqukan.cc/files/article/image/20/20216/20216s.jpg" alt="飞剑问道"
-                            style="height:182px;">
+                        <a class="thumbnail"  href="https://www.biqukan.cc/book/20216/" title="飞剑问道">
+                            <img src="https://www.biqukan.cc/files/article/image/20/20216/20216s.jpg" alt="飞剑问道" style="height:182px;">
                         <div class="caption">
                             <strong>飞剑问道</strong><br><span
                                 class="text-muted fs-12">我吃西红柿 / 著</span><br><span
@@ -180,12 +187,9 @@
                         </div>
                     </a>
                     </div>
-                    <div class="col-md-3 col-xs-6 mb10 mt10"><a class="thumbnail"
-                                                                href="https://www.biqukan.cc/book/47583/"
-                                                                title="开天录">
-                        <img
-                            src="https://www.biqukan.cc/files/article/image/47/47583/47583s.jpg" alt="开天录"
-                            style="height:182px;">
+                    <div class="col-md-3 col-xs-6 mb10 mt10">
+                        <a class="thumbnail" href="https://www.biqukan.cc/book/47583/"  title="开天录">
+                        <img  src="https://www.biqukan.cc/files/article/image/47/47583/47583s.jpg" alt="开天录"  style="height:182px;">
                         <div class="caption"><strong>开天录</strong><br><span
                                 class="text-muted fs-12">血红 / 著</span><br><span
                                 class="text-warning fs-12">13029人在看</span>
@@ -214,20 +218,17 @@
             </div>
         </div>
         <div class="col-md-4 pl0">
-           <%-- <span class="visible-xs mb10">
-            <form
-                action="https://www.biqukan.cc/modules/article/search.php" target="_blank">
-                <div
-                class="input-group">
-                    <input type="text" class="form-control" placeholder="请输入您需要搜索的关键字" id="bdcsMain"
-                                           name="searchkey">
-                    <span class="input-group-btn"><button
-                class="btn btn-default" type="submit">
+          <span class="visible-xs mb10">
+            <form action="https://www.biqukan.cc/modules/article/search.php" target="_blank">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="请输入您需要搜索的关键字" id="bdcsMain" name="searchkey">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
                         <i class="fa fa-search fa-fw"></i>
                     </button></span>
                 </div>
             </form>
-            </span>--%>
+            </span>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
                     <a href="https://www.biqukan.cc/#tab-weekvisit" role="tab"
@@ -287,7 +288,7 @@
                             <small class="text-muted">/ 陆原居</small>
                             <span class="pull-right text-muted">4141</span>
                         </li>
-                        <%--        一共十五条--%>
+                              <!--  一共十五条-->
                     </ul>
 
                 </div>
@@ -471,7 +472,7 @@
                     <tbody>
 
 
-                    <%--一共   三十个  tr    --%>
+                   <!--一共   三十个  tr   -->
                     <tr>
                         <td class="text-muted hidden-xs" width="10%">玄幻魔法</td>
                         <td><a href="https://www.biqukan.cc/book/1864/" title="逆剑狂神">逆剑狂神</a></td>
@@ -504,7 +505,7 @@
                         <td class="text-muted fs-12" title="墨西柯">墨西柯</td>
                     </tr>
 
-                    <%--  一共三十条数据   --%>
+                    <!-- 一共三十条数据  -->
 
 
                     </tbody>
@@ -540,4 +541,5 @@
     </div>
 </div>
 </body>
+
 </html>

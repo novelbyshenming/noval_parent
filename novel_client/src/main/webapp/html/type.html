@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,6 @@
     <script type="text/javascript">
         $(function () {
 
-
             var localUrl = window.location.href;
 
             var number = localUrl.lastIndexOf('?')
@@ -49,27 +49,18 @@
             }
 
             function ajaxType(localUrl) {
-
-                var target = 'http://localhost:8080/solr/collection1/select?&wt=json&indent=true&'+localUrl
-                alert(target)
-
-                /*$.post(target,function (data) {
-
-                    console.log(data)
-                })*/
-                $.ajax({
+                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_type:'+localUrl
+                 $.ajax({
                     url:target,
                     error:function(){
                         alert("请求出错.")
                     },
                     success:function(data){
-
-                        var result="";
-
-                        var jsonObject = eval("("+data+")")
-                        var start = jsonObject.response.start
-                        var docs= jsonObject.response.docs
-                        docs.each(function (index,ele) {
+                         var result="";
+                         var jsonObject = eval("("+data+")")
+                       var start = jsonObject.response.start
+                       var docs= jsonObject.response.docs
+                       $(docs).each(function (index,ele) {
                             var tIndex = index+1
                             result+="<li class=\"list-group-item\">"
                             result+="<i class=\"topNum\">"+tIndex+"</i>"
@@ -77,13 +68,8 @@
                             result+= "<small class=\"text-muted\">/ "+ele.novel_author+"</small>"
                             result+=  "<span class=\"pull-right text-muted\">"+ele.novel_type+"</span>"
                             result+=  "</li>"
-
                         })
-                        $("#searchList").html(result)
-
-
-
-                        /*// alert("请求成功"+data)*/
+                           $("#searchList").html(result)
                     },
                     type:'GET'
                 });
@@ -107,7 +93,7 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
-                <li><a href="#" title="玄幻魔法">玄幻魔法</a></li>
+                <li><a href="solr/collection1/select?&wt=json&indent=true&q=novel_keywords:XXL" title="玄幻魔法">玄幻魔法</a></li>
                 <li><a href="#" title="武侠修真">武侠修真</a></li>
                 <li><a href="#" title="都市言情">都市言情</a></li>
                 <li><a href="#" title="历史军事">历史军事</a></li>
@@ -143,7 +129,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-fire fa-fw"></i>玄幻魔法热门推荐  </div>
-                <div class="list-group list-top" id="searchList">
+                <div class="list-group list-top" id="searchList" >
 
                     <li class="list-group-item">
                         <i class="topNum">1</i>
@@ -152,7 +138,19 @@
                         <span class="pull-right text-muted">1745</span>
                     </li>
 
+                    <li class="list-group-item">
+                        <i class="topNum">2</i>
+                        <a href="https://www.biqukan.cc/book/11051/" title="元尊">元尊</a>
+                        <small class="text-muted">/ 天蚕土豆</small>
+                        <span class="pull-right text-muted">1489</span>
+                    </li>
 
+                    <li class="list-group-item">
+                        <i class="topNum">3</i>
+                        <a href="https://www.biqukan.cc/book/26095/" title="开棺有喜：冥夫求放过">开棺有喜：冥夫求放过</a>
+                        <small class="text-muted">/ 吞鬼的女孩</small>
+                        <span class="pull-right text-muted">1175</span>
+                    </li>
 
                     <li class="list-group-item">
                         <i class="topNum">4</i>
