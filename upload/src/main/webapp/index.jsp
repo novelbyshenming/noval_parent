@@ -8,6 +8,8 @@
 
 </head>
 <body>
-
+		userName:<input type="text" value="请输入用户名"><br />
+		passWord:</label><input type="password">
+		<input type="button" value="登录" onclick="Login();">
 </body>
 </html>

@@ -11,4 +11,7 @@ public interface UserMapper {
     int updUser(User user);
 
 //    int insUser(User user);
+    User logincheck(User user);
+    
+    void register(User user);
 }

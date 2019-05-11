@@ -25,17 +25,19 @@ public class Solr {
         SolrQuery solrQuery = new SolrQuery();
 
         System.out.println(System.currentTimeMillis()-start);
-        System.out.println("          ----------------------------");
+
+        System.out.println("----------------------------");
 
         solrQuery.set("q", "*:*");
 
         // 过滤条件
         solrQuery.set("fq","novel_name:斗罗");
 
-        solrQuery.setStart(10);//设置起始位置
-        solrQuery.setRows(10);//设置条数
+        solrQuery.setStart(0);//设置起始位置
 
-        solrQuery.addSort("date", SolrQuery.ORDER.desc);
+        solrQuery.setRows(1000);//设置条数
+
+//        solrQuery.addSort("date", SolrQuery.ORDER.desc);
         // 默认域
 //        solrQuery.set("df","novel_name");
 
@@ -43,7 +45,6 @@ public class Solr {
         solrQuery.set("fl","id,novel_name,novel_type,novel_author,novel_introduction");
 
         QueryResponse query = solrServer.query(solrQuery);
-
 
         SolrDocumentList documents = query.getResults();
 
@@ -60,7 +61,6 @@ public class Solr {
             System.out.println(doc.get("novel_image"));
             System.out.println(doc.get("novel_url"));
             System.out.println(doc.get("novel_introduction"));
-
             System.out.println("");
         }
         System.out.println(System.currentTimeMillis()-start);

@@ -19,8 +19,18 @@ public class User {
     private String email;
 
     private int age;
-
+    
+    private String sex;
+    
     private String head;
+
+    public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 
     public String getHead() {
         return head;
@@ -30,7 +40,7 @@ public class User {
         this.head = head;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "User{" +
                 "uid=" + uid +
@@ -41,13 +51,20 @@ public class User {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 '}';
-    }
+    }*/
 
+    
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    @Override
+	public String toString() {
+		return "User [uid=" + uid + ", name=" + name + ", pwd=" + pwd + ", money=" + money + ", tel=" + tel + ", email="
+				+ email + ", age=" + age + ", sex=" + sex + ", head=" + head + "]";
+	}
+
+	public void setAge(int age) {
         this.age = age;
     }
 

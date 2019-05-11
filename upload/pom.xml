@@ -21,23 +21,23 @@
             <artifactId>junit</artifactId>
         </dependency>
 
-        <dependency>
+       <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.0.8.RELEASE</version>
         </dependency>
-		
-		<dependency>
-    		<groupId>com.auth0</groupId>
-    		<artifactId>java-jwt</artifactId>
-    		<version>3.3.0</version>
-		</dependency>
-		
-		<dependency>
-    		<groupId>io.jsonwebtoken</groupId>
-    		<artifactId>jjwt</artifactId>
-    		<version>0.9.0</version>
-		</dependency>
+        <!--
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.0</version>
+        </dependency>-->
+
 		
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -136,7 +136,7 @@
                 <!-- 项目发布到tomcat后的名称 -->
                 <!-- / 相当于把项目发布名称为ROOT -->
                 <!-- /abc -->
-                <path>/noval</path>
+                <path>/noveluser</path>
             </configuration>
         </plugin>
     </plugins>
