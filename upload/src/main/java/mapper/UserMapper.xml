@@ -18,5 +18,23 @@
 
         WHERE id = #{id}
     </update>
-
+	
+	<select id="logincheck" parameterType="bean.user">
+		select * 
+		from user
+		<where>
+			<if test="name != null and name != ''">
+				and 'name' = #{name}
+			</if>
+			<if test="pwd != null and pwd != ''">
+				AND 'pwd' = #{pwd}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="register" parameterType="bean.user">
+		insert into
+		user(name,pwd)
+		value(#{name},#{pwd})
+	</insert>
 </mapper>
