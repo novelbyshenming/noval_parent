@@ -37,11 +37,6 @@ public class UserController {
 		}
 	}
 	
-	//转向注册页面
-	@RequestMapping("toregister")
-	public String toregister(){
-		return "register.u";
-	}
 	
 	//注册
 	@RequestMapping("register.u")
