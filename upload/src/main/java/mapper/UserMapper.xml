@@ -33,6 +33,9 @@
 	</select>
 	
 	<insert id="register" parameterType="bean.user">
+	<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+		select LAST_INSERT_ID()
+	</selectKey>
 		insert into
 		user(name,pwd)
 		value(#{name},#{pwd})
