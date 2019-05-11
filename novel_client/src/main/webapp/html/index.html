@@ -31,8 +31,13 @@
     <script type="text/javascript">
 
         function search() {
-            var data = document.getElementById("bdcsMain").value
-            window.location.href="/search.html?"+data
+            var data1 = document.getElementById("bdcsMain1").value
+            var data2 = document.getElementById("bdcsMain2").value
+
+            if(data1 != null && data1 !='')
+                 window.location.href="/search.html?page=1&key="+data1
+            else
+                 window.location.href="/search.html?page=1&key="+data2
         }
         $(function () {
 
@@ -50,31 +55,19 @@
                 <span class="icon-bar"></span><span
                     class="icon-bar"></span>
             </button>
-            <a href="https://www.biqukan.cc/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a></div>
+            <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a></div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
-                <li><a href="#" title="玄幻魔法">玄幻魔法</a></li>
-                <li><a href="#" title="武侠修真">武侠修真</a></li>
-                <li><a href="#" title="都市言情">都市言情</a></li>
-                <li><a href="#" title="历史军事">历史军事</a></li>
-                <li><a href="#" title="侦探推理">侦探推理</a></li>
-                <li><a href="#" title="网游动漫">网游动漫</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">更多分类
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" title="科幻小说">科幻小说</a></li>
-                        <li><a href="#" title="恐怖灵异">恐怖灵异</a></li>
-                        <li><a href="#" title="穿越小说">穿越小说</a></li>
-                        <li><a href="#" title="其他类型">其他类型</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#" title="完本小说">完本小说</a></li>
+                <li><a href="/type.html?page=1&type=玄幻" title="玄幻魔法">玄幻魔法</a></li>
+                <li><a href="/type.html?page=1&type=武侠" title="武侠修真">武侠修真</a></li>
+                <li><a href="/type.html?page=1&type=都市" title="都市言情">都市言情</a></li>
+                <li><a href="/type.html?page=1&type=穿越" title="历史军事">历史军事</a></li>
+                <li><a href="/type.html?page=1&type=科幻" title="侦探推理">侦探推理</a></li>
+                <li><a href="/type.html?page=1&type=网游" title="网游动漫">网游动漫</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">登录</a></li>
-                <li><a href="#">免费注册</a></li>
+                <li><a href="/login.html">登录</a></li>
+                <li><a href="/register.html">免费注册</a></li>
             </ul>
         </nav>
     </div>
@@ -91,7 +84,7 @@
                         <div class="col-md-6 col-xs-8 pull-right">
                                 <div class="input-group">
                                     <input type="text" class="form-control"
-                                                                placeholder="请输入您需要搜索的关键字" id="bdcsMain"
+                                                                placeholder="电脑端 请输入您需要搜索的关键字" id="bdcsMain1"
                                                                 name="searchkey">
                                     <span class="input-group-btn">
 
@@ -122,8 +115,7 @@
                         <a class="thumbnail"
                                                                 href="https://www.biqukan.cc/book/51990/"
                                                                 title="仙宫">
-                        <img
-                            src="https://www.biqukan.cc/files/article/image/51/51990/51990s.jpg" alt="仙宫"
+                        <img src="https://www.biqukan.cc/files/article/image/51/51990/51990s.jpg" alt="仙宫"
                             style="height:182px;">
                         <div class="caption">
                             <strong>仙宫</strong><br>
@@ -219,15 +211,13 @@
         </div>
         <div class="col-md-4 pl0">
           <span class="visible-xs mb10">
-            <form action="https://www.biqukan.cc/modules/article/search.php" target="_blank">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="请输入您需要搜索的关键字" id="bdcsMain" name="searchkey">
+                    <input type="text" class="form-control" placeholder="手机端  请输入您需要搜索的关键字" id="bdcsMain2" name="searchkey">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
+                        <button class="btn btn-default"  onclick="search()">
                         <i class="fa fa-search fa-fw"></i>
                     </button></span>
                 </div>
-            </form>
             </span>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService{
 	private UserMapper usermapper;
 	
 	public User loginCheck(User user) {
-		User u = usermapper.logincheck(user);
+		User u = usermapper.loginCheck(user);
 		return u;
 	}
 

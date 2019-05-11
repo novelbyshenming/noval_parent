@@ -42,7 +42,7 @@ public class Solr {
 //        solrQuery.set("df","novel_name");
 
         // 只查询 指定域
-        solrQuery.set("fl","id,novel_name,novel_type,novel_author,novel_introduction,novel_url,novel_image");
+        solrQuery.set("fl","id,novel_name,novel_type,novel_author,novel_introduction");
 
         QueryResponse query = solrServer.query(solrQuery);
 

@@ -58,12 +58,6 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.0.8.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
         </dependency>
 
@@ -136,7 +130,7 @@
                 <!-- 项目发布到tomcat后的名称 -->
                 <!-- / 相当于把项目发布名称为ROOT -->
                 <!-- /abc -->
-                <path>/novel</path>
+                <path>/noveluser</path>
             </configuration>
         </plugin>
     </plugins>
