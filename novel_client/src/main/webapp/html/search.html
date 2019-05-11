@@ -36,12 +36,31 @@
 
                 localUrl = localUrl.substring(number+1)
 
-                ajaxType(localUrl)
+                number = localUrl.lastIndexOf('&')
 
+                var params1 = localUrl.substring(0,number)
+
+                var tparams1 = params1.split('=')
+
+                var params2 = localUrl.substring(number+1)
+
+                var tparams2 = params2.split('=')
+
+                if ( tparams1[0] =='page' ){
+
+                   /* alert("tparams1   "+tparams1[0]+" "+tparams1[1])*/
+                    ajaxType(tparams1[1],tparams2[1])
+                }else{
+                    // alert("tparams2   "+tparams2[0]+" "+tparams2[1])
+                    ajaxType(tparams2[1],tparams1[1])
+                }
             }
 
-            function ajaxType(localUrl) {
-                var target = 'solr/collection1/select?start=0&rows=15&wt=json&indent=true&q=novel_type:'+localUrl
+            function ajaxType(page,key) {
+
+                var start = (page-1)*15
+
+                var target = 'solr/collection1/select?start='+start+'&rows=15&wt=json&indent=true&q=novel_keywords:'+key
 
                 $.ajax({
 
@@ -53,22 +72,27 @@
                     },
                     success:function(data){
 
-                        var result="";
+                        var result=""
 
                         var jsonObject = eval("("+data+")")
 
-                        var start = jsonObject.response.start
+                        /* 查询到的 总数量*/
+                        var numFound = jsonObject.response.numFound
+
+                        if(numFound>0){
+
+                        }
 
                         var docs= jsonObject.response.docs
 
                         $(docs).each(function (index,ele) {
 
-                        "<tr><td class=\"odd\"><a href=\"#\">斗罗大陆4终极斗罗</a></td>"
-                            "<td class=\"hidden-xs\"><a href=\"#\" target=\"_blank\"> 第二百九十四章 樱落红</a></td>"
-                            "<td class=\"odd\">唐家三少</td>"
-                               "<td class=\"hidden-xs\">1568K</td>"
-                            "<td class=\"hidden-xs\">19-05-08</td>"
-                               "<td class=\"even\">连载中</td></tr>"
+                            result+="<tr><td class=\"odd\"><a href=\"/introduction.html?id="+ele.id+"\">"+ele.novel_name+"</a></td>"
+                            result+="<td class=\"hidden-xs\"><a href=\"#\" target=\"_blank\"> "+ele.novel_latestChapters+"章节,暂时无数据"+"</a></td>"
+                            result+="<td class=\"odd\">"+ele.novel_author+"</td>"
+                            result+="<td class=\"hidden-xs\">"+ele.novel_type+"</td>"
+                            result+="<td class=\"hidden-xs\">"+ele.novel_updateTimes+"</td>"
+                            result+="<td class=\"even\">连载中</td></tr>"
 
                         })
                         $("#searchTable").append(result)
@@ -90,30 +114,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="https://www.biqukan.cc/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
+            <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
-                <li><a href="#" title="玄幻魔法">玄幻魔法</a></li>
-                <li><a href="#" title="武侠修真">武侠修真</a></li>
-                <li><a href="#" title="都市言情">都市言情</a></li>
-                <li><a href="#" title="历史军事">历史军事</a></li>
-                <li><a href="#" title="侦探推理">侦探推理</a></li>
-                <li><a href="#" title="网游动漫">网游动漫</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">更多分类<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" title="科幻小说">科幻小说</a></li>
-                        <li><a href="#" title="恐怖灵异">恐怖灵异</a></li>
-                        <li><a href="#" title="穿越小说">穿越小说</a></li>
-                        <li><a href="#" title="其他类型">其他类型</a></li>
-                    </ul>
-                </li>
-
+                <li><a href="/type.html?page=1&type=玄幻" title="玄幻魔法">玄幻魔法</a></li>
+                <li><a href="/type.html?page=1&type=武侠" title="武侠修真">武侠修真</a></li>
+                <li><a href="/type.html?page=1&type=都市" title="都市言情">都市言情</a></li>
+                <li><a href="/type.html?page=1&type=穿越" title="历史军事">历史军事</a></li>
+                <li><a href="/type.html?page=1&type=科幻" title="侦探推理">侦探推理</a></li>
+                <li><a href="/type.html?page=1&type=网游" title="网游动漫">网游动漫</a></li>
                 <li><a href="#" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">登录</a></li><li><a href="#">免费注册</a></li>
+                <li><a href="/login.html">登录</a></li><li><a href="/register.html">免费注册</a></li>
 
             </ul>
         </nav>
@@ -122,7 +136,11 @@
 <div class="container body-content">
 
     <div class="panel panel-default">
-        <div class="panel-heading"><h1 class="fs-18 mg0"><strong>搜索结果</strong></h1></div>
+        <div class="panel-heading">
+            <h1 class="fs-18 mg0">
+                <strong>搜索结果</strong>
+            </h1>
+        </div>
         <table class="table" id="searchTable">
             <tbody>
 
@@ -130,19 +148,19 @@
                 <th width="20%">文章名称</th>
                 <th width="40%" class="hidden-xs">最新章节</th>
                 <th width="15%">作者</th>
-                <th width="9%" class="hidden-xs">字数</th>
+                <th width="9%" class="hidden-xs">类型</th>
                 <th width="10%" class="hidden-xs">更新</th>
                 <th width="6%">状态</th>
             </tr>
 
-            <tr>
+           <!-- <tr>
                 <td class="odd"><a href="#">斗罗大陆4终极斗罗</a></td>
                 <td class="hidden-xs"><a href="#" target="_blank"> 第二百九十四章 樱落红</a></td>
                 <td class="odd">唐家三少</td>
                 <td class="hidden-xs">1568K</td>
                 <td class="hidden-xs">19-05-08</td>
                 <td class="even">连载中</td>
-            </tr>
+            </tr>-->
 
             </tbody>
         </table>
@@ -150,19 +168,13 @@
     </div>
 
     <ul class="pagination" id="pagelink">
-        <li class="disabled">
-            <span>1/1</span>
-        </li>
-        <li>
-            <a href="#" class="first">1</a>
-        </li>
-        <li>
-            <a href="#" class="pgroup">&lt;&lt;</a>
-        </li>
-        <li class="active"><span>1</span></li><li><a href="#" class="ngroup">&gt;&gt;</a>
-    </li>
-        <li><a href="#" class="last">1</a>
-        </li>
+
+        <li class="disabled"><span>1/1</span></li>
+        <li><a href="#" class="first">1</a></li>
+        <li><a href="#" class="pgroup">&lt;&lt;</a></li>
+        <li class="active"><span>1</span></li>
+        <li><a href="#" class="ngroup">&gt;&gt;</a></li>
+        <li><a href="#" class="last">1</a></li>
     </ul>
 
     <footer>
