@@ -13,8 +13,8 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserMapper usermapper;
 	
-	public User logincheck(User user) {
-		User u = usermapper.logincheck(user);
+	public User loginCheck(User user) {
+		User u = usermapper.loginCheck(user);
 		return u;
 	}
 

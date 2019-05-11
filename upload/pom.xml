@@ -15,7 +15,10 @@
     <name>upload Maven Webapp</name>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -55,12 +58,6 @@
             <artifactId>jstl</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.0.8.RELEASE</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
