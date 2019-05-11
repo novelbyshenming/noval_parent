@@ -17,7 +17,6 @@ public class UploadServiceImpl implements UploadService {
     @Autowired
     private UserMapper userMapper;
 
-
     public void  updUser(User user) throws UploadException {
 
         int i = userMapper.updUser(user);

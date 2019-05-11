@@ -19,7 +19,7 @@
         WHERE id = #{id}
     </update>
 	
-	<select id="logincheck" parameterType="bean.user">
+	<select id="loginCheck" parameterType="User" resultType="User">
 		select * 
 		from user
 		<where>
@@ -32,7 +32,7 @@
 		</where>
 	</select>
 	
-	<insert id="register" parameterType="bean.user">
+	<insert id="register" parameterType="User">
 		insert into
 		user(name,pwd)
 		value(#{name},#{pwd})
