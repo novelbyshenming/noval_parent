@@ -25,6 +25,9 @@ public class UploadController {
     @Autowired
     private UploadService uploadServiceImpl;
 
+    
+    
+    
     @ResponseBody
     @RequestMapping("upload.u")
     public String upload(User user, MultipartFile fileName){
