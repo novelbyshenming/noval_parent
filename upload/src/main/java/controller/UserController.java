@@ -23,17 +23,17 @@ public class UserController {
 	
 	//登录验证
 	@RequestMapping("login.u")
-	public String login(@RequestParam("name") String name,
-			@RequestParam("pwd") String pwd,Model model) throws UserException{
+	public String login(@RequestParam("username") String name,
+			@RequestParam("pwd") String pwd,@RequestParam("usecookie") String usecookie,Model model) throws UserException{
 		User user = new User();
 		user.setName(name);
 		user.setPwd(pwd);
 		if(userService.loginCheck(user) != null){
 			model.addAttribute("name",name);
-			return "index.html";
+			return "forword:/html/index.html";
 		}else{
 			model.addAttribute("error","账号或密码错误");
-			return "login.u";
+			return "redirect:/html/login.html";
 		}
 	}
 	
