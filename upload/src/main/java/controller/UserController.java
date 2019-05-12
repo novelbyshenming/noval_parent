@@ -1,10 +1,14 @@
 package controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import MyException.UserException;
 import bean.User;
@@ -15,25 +19,18 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	//转向登录界面
-	@RequestMapping("tologin.u")
-	public String tologin(){
-		return "login.u";
-	}
 	
 	//登录验证
-	@RequestMapping("login.u")
-	public String login(@RequestParam("username") String name,
-			@RequestParam("pwd") String pwd,@RequestParam("usecookie") String usecookie,Model model) throws UserException{
-		User user = new User();
-		user.setName(name);
-		user.setPwd(pwd);
+
+	@RequestMapping(value="login.u",method = RequestMethod.POST)
+	@ResponseBody
+	public String login(User user,HttpServletRequest request) throws UserException{
 		if(userService.loginCheck(user) != null){
-			model.addAttribute("name",name);
-			return "forword:/html/index.html";
+			user.setPwd("");
+			request.getSession().setAttribute("user", user);
+			return "user.getUid()";
 		}else{
-			model.addAttribute("error","账号或密码错误");
-			return "redirect:/html/login.html";
+			return "-1";
 		}
 	}
 	
@@ -42,7 +39,6 @@ public class UserController {
 	@RequestMapping("register.u")
 	public String register(@RequestParam("name") String name,
 			@RequestParam("pwd") String pwd) throws UserException{
-		String message = "注册成功";
 		User user = new User();
 		user.setName(name);
 		user.setPwd(pwd);
