@@ -23,17 +23,17 @@
 
 	<script type="text/javascript">
 	function login(){
-			var data = {
+			var data = { 
 				name:$('#name').val(),
 				pwd:$('#pwd').val()
 			};
 			 $.post(
-				"",
+				"/localuser/login.u",
 				data,
                 function(data){
                 	 if(data != -1){
                 		alert("登录成功!!!");
-                		window.local.href ="/index.html?uid=data.getUid";
+                		window.localtion.href ="/index.html?uid="+data;
                 	}else{
                 		alert("登录失败!!!");
                 	} 

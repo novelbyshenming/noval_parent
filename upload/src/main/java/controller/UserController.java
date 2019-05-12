@@ -26,7 +26,7 @@ public class UserController {
 		if(userService.loginCheck(user) != null){
 			user.setPwd("");
 			request.getSession().setAttribute("user", user);
-			return "user.getUid()";
+			return user.getUid()+"";
 		}else{
 			return "-1";
 		}
