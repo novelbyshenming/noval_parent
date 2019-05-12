@@ -14,4 +14,6 @@ public interface UserMapper {
     User loginCheck(User user);
 
     void register(User user);
+    
+    User selectByUid(long uid);
 }

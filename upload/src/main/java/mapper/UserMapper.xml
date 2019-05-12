@@ -28,4 +28,8 @@
 		user(name,pwd,email,sex)
 		value(#{name},#{pwd},#{email},#{sex})
 	</insert>
+	
+	<select id="selectByUid" parameterType="Long" resultType="User">
+		select * from user WHERE uid=#{uid}
+	</select>
 </mapper>

@@ -3,6 +3,7 @@ package service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import MyException.UserException;
 import bean.User;
 import mapper.UserMapper;
 import service.UserService;
@@ -20,6 +21,12 @@ public class UserServiceImpl implements UserService{
 
 	public void register(User user) {
 		usermapper.register(user);
+	}
+
+	@Override
+	public User selectByUid(Long uid) throws UserException {
+		User user = usermapper.selectByUid(uid);
+		return user;
 	}
 
 }

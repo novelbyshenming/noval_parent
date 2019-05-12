@@ -23,6 +23,14 @@
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
     <script src="/noveluser/js/register.js"></script>
     <script type="text/javascript">
+	$("#name").blur(function(){
+		var data = $("#name").val();
+		if(data == null || data == ""){
+			alert("用户名不能为空哦")；
+		}
+	});
+	</script>
+    <script type="text/javascript">
     	function register(){
     		var data = {
     			name:$("#name").val(),
@@ -81,7 +89,6 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/noveluser/html/login.html">登录</a></li><li><a href="/noveluser/html/register.html">免费注册</a></li>
-
             </ul>
         </nav>
     </div>
@@ -96,7 +103,7 @@
                         <div class="form-group mt10">
                             <label class="col-md-3 control-label">用户名(必填)</label>
                             <div class="col-md-9">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="请输入用户名">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="请输入用户名"><span id="errorSpan"></span>
                             </div>
                         </div>
                         <div class="form-group mt20">
