@@ -22,7 +22,6 @@ public class User {
     
     private String sex;
     
-    private String head;
 
     public String getSex() {
 		return sex;
@@ -32,13 +31,6 @@ public class User {
 		this.sex = sex;
 	}
 
-    public String getHead() {
-        return head;
-    }
-
-    public void setHead(String head) {
-        this.head = head;
-    }
 
     /*@Override
     public String toString() {
@@ -58,10 +50,11 @@ public class User {
         return age;
     }
 
-    @Override
+
+	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", name=" + name + ", pwd=" + pwd + ", money=" + money + ", tel=" + tel + ", email="
-				+ email + ", age=" + age + ", sex=" + sex + ", head=" + head + "]";
+				+ email + ", age=" + age + ", sex=" + sex + "]";
 	}
 
 	public void setAge(int age) {

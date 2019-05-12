@@ -20,24 +20,16 @@
     </update>
 	
 	<select id="loginCheck" parameterType="User" resultType="User">
-		select * 
-		from user
-		<where>
-			<if test="name != null and name != ''">
-				and 'name' = #{name}
-			</if>
-			<if test="pwd != null and pwd != ''">
-				AND 'pwd' = #{pwd}
-			</if>
-		</where>
+		select * from user WHERE name = #{name} and pwd =#{pwd}
 	</select>
 
 	<insert id="register" parameterType="User">
-	<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-		select LAST_INSERT_ID()
-	</selectKey>
 		insert into
-		user(name,pwd)
-		value(#{name},#{pwd})
+		user(name,pwd,email,sex)
+		value(#{name},#{pwd},#{email},#{sex})
 	</insert>
+	
+	<select id="selectByUid" parameterType="Long" resultType="User">
+		select * from user WHERE uid=#{uid}
+	</select>
 </mapper>

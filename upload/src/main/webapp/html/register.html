@@ -22,6 +22,46 @@
    <!-- <link rel="apple-touch-icon-precomposed" href="https://www.biqukan.cc/novel/images/apple-touch-icon-precomposed.png">-->
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
     <script src="/noveluser/js/register.js"></script>
+    <script type="text/javascript">
+	$("#name").blur(function(){
+		var data = $("#name").val();
+		if(data == null || data == ""){
+			alert("用户名不能为空哦")；
+		}
+	});
+	</script>
+    <script type="text/javascript">
+    	function register(){
+    		var data = {
+    			name:$("#name").val(),
+    			pwd:$("#pwd").val(),
+    			email:$("#email").val(),
+    			sex:$("input[name='usecookie']:checked").val()
+    		};
+    		$.post(
+    			"/noveluser/register.u",
+    			data,
+    			function(data){
+    				if(data != -1){
+    					alert("注册成功!!!");
+    					window.location.href = "/noveluser/html/login.html"
+    				}else{
+    					alert("注册失败!!!");
+    				}
+    			});
+    		/* $.post(
+    				"/noveluser/login.u",
+    				data,
+                    function(data){
+                    	 if(data != -1){
+                    		alert("登录成功!!!");
+                    		window.location.href="http://47.106.110.16/index.html?uid="+data;
+                    	}else{
+                    		alert("登录失败!!!");
+                    	} 
+                    }); */
+    }
+    </script>
     <script src="/noveluser/js/jquery-1.7.2.min.js"></script>
     <!--[if lt IE 9]><script src="/noveluser/js/respond.min.js"></script><![endif]-->
 
@@ -48,8 +88,7 @@
                 <li><a href="#" title="完本小说">完本小说</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/html/login.html">登录</a></li><li><a href="/html/register.html">免费注册</a></li>
-
+                <li><a href="/noveluser/html/login.html">登录</a></li><li><a href="/noveluser/html/register.html">免费注册</a></li>
             </ul>
         </nav>
     </div>
@@ -58,36 +97,35 @@
     <div class="row mt20 mb20">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-user fa-fw"></i>用户注册
-                    <a href="https://www.biqukan.cc/login.php" class="pull-right">已有用户？立即登录</a></div>
+                <div class="panel-heading"><i class="fa fa-userfa-fw"></i>用户注册
+                    <a href="/noveluser/html/login.html" class="pull-right">已有用户？立即登录</a></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="post" action="/noveluser/">
                         <div class="form-group mt10">
                             <label class="col-md-3 control-label">用户名(必填)</label>
                             <div class="col-md-9">
-                                <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="请输入用户名"><span id="errorSpan"></span>
                             </div>
                         </div>
                         <div class="form-group mt20">
                             <label class="col-md-3 control-label">密码(必填)</label>
                             <div class="col-md-9">
-                                <input type="password" name="password" class="form-control" placeholder="请输入密码">
+                                <input type="password" name="pwd" class="form-control" id="pwd" placeholder="请输入密码">
                             </div>
                         </div>
                         <div class="form-group mt20">
                             <label class="col-md-3 control-label">重复密码(必填)</label>
                             <div class="col-md-9">
-                                <input type="password" name="repassword" class="form-control" placeholder="请再次输入密码">
+                                <input type="password" name="repwd" class="form-control" placeholder="请再次输入密码">
                             </div>
                         </div>
                         <div class="form-group mt10">
                             <label class="col-md-3 control-label">邮箱(必填)</label>
                             <div class="col-md-9">
-                                <input type="text" name="email" class="form-control" placeholder="请输入邮箱">
+                                <input type="text" name="email" class="form-control"  id="email" placeholder="请输入邮箱">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">性别</label>
+                            <label class="col-md-3 control-label" " >性别</label>
                             <div class="col-md-9">
                                 <div class="radio">
                                     <label class="mr10"><input type="radio" name="usecookie" value="1"> 男</label>
@@ -100,10 +138,9 @@
                         <div class="form-group">
                             <div class="col-md-offset-3 col-md-9">
 
-                                <button type="submit" class="btn btn-primary">立即注册</button>
+                                <button type="button" class="btn btn-primary" onclick="register()">立即注册</button>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
