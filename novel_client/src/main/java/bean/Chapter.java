@@ -7,14 +7,16 @@ package bean;
 public class Chapter {
 	
 	private long cid;
-	
-	private long nid;
-	
-	private String novalName;
-	
-	private String novalChapter;
-	
-	private String url;
+
+	private String novelChapter;
+
+	@Override
+	public String toString() {
+		return "Chapter{" +
+				"cid=" + cid +
+				", novelChapter='" + novelChapter + '\'' +
+				'}';
+	}
 
 	public long getCid() {
 		return cid;
@@ -24,42 +26,11 @@ public class Chapter {
 		this.cid = cid;
 	}
 
-	public long getNid() {
-		return nid;
+	public String getNovelChapter() {
+		return novelChapter;
 	}
 
-	public void setNid(long nid) {
-		this.nid = nid;
+	public void setNovelChapter(String novelChapter) {
+		this.novelChapter = novelChapter;
 	}
-
-	public String getNovalName() {
-		return novalName;
-	}
-
-	public void setNovalName(String novalName) {
-		this.novalName = novalName;
-	}
-
-	public String getNovalChapter() {
-		return novalChapter;
-	}
-
-	public void setNovalChapter(String novalChapter) {
-		this.novalChapter = novalChapter;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	@Override
-	public String toString() {
-		return "Chapter [cid=" + cid + ", nid=" + nid + ", novalName=" + novalName + ", novalChapter=" + novalChapter
-				+ ", url=" + url + "]";
-	}
-	
 }
