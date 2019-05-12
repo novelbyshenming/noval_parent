@@ -35,14 +35,16 @@ public class Solr {
 
         solrQuery.setStart(0);//设置起始位置
 
-        solrQuery.setRows(1000);//设置条数
+        solrQuery.setRows(10);//设置条数
+
+        solrQuery.setSort("novel_updateTimes", SolrQuery.ORDER.desc);//设置排序
 
 //        solrQuery.addSort("date", SolrQuery.ORDER.desc);
         // 默认域
 //        solrQuery.set("df","novel_name");
 
         // 只查询 指定域
-        solrQuery.set("fl","id,novel_name,novel_type,novel_author,novel_introduction");
+        solrQuery.set("fl","id,novel_name,novel_type,novel_author,novel_updateTimes");
 
         QueryResponse query = solrServer.query(solrQuery);
 
@@ -58,9 +60,7 @@ public class Solr {
             System.out.println(doc.get("novel_name"));
             System.out.println(doc.get("novel_author"));
             System.out.println(doc.get("novel_type"));
-            System.out.println(doc.get("novel_image"));
-            System.out.println(doc.get("novel_url"));
-            System.out.println(doc.get("novel_introduction"));
+            System.out.println(doc.get("novel_updateTimes"));
             System.out.println("");
         }
         System.out.println(System.currentTimeMillis()-start);
