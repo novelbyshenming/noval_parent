@@ -20,16 +20,7 @@
     </update>
 	
 	<select id="loginCheck" parameterType="User" resultType="User">
-		select * 
-		from user
-		<where>
-			<if test="name != null and name != ''">
-				and 'name' = #{name}
-			</if>
-			<if test="pwd != null and pwd != ''">
-				AND 'pwd' = #{pwd}
-			</if>
-		</where>
+		select * from user WHERE name = #{name} and pwd =#{pwd}
 	</select>
 
 	<insert id="register" parameterType="User">
