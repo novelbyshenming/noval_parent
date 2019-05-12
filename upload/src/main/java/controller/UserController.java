@@ -2,7 +2,9 @@ package controller;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,6 @@ public class UserController {
 	@ResponseBody
 	public String login(User user,HttpServletRequest request) throws UserException, Exception{
 		request.setCharacterEncoding("UTF-8");
-
 		if(userService.loginCheck(user) != null){
 			user.setPwd("");
 			
@@ -42,12 +43,15 @@ public class UserController {
 	//注册
 	@RequestMapping(value="register.u",method = RequestMethod.POST)
 	@ResponseBody
-	public String register(User user,HttpServletRequest request) throws UserException{
+	public String register(User user,HttpServletRequest request,HttpServletResponse response) throws UserException{
 		try{
+			//注册成功
 			userService.register(user);
-			request.getSession().setAttribute("user", user);
+			user.setPwd("");
+			request.setAttribute("user", user);
 			return "1";
 		}catch(Exception e){
+			//注册失败
 			e.printStackTrace();
 			return "-1";
 		}

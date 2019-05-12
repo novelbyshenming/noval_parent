@@ -10,4 +10,6 @@ public interface UserService {
   User loginCheck(User user) throws UserException;
   
   void register(User user) throws UserException;
+  
+  User selectByUid(Long uid) throws UserException;
 }
