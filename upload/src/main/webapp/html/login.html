@@ -28,12 +28,12 @@
 				pwd:$('#pwd').val()
 			};
 			 $.post(
-				"",
+				"/noveluser/login.u",
 				data,
                 function(data){
                 	 if(data != -1){
                 		alert("登录成功!!!");
-                		window.local.href ="/index.html?uid=data.getUid";
+                		window.location.href="http://47.106.110.16/index.html?uid="+data;
                 	}else{
                 		alert("登录失败!!!");
                 	} 
@@ -81,7 +81,6 @@
                 <div class="panel-heading"><i class="fa fa-user fa-fw"></i>用户登录
                     <a href="/noveluser/html/register.html" class="pull-right">新用户注册</a></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="post" action="/noveluser/login.u">
                         <div class="form-group mt10">
                             <label class="col-sm-2 control-label">用户名</label>
                             <div class="col-sm-10">
@@ -111,7 +110,6 @@
                                 <button type="button" class="btn btn-primary" id="singUp" onclick="login()">登 录</button>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

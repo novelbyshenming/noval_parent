@@ -25,10 +25,11 @@ public class UserController {
 	@RequestMapping(value="login.u",method = RequestMethod.POST)
 	@ResponseBody
 	public String login(User user,HttpServletRequest request) throws UserException{
+
 		if(userService.loginCheck(user) != null){
 			user.setPwd("");
 			request.getSession().setAttribute("user", user);
-			return "user.getUid()";
+			return user.getUid()+"";
 		}else{
 			return "-1";
 		}
