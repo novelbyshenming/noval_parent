@@ -20,6 +20,30 @@ public class Novel {
 
     private String image;
 
+    private String readCount;
+
+    @Override
+    public String toString() {
+        return "Novel{" +
+                "nid=" + nid +
+                ", novelName='" + novelName + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", url='" + url + '\'' +
+                ", author='" + author + '\'' +
+                ", type='" + type + '\'' +
+                ", image='" + image + '\'' +
+                ", readCount='" + readCount + '\'' +
+                '}';
+    }
+
+    public String getReadCount() {
+        return readCount;
+    }
+
+    public void setReadCount(String readCount) {
+        this.readCount = readCount;
+    }
+
     public long getNid() {
         return nid;
     }
@@ -70,19 +94,6 @@ public class Novel {
 
     public String getImage() {
         return image;
-    }
-
-    @Override
-    public String toString() {
-        return "Novel{" +
-                "nid=" + nid +
-                ", novelName='" + novelName + '\'' +
-                ", introduction='" + introduction + '\'' +
-                ", url='" + url + '\'' +
-                ", author='" + author + '\'' +
-                ", type='" + type + '\'' +
-                ", image='" + image + '\'' +
-                '}';
     }
 
     public void setImage(String image) {
