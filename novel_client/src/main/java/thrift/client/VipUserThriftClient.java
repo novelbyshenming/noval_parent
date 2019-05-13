@@ -70,6 +70,10 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
         this.nextReadNovel.setLastChapter(novelChapterContext.getLastChapter());
 
         this.nextReadNovel.setNextChapter(novelChapterContext.getNextChapter());
+
+        this.nextChapterUrl = novelChapterContext.getNextChapter();
+
+        this.flag = true ;
     }
 
     @Override
@@ -85,5 +89,33 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
             e.printStackTrace();
         }
+    }
+
+
+
+
+
+    public ReadNovel getNextReadNovel() {
+        return nextReadNovel;
+    }
+
+    public void setNextReadNovel(ReadNovel nextReadNovel) {
+        this.nextReadNovel = nextReadNovel;
+    }
+
+    public String getNextChapterUrl() {
+        return nextChapterUrl;
+    }
+
+    public void setNextChapterUrl(String nextChapterUrl) {
+        this.nextChapterUrl = nextChapterUrl;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }
