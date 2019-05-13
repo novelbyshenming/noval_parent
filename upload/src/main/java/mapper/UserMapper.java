@@ -16,4 +16,6 @@ public interface UserMapper {
     void register(User user);
     
     User selectByUid(long uid);
+    
+    User selectByName(String name);
 }

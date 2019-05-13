@@ -12,4 +12,6 @@ public interface UserService {
   void register(User user) throws UserException;
   
   User selectByUid(Long uid) throws UserException;
+  
+  User selectByName(String name) throws UserException;
 }

@@ -20,12 +20,19 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public void register(User user) {
+		
 		usermapper.register(user);
 	}
 
 	@Override
 	public User selectByUid(Long uid) throws UserException {
 		User user = usermapper.selectByUid(uid);
+		return user;
+	}
+
+	@Override
+	public User selectByName(String name) throws UserException {
+		User user = usermapper.selectByName(name);
 		return user;
 	}
 
