@@ -4,7 +4,7 @@ package bean;
  * @author LX
  * @date 2019/5/2 - 21:08
  */
-public class Novel {
+public class IntroductionNovel {
 
     private long nid;
 
@@ -20,11 +20,13 @@ public class Novel {
 
     private String image;
 
+    private String state;
+
     private String readCount;
 
     @Override
     public String toString() {
-        return "Novel{" +
+        return "IntroductionNovel{" +
                 "nid=" + nid +
                 ", novelName='" + novelName + '\'' +
                 ", introduction='" + introduction + '\'' +
@@ -32,16 +34,9 @@ public class Novel {
                 ", author='" + author + '\'' +
                 ", type='" + type + '\'' +
                 ", image='" + image + '\'' +
+                ", state='" + state + '\'' +
                 ", readCount='" + readCount + '\'' +
                 '}';
-    }
-
-    public String getReadCount() {
-        return readCount;
-    }
-
-    public void setReadCount(String readCount) {
-        this.readCount = readCount;
     }
 
     public long getNid() {
@@ -99,4 +94,24 @@ public class Novel {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getReadCount() {
+        return readCount;
+    }
+
+    public void setReadCount(String readCount) {
+        this.readCount = readCount;
+    }
+
+
+
+
 }

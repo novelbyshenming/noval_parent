@@ -48,12 +48,14 @@
 
                 if ( tparams1[0] =='page' ){
 
-                   /* alert("tparams1   "+tparams1[0]+" "+tparams1[1])*/
                     ajaxType(tparams1[1],tparams2[1])
                 }else{
-                    // alert("tparams2   "+tparams2[0]+" "+tparams2[1])
                     ajaxType(tparams2[1],tparams1[1])
                 }
+            }
+
+            function getPage(pageStart,pageEnd) {
+
             }
 
             function ajaxType(page,key) {
@@ -79,16 +81,40 @@
                         /* 查询到的 总数量*/
                         var numFound = jsonObject.response.numFound
 
+                        // 页数      一页15 个小说信息  显示十页
+                        var pageNumber = 1
+                        var pageStart = 1
+                        var pageEnd = 2
+
                         if(numFound>0){
 
+                            // 进行分页
+                            if(numFound%15==0)
+                                pageNumber=numFound/15
+                            else
+                                pageNumber=numFound/15 + 1
+
+                            // page  为当前页   5
+                            if(pageNumber>10){
+
+                                if( (page - 5)>1 ){
+
+                                    pageStart = page -5
+                                    pageEnd = pageStart + 10
+
+                                    getPage(pageStart,pageEnd)
+                                }
+                            }
+
+                            alert(numFound)
                         }
 
                         var docs= jsonObject.response.docs
 
                         $(docs).each(function (index,ele) {
 
-                            result+="<tr><td class=\"odd\"><a href=\"/introduction.html?id="+ele.id+"\">"+ele.novel_name+"</a></td>"
-                            result+="<td class=\"hidden-xs\"><a href=\"/read.html?id="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\" target=\"_blank\"> "+ele.novel_latestChapters+"</a></td>"
+                            result+="<tr><td class=\"odd\"><a href=\"/introduction.html?nid="+ele.id+"\">"+ele.novel_name+"</a></td>"
+                            result+="<td class=\"hidden-xs\"><a href=\"/read.html?nid="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\" target=\"_blank\"> "+ele.novel_latestChapters+"</a></td>"
                             result+="<td class=\"odd\">"+ele.novel_author+"</td>"
                             result+="<td class=\"hidden-xs\">"+ele.novel_type+"</td>"
                             var tdate = ele.novel_tdate

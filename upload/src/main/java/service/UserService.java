@@ -1,7 +1,5 @@
 package service;
 
-import org.springframework.stereotype.Service;
-
 import MyException.UserException;
 import bean.User;
 

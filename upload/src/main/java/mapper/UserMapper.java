@@ -8,8 +8,6 @@ import bean.User;
  */
 public interface UserMapper {
 
-    int updUser(User user);
-
 //    int insUser(User user);
     User loginCheck(User user);
 
