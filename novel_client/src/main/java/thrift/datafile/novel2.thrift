@@ -9,12 +9,9 @@ typedef string String
 
 struct NovelChapterContext{
 
-     1: optional String novelName,
-     2: optional String novelChapterName,
-     3: optional String type ,
-     4: optional String context,
-     5: optional String lastChapter,
-     6: optional String nextChapter;
+     1: optional String context,
+     2: optional String lastChapter,
+     3: optional String nextChapter;
  }
 
 

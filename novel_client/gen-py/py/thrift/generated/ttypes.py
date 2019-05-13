@@ -19,19 +19,13 @@ all_structs = []
 class NovelChapterContext(object):
     """
     Attributes:
-     - novelName
-     - novelChapterName
-     - type
      - context
      - lastChapter
      - nextChapter
     """
 
 
-    def __init__(self, novelName=None, novelChapterName=None, type=None, context=None, lastChapter=None, nextChapter=None,):
-        self.novelName = novelName
-        self.novelChapterName = novelChapterName
-        self.type = type
+    def __init__(self, context=None, lastChapter=None, nextChapter=None,):
         self.context = context
         self.lastChapter = lastChapter
         self.nextChapter = nextChapter
@@ -47,30 +41,15 @@ class NovelChapterContext(object):
                 break
             if fid == 1:
                 if ftype == TType.STRING:
-                    self.novelName = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                    self.context = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
                 else:
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRING:
-                    self.novelChapterName = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
-                else:
-                    iprot.skip(ftype)
-            elif fid == 3:
-                if ftype == TType.STRING:
-                    self.type = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
-                else:
-                    iprot.skip(ftype)
-            elif fid == 4:
-                if ftype == TType.STRING:
-                    self.context = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
-                else:
-                    iprot.skip(ftype)
-            elif fid == 5:
-                if ftype == TType.STRING:
                     self.lastChapter = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
                 else:
                     iprot.skip(ftype)
-            elif fid == 6:
+            elif fid == 3:
                 if ftype == TType.STRING:
                     self.nextChapter = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
                 else:
@@ -85,28 +64,16 @@ class NovelChapterContext(object):
             oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
             return
         oprot.writeStructBegin('NovelChapterContext')
-        if self.novelName is not None:
-            oprot.writeFieldBegin('novelName', TType.STRING, 1)
-            oprot.writeString(self.novelName.encode('utf-8') if sys.version_info[0] == 2 else self.novelName)
-            oprot.writeFieldEnd()
-        if self.novelChapterName is not None:
-            oprot.writeFieldBegin('novelChapterName', TType.STRING, 2)
-            oprot.writeString(self.novelChapterName.encode('utf-8') if sys.version_info[0] == 2 else self.novelChapterName)
-            oprot.writeFieldEnd()
-        if self.type is not None:
-            oprot.writeFieldBegin('type', TType.STRING, 3)
-            oprot.writeString(self.type.encode('utf-8') if sys.version_info[0] == 2 else self.type)
-            oprot.writeFieldEnd()
         if self.context is not None:
-            oprot.writeFieldBegin('context', TType.STRING, 4)
+            oprot.writeFieldBegin('context', TType.STRING, 1)
             oprot.writeString(self.context.encode('utf-8') if sys.version_info[0] == 2 else self.context)
             oprot.writeFieldEnd()
         if self.lastChapter is not None:
-            oprot.writeFieldBegin('lastChapter', TType.STRING, 5)
+            oprot.writeFieldBegin('lastChapter', TType.STRING, 2)
             oprot.writeString(self.lastChapter.encode('utf-8') if sys.version_info[0] == 2 else self.lastChapter)
             oprot.writeFieldEnd()
         if self.nextChapter is not None:
-            oprot.writeFieldBegin('nextChapter', TType.STRING, 6)
+            oprot.writeFieldBegin('nextChapter', TType.STRING, 3)
             oprot.writeString(self.nextChapter.encode('utf-8') if sys.version_info[0] == 2 else self.nextChapter)
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
@@ -184,12 +151,9 @@ class NovelChapter(object):
 all_structs.append(NovelChapterContext)
 NovelChapterContext.thrift_spec = (
     None,  # 0
-    (1, TType.STRING, 'novelName', 'UTF8', None, ),  # 1
-    (2, TType.STRING, 'novelChapterName', 'UTF8', None, ),  # 2
-    (3, TType.STRING, 'type', 'UTF8', None, ),  # 3
-    (4, TType.STRING, 'context', 'UTF8', None, ),  # 4
-    (5, TType.STRING, 'lastChapter', 'UTF8', None, ),  # 5
-    (6, TType.STRING, 'nextChapter', 'UTF8', None, ),  # 6
+    (1, TType.STRING, 'context', 'UTF8', None, ),  # 1
+    (2, TType.STRING, 'lastChapter', 'UTF8', None, ),  # 2
+    (3, TType.STRING, 'nextChapter', 'UTF8', None, ),  # 3
 )
 all_structs.append(NovelChapter)
 NovelChapter.thrift_spec = (

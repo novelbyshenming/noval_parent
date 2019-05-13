@@ -11,31 +11,22 @@ package thrift.IDL;
 public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapterContext, NovelChapterContext._Fields>, java.io.Serializable, Cloneable, Comparable<NovelChapterContext> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("NovelChapterContext");
 
-  private static final org.apache.thrift.protocol.TField NOVEL_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("novelName", org.apache.thrift.protocol.TType.STRING, (short)1);
-  private static final org.apache.thrift.protocol.TField NOVEL_CHAPTER_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("novelChapterName", org.apache.thrift.protocol.TType.STRING, (short)2);
-  private static final org.apache.thrift.protocol.TField TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("type", org.apache.thrift.protocol.TType.STRING, (short)3);
-  private static final org.apache.thrift.protocol.TField CONTEXT_FIELD_DESC = new org.apache.thrift.protocol.TField("context", org.apache.thrift.protocol.TType.STRING, (short)4);
-  private static final org.apache.thrift.protocol.TField LAST_CHAPTER_FIELD_DESC = new org.apache.thrift.protocol.TField("lastChapter", org.apache.thrift.protocol.TType.STRING, (short)5);
-  private static final org.apache.thrift.protocol.TField NEXT_CHAPTER_FIELD_DESC = new org.apache.thrift.protocol.TField("nextChapter", org.apache.thrift.protocol.TType.STRING, (short)6);
+  private static final org.apache.thrift.protocol.TField CONTEXT_FIELD_DESC = new org.apache.thrift.protocol.TField("context", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField LAST_CHAPTER_FIELD_DESC = new org.apache.thrift.protocol.TField("lastChapter", org.apache.thrift.protocol.TType.STRING, (short)2);
+  private static final org.apache.thrift.protocol.TField NEXT_CHAPTER_FIELD_DESC = new org.apache.thrift.protocol.TField("nextChapter", org.apache.thrift.protocol.TType.STRING, (short)3);
 
   private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new NovelChapterContextStandardSchemeFactory();
   private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new NovelChapterContextTupleSchemeFactory();
 
-  public String novelName; // optional
-  public String novelChapterName; // optional
-  public String type; // optional
   public String context; // optional
   public String lastChapter; // optional
   public String nextChapter; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    NOVEL_NAME((short)1, "novelName"),
-    NOVEL_CHAPTER_NAME((short)2, "novelChapterName"),
-    TYPE((short)3, "type"),
-    CONTEXT((short)4, "context"),
-    LAST_CHAPTER((short)5, "lastChapter"),
-    NEXT_CHAPTER((short)6, "nextChapter");
+    CONTEXT((short)1, "context"),
+    LAST_CHAPTER((short)2, "lastChapter"),
+    NEXT_CHAPTER((short)3, "nextChapter");
 
     private static final java.util.Map<String, _Fields> byName = new java.util.HashMap<String, _Fields>();
 
@@ -50,17 +41,11 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // NOVEL_NAME
-          return NOVEL_NAME;
-        case 2: // NOVEL_CHAPTER_NAME
-          return NOVEL_CHAPTER_NAME;
-        case 3: // TYPE
-          return TYPE;
-        case 4: // CONTEXT
+        case 1: // CONTEXT
           return CONTEXT;
-        case 5: // LAST_CHAPTER
+        case 2: // LAST_CHAPTER
           return LAST_CHAPTER;
-        case 6: // NEXT_CHAPTER
+        case 3: // NEXT_CHAPTER
           return NEXT_CHAPTER;
         default:
           return null;
@@ -102,16 +87,10 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
   }
 
   // isset id assignments
-  private static final _Fields optionals[] = {_Fields.NOVEL_NAME,_Fields.NOVEL_CHAPTER_NAME,_Fields.TYPE,_Fields.CONTEXT,_Fields.LAST_CHAPTER,_Fields.NEXT_CHAPTER};
+  private static final _Fields optionals[] = {_Fields.CONTEXT,_Fields.LAST_CHAPTER,_Fields.NEXT_CHAPTER};
   public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.NOVEL_NAME, new org.apache.thrift.meta_data.FieldMetaData("novelName", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "String")));
-    tmpMap.put(_Fields.NOVEL_CHAPTER_NAME, new org.apache.thrift.meta_data.FieldMetaData("novelChapterName", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "String")));
-    tmpMap.put(_Fields.TYPE, new org.apache.thrift.meta_data.FieldMetaData("type", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "String")));
     tmpMap.put(_Fields.CONTEXT, new org.apache.thrift.meta_data.FieldMetaData("context", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "String")));
     tmpMap.put(_Fields.LAST_CHAPTER, new org.apache.thrift.meta_data.FieldMetaData("lastChapter", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
@@ -129,15 +108,6 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
    * Performs a deep copy on <i>other</i>.
    */
   public NovelChapterContext(NovelChapterContext other) {
-    if (other.isSetNovelName()) {
-      this.novelName = other.novelName;
-    }
-    if (other.isSetNovelChapterName()) {
-      this.novelChapterName = other.novelChapterName;
-    }
-    if (other.isSetType()) {
-      this.type = other.type;
-    }
     if (other.isSetContext()) {
       this.context = other.context;
     }
@@ -154,84 +124,9 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
   }
 
   public void clear() {
-    this.novelName = null;
-    this.novelChapterName = null;
-    this.type = null;
     this.context = null;
     this.lastChapter = null;
     this.nextChapter = null;
-  }
-
-  public String getNovelName() {
-    return this.novelName;
-  }
-
-  public NovelChapterContext setNovelName(String novelName) {
-    this.novelName = novelName;
-    return this;
-  }
-
-  public void unsetNovelName() {
-    this.novelName = null;
-  }
-
-  /** Returns true if field novelName is set (has been assigned a value) and false otherwise */
-  public boolean isSetNovelName() {
-    return this.novelName != null;
-  }
-
-  public void setNovelNameIsSet(boolean value) {
-    if (!value) {
-      this.novelName = null;
-    }
-  }
-
-  public String getNovelChapterName() {
-    return this.novelChapterName;
-  }
-
-  public NovelChapterContext setNovelChapterName(String novelChapterName) {
-    this.novelChapterName = novelChapterName;
-    return this;
-  }
-
-  public void unsetNovelChapterName() {
-    this.novelChapterName = null;
-  }
-
-  /** Returns true if field novelChapterName is set (has been assigned a value) and false otherwise */
-  public boolean isSetNovelChapterName() {
-    return this.novelChapterName != null;
-  }
-
-  public void setNovelChapterNameIsSet(boolean value) {
-    if (!value) {
-      this.novelChapterName = null;
-    }
-  }
-
-  public String getType() {
-    return this.type;
-  }
-
-  public NovelChapterContext setType(String type) {
-    this.type = type;
-    return this;
-  }
-
-  public void unsetType() {
-    this.type = null;
-  }
-
-  /** Returns true if field type is set (has been assigned a value) and false otherwise */
-  public boolean isSetType() {
-    return this.type != null;
-  }
-
-  public void setTypeIsSet(boolean value) {
-    if (!value) {
-      this.type = null;
-    }
   }
 
   public String getContext() {
@@ -308,30 +203,6 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case NOVEL_NAME:
-      if (value == null) {
-        unsetNovelName();
-      } else {
-        setNovelName((String)value);
-      }
-      break;
-
-    case NOVEL_CHAPTER_NAME:
-      if (value == null) {
-        unsetNovelChapterName();
-      } else {
-        setNovelChapterName((String)value);
-      }
-      break;
-
-    case TYPE:
-      if (value == null) {
-        unsetType();
-      } else {
-        setType((String)value);
-      }
-      break;
-
     case CONTEXT:
       if (value == null) {
         unsetContext();
@@ -361,15 +232,6 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case NOVEL_NAME:
-      return getNovelName();
-
-    case NOVEL_CHAPTER_NAME:
-      return getNovelChapterName();
-
-    case TYPE:
-      return getType();
-
     case CONTEXT:
       return getContext();
 
@@ -390,12 +252,6 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
     }
 
     switch (field) {
-    case NOVEL_NAME:
-      return isSetNovelName();
-    case NOVEL_CHAPTER_NAME:
-      return isSetNovelChapterName();
-    case TYPE:
-      return isSetType();
     case CONTEXT:
       return isSetContext();
     case LAST_CHAPTER:
@@ -420,33 +276,6 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
       return false;
     if (this == that)
       return true;
-
-    boolean this_present_novelName = true && this.isSetNovelName();
-    boolean that_present_novelName = true && that.isSetNovelName();
-    if (this_present_novelName || that_present_novelName) {
-      if (!(this_present_novelName && that_present_novelName))
-        return false;
-      if (!this.novelName.equals(that.novelName))
-        return false;
-    }
-
-    boolean this_present_novelChapterName = true && this.isSetNovelChapterName();
-    boolean that_present_novelChapterName = true && that.isSetNovelChapterName();
-    if (this_present_novelChapterName || that_present_novelChapterName) {
-      if (!(this_present_novelChapterName && that_present_novelChapterName))
-        return false;
-      if (!this.novelChapterName.equals(that.novelChapterName))
-        return false;
-    }
-
-    boolean this_present_type = true && this.isSetType();
-    boolean that_present_type = true && that.isSetType();
-    if (this_present_type || that_present_type) {
-      if (!(this_present_type && that_present_type))
-        return false;
-      if (!this.type.equals(that.type))
-        return false;
-    }
 
     boolean this_present_context = true && this.isSetContext();
     boolean that_present_context = true && that.isSetContext();
@@ -482,18 +311,6 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
   public int hashCode() {
     int hashCode = 1;
 
-    hashCode = hashCode * 8191 + ((isSetNovelName()) ? 131071 : 524287);
-    if (isSetNovelName())
-      hashCode = hashCode * 8191 + novelName.hashCode();
-
-    hashCode = hashCode * 8191 + ((isSetNovelChapterName()) ? 131071 : 524287);
-    if (isSetNovelChapterName())
-      hashCode = hashCode * 8191 + novelChapterName.hashCode();
-
-    hashCode = hashCode * 8191 + ((isSetType()) ? 131071 : 524287);
-    if (isSetType())
-      hashCode = hashCode * 8191 + type.hashCode();
-
     hashCode = hashCode * 8191 + ((isSetContext()) ? 131071 : 524287);
     if (isSetContext())
       hashCode = hashCode * 8191 + context.hashCode();
@@ -516,36 +333,6 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetNovelName()).compareTo(other.isSetNovelName());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetNovelName()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.novelName, other.novelName);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetNovelChapterName()).compareTo(other.isSetNovelChapterName());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetNovelChapterName()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.novelChapterName, other.novelChapterName);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetType()).compareTo(other.isSetType());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetType()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.type, other.type);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = Boolean.valueOf(isSetContext()).compareTo(other.isSetContext());
     if (lastComparison != 0) {
       return lastComparison;
@@ -596,37 +383,7 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
     StringBuilder sb = new StringBuilder("NovelChapterContext(");
     boolean first = true;
 
-    if (isSetNovelName()) {
-      sb.append("novelName:");
-      if (this.novelName == null) {
-        sb.append("null");
-      } else {
-        sb.append(this.novelName);
-      }
-      first = false;
-    }
-    if (isSetNovelChapterName()) {
-      if (!first) sb.append(", ");
-      sb.append("novelChapterName:");
-      if (this.novelChapterName == null) {
-        sb.append("null");
-      } else {
-        sb.append(this.novelChapterName);
-      }
-      first = false;
-    }
-    if (isSetType()) {
-      if (!first) sb.append(", ");
-      sb.append("type:");
-      if (this.type == null) {
-        sb.append("null");
-      } else {
-        sb.append(this.type);
-      }
-      first = false;
-    }
     if (isSetContext()) {
-      if (!first) sb.append(", ");
       sb.append("context:");
       if (this.context == null) {
         sb.append("null");
@@ -698,31 +455,7 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
           break;
         }
         switch (schemeField.id) {
-          case 1: // NOVEL_NAME
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.novelName = iprot.readString();
-              struct.setNovelNameIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 2: // NOVEL_CHAPTER_NAME
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.novelChapterName = iprot.readString();
-              struct.setNovelChapterNameIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 3: // TYPE
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.type = iprot.readString();
-              struct.setTypeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 4: // CONTEXT
+          case 1: // CONTEXT
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.context = iprot.readString();
               struct.setContextIsSet(true);
@@ -730,7 +463,7 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // LAST_CHAPTER
+          case 2: // LAST_CHAPTER
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.lastChapter = iprot.readString();
               struct.setLastChapterIsSet(true);
@@ -738,7 +471,7 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 6: // NEXT_CHAPTER
+          case 3: // NEXT_CHAPTER
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.nextChapter = iprot.readString();
               struct.setNextChapterIsSet(true);
@@ -761,27 +494,6 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.novelName != null) {
-        if (struct.isSetNovelName()) {
-          oprot.writeFieldBegin(NOVEL_NAME_FIELD_DESC);
-          oprot.writeString(struct.novelName);
-          oprot.writeFieldEnd();
-        }
-      }
-      if (struct.novelChapterName != null) {
-        if (struct.isSetNovelChapterName()) {
-          oprot.writeFieldBegin(NOVEL_CHAPTER_NAME_FIELD_DESC);
-          oprot.writeString(struct.novelChapterName);
-          oprot.writeFieldEnd();
-        }
-      }
-      if (struct.type != null) {
-        if (struct.isSetType()) {
-          oprot.writeFieldBegin(TYPE_FIELD_DESC);
-          oprot.writeString(struct.type);
-          oprot.writeFieldEnd();
-        }
-      }
       if (struct.context != null) {
         if (struct.isSetContext()) {
           oprot.writeFieldBegin(CONTEXT_FIELD_DESC);
@@ -820,34 +532,16 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
     public void write(org.apache.thrift.protocol.TProtocol prot, NovelChapterContext struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
       java.util.BitSet optionals = new java.util.BitSet();
-      if (struct.isSetNovelName()) {
+      if (struct.isSetContext()) {
         optionals.set(0);
       }
-      if (struct.isSetNovelChapterName()) {
+      if (struct.isSetLastChapter()) {
         optionals.set(1);
       }
-      if (struct.isSetType()) {
+      if (struct.isSetNextChapter()) {
         optionals.set(2);
       }
-      if (struct.isSetContext()) {
-        optionals.set(3);
-      }
-      if (struct.isSetLastChapter()) {
-        optionals.set(4);
-      }
-      if (struct.isSetNextChapter()) {
-        optionals.set(5);
-      }
-      oprot.writeBitSet(optionals, 6);
-      if (struct.isSetNovelName()) {
-        oprot.writeString(struct.novelName);
-      }
-      if (struct.isSetNovelChapterName()) {
-        oprot.writeString(struct.novelChapterName);
-      }
-      if (struct.isSetType()) {
-        oprot.writeString(struct.type);
-      }
+      oprot.writeBitSet(optionals, 3);
       if (struct.isSetContext()) {
         oprot.writeString(struct.context);
       }
@@ -861,28 +555,16 @@ public class NovelChapterContext implements org.apache.thrift.TBase<NovelChapter
 
     public void read(org.apache.thrift.protocol.TProtocol prot, NovelChapterContext struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
-      java.util.BitSet incoming = iprot.readBitSet(6);
+      java.util.BitSet incoming = iprot.readBitSet(3);
       if (incoming.get(0)) {
-        struct.novelName = iprot.readString();
-        struct.setNovelNameIsSet(true);
-      }
-      if (incoming.get(1)) {
-        struct.novelChapterName = iprot.readString();
-        struct.setNovelChapterNameIsSet(true);
-      }
-      if (incoming.get(2)) {
-        struct.type = iprot.readString();
-        struct.setTypeIsSet(true);
-      }
-      if (incoming.get(3)) {
         struct.context = iprot.readString();
         struct.setContextIsSet(true);
       }
-      if (incoming.get(4)) {
+      if (incoming.get(1)) {
         struct.lastChapter = iprot.readString();
         struct.setLastChapterIsSet(true);
       }
-      if (incoming.get(5)) {
+      if (incoming.get(2)) {
         struct.nextChapter = iprot.readString();
         struct.setNextChapterIsSet(true);
       }
