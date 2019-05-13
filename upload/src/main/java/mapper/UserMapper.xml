@@ -18,4 +18,8 @@
 	<select id="selectByUid" parameterType="Long" resultType="User">
 		select * from user WHERE uid=#{uid}
 	</select>
+	
+	<select id="selectByName" parameterType="String" resultType="User">
+		select * from user WHERE name=#{name}
+	</select>
 </mapper>
