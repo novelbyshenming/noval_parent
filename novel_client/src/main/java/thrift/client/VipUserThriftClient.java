@@ -1,0 +1,121 @@
+package thrift.client;
+
+import bean.ReadNovel;
+import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TTransport;
+import org.apache.thrift.transport.TTransportException;
+import thrift.IDL.NovelChapterContext;
+import thrift.IDL.NovelService;
+
+
+/**
+ * VIP 用户
+ * @author LX
+ * @date 2019/5/14 - 1:49
+ */
+public class VipUserThriftClient extends UserThriftClient implements Runnable{
+
+    private NovelService.Client vipClient;
+
+    private ReadNovel nextReadNovel;
+
+    private String nextChapterUrl;
+
+    /**
+     *
+     * flag 为 false  代表  nextReadNovel 里面有值
+     *
+     * 用户再 进行第二请求的时候 可以直接 从nextReadNovel 取小说信息
+     *
+     */
+    private boolean flag ;
+
+    /**
+     * vip 用户一登录  开启 另外一个 客户端  进行 获取下一个章节的信息
+     * @throws TTransportException
+     */
+    public VipUserThriftClient() throws TTransportException {
+
+        TTransport transport = new TSocket("localhost",8899);
+
+        // 会有异常    抛出异常  告诉 上面 用户服务器开启失败 . ..
+
+        transport.open();
+
+        TProtocol tProtocol = new TBinaryProtocol(transport);
+
+        this.vipClient = new NovelService.Client(tProtocol);
+
+        this.nextReadNovel = new ReadNovel();
+
+        this.flag = false;
+    }
+
+    /**
+     * 传入 一个 ReadNovel
+     * 将获取的到NovelChapter 信息存入在这个里面
+     * @param NextChapterUrl
+     * @throws TException
+     */
+    public void getNextNovelChapterContextByChapterUrl(String NextChapterUrl) throws TException {
+
+        NovelChapterContext novelChapterContext =
+                this.vipClient.getNovelChapterContextByChapterUrl(NextChapterUrl);
+
+        this.nextReadNovel.setContext(novelChapterContext.getContext());
+
+        this.nextReadNovel.setLastChapter(novelChapterContext.getLastChapter());
+
+        this.nextReadNovel.setNextChapter(novelChapterContext.getNextChapter());
+
+        this.nextChapterUrl = novelChapterContext.getNextChapter();
+
+        this.flag = true ;
+    }
+
+    @Override
+    public void run() {
+
+        try {
+
+            getNextNovelChapterContextByChapterUrl(this.nextChapterUrl);
+
+        } catch (TException e) {
+
+            this.flag = false;
+
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+    public ReadNovel getNextReadNovel() {
+        return nextReadNovel;
+    }
+
+    public void setNextReadNovel(ReadNovel nextReadNovel) {
+        this.nextReadNovel = nextReadNovel;
+    }
+
+    public String getNextChapterUrl() {
+        return nextChapterUrl;
+    }
+
+    public void setNextChapterUrl(String nextChapterUrl) {
+        this.nextChapterUrl = nextChapterUrl;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+}

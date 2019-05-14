@@ -10,4 +10,6 @@ import bean.IntroductionNovel;
 public interface IntroductionService {
 
     IntroductionNovel selNovelByNid(long nid) throws IntroductionException;
+
+
 }

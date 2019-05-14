@@ -383,7 +383,7 @@ class getNovelChapterListByNovelUrl_result(object):
                 break
             if fid == 0:
                 if ftype == TType.STRUCT:
-                    self.success = Novel()
+                    self.success = NovelChapter()
                     self.success.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -419,7 +419,7 @@ class getNovelChapterListByNovelUrl_result(object):
         return not (self == other)
 all_structs.append(getNovelChapterListByNovelUrl_result)
 getNovelChapterListByNovelUrl_result.thrift_spec = (
-    (0, TType.STRUCT, 'success', [Novel, None], None, ),  # 0
+    (0, TType.STRUCT, 'success', [NovelChapter, None], None, ),  # 0
 )
 fix_spec(all_structs)
 del all_structs
