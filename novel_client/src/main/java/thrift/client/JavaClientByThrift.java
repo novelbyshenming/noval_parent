@@ -40,11 +40,12 @@ public class JavaClientByThrift {
 
             NovelChapter novelChapterList = client.getNovelChapterListByNovelUrl(novelUrl);
 
-            /*NovelChapterContext novelChapterContext = client.getNovelChapterContextByChapterUrl("https://www.biqukan.cc/book/45223/26183162.html");
-            System.out.println(novelChapterContext.context+"  "+novelChapterContext.lastChapter);*/
+            NovelChapterContext novelChapterContext = client.getNovelChapterContextByChapterUrl("https://www.biqukan.cc/book/45223/26183162.html");
+            System.out.println(novelChapterContext.getNovelChapterName()+"  "+novelChapterContext.lastChapter);
           /* System.out.println("context  "+novelChapterContext.getContext());*/
 
             String novelChaptersJson = novelChapterList.getNovelChapterJson();
+
 
             return  novelChaptersJson;
         } catch (TTransportException e) {

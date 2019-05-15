@@ -117,6 +117,8 @@ public class IntroductionController {
 
             readNovel.setNextChapter(novelChapterContext.getNextChapter());
 
+            readNovel.setNovelChapterName(novelChapterContext.getNovelChapterName());
+
         } catch (TTransportException e) {
             e.printStackTrace();
 

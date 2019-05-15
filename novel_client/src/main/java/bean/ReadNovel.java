@@ -12,6 +12,8 @@ public class ReadNovel {
 
     private String nextChapter;
 
+    private String novelChapterName;
+
     public String getContext() {
         return context;
     }
@@ -34,5 +36,13 @@ public class ReadNovel {
 
     public void setNextChapter(String nextChapter) {
         this.nextChapter = nextChapter;
+    }
+
+    public String getNovelChapterName() {
+        return novelChapterName;
+    }
+
+    public void setNovelChapterName(String novelChapterName) {
+        this.novelChapterName = novelChapterName;
     }
 }
