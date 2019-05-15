@@ -22,13 +22,15 @@ class NovelChapterContext(object):
      - context
      - lastChapter
      - nextChapter
+     - novelChapterName
     """
 
 
-    def __init__(self, context=None, lastChapter=None, nextChapter=None,):
+    def __init__(self, context=None, lastChapter=None, nextChapter=None, novelChapterName=None,):
         self.context = context
         self.lastChapter = lastChapter
         self.nextChapter = nextChapter
+        self.novelChapterName = novelChapterName
 
     def read(self, iprot):
         if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
@@ -54,6 +56,11 @@ class NovelChapterContext(object):
                     self.nextChapter = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
                 else:
                     iprot.skip(ftype)
+            elif fid == 4:
+                if ftype == TType.STRING:
+                    self.novelChapterName = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
             else:
                 iprot.skip(ftype)
             iprot.readFieldEnd()
@@ -75,6 +82,10 @@ class NovelChapterContext(object):
         if self.nextChapter is not None:
             oprot.writeFieldBegin('nextChapter', TType.STRING, 3)
             oprot.writeString(self.nextChapter.encode('utf-8') if sys.version_info[0] == 2 else self.nextChapter)
+            oprot.writeFieldEnd()
+        if self.novelChapterName is not None:
+            oprot.writeFieldBegin('novelChapterName', TType.STRING, 4)
+            oprot.writeString(self.novelChapterName.encode('utf-8') if sys.version_info[0] == 2 else self.novelChapterName)
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
         oprot.writeStructEnd()
@@ -154,6 +165,7 @@ NovelChapterContext.thrift_spec = (
     (1, TType.STRING, 'context', 'UTF8', None, ),  # 1
     (2, TType.STRING, 'lastChapter', 'UTF8', None, ),  # 2
     (3, TType.STRING, 'nextChapter', 'UTF8', None, ),  # 3
+    (4, TType.STRING, 'novelChapterName', 'UTF8', None, ),  # 4
 )
 all_structs.append(NovelChapter)
 NovelChapter.thrift_spec = (

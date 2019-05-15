@@ -12,6 +12,7 @@ struct NovelChapterContext{
      1: optional String context,
      2: optional String lastChapter,
      3: optional String nextChapter;
+     4: optional String novelChapterName;
  }
 
 
