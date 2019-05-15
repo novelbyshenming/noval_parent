@@ -36,4 +36,10 @@ public class UserServiceImpl implements UserService{
 		return user;
 	}
 
+	@Override
+	public User selectByEmail(String email) throws UserException {
+		User user = usermapper.selectByEmail(email);
+		return user;
+	}
+
 }

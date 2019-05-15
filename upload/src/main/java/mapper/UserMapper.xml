@@ -22,4 +22,8 @@
 	<select id="selectByName" parameterType="String" resultType="User">
 		select * from user WHERE name=#{name}
 	</select>
+	
+	<select id="selectByEmail" parameterType="String" resultType="User">
+		select * from user WHERE email=#{email}
+	</select>
 </mapper>
