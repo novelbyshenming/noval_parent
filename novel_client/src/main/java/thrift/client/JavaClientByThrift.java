@@ -16,11 +16,19 @@ import thrift.IDL.NovelService;
  */
 public class JavaClientByThrift {
 
-    public String pyThriftClient() {
+
+    public static void main(String[] args) {
+
+        String s = new JavaClientByThrift().pyThriftClient("https://www.biqukan.cc/book/45223/");
+
+        System.out.println(s);
+    }
+
+    public  String pyThriftClient(String novelUrl) {
 
         long start = System.currentTimeMillis();
 
-        TTransport transport = new TSocket("139.199.69.234",8899);
+        TTransport transport = new TSocket("127.0.0.1",8899);
 
         try {
 
@@ -30,26 +38,25 @@ public class JavaClientByThrift {
 
             NovelService.Client client = new NovelService.Client(tProtocol);
 
+            NovelChapter novelChapterList = client.getNovelChapterListByNovelUrl(novelUrl);
 
+            /*NovelChapterContext novelChapterContext = client.getNovelChapterContextByChapterUrl("https://www.biqukan.cc/book/45223/26183162.html");
+            System.out.println(novelChapterContext.context+"  "+novelChapterContext.lastChapter);*/
+          /* System.out.println("context  "+novelChapterContext.getContext());*/
 
+            String novelChaptersJson = novelChapterList.getNovelChapterJson();
 
-            NovelChapter novelChapterList = client.getNovelChapterListByNovelUrl("https://www.biqukan.cc/book/45223/");
-
-            System.out.println(novelChapterList.getNovelChapterJson());
-
-            NovelChapterContext novelChapterContext = client.getNovelChapterContextByChapterUrl("https://www.biqukan.cc/book/45223/26183162.html");
-
-           /* System.out.println(novelChapterContext.getContext());
-
-            System.out.println(System.currentTimeMillis()-start);*/
-           return  novelChapterContext.context;
-
+            return  novelChaptersJson;
         } catch (TTransportException e) {
             e.printStackTrace();
+            return "出错了";
 
         } catch (TException e) {
             e.printStackTrace();
         }
         return "出错了";
     }
+
+
+
 }
