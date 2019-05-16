@@ -1,7 +1,7 @@
 package service;
 
 import MyException.IntroductionException;
-import bean.IntroductionNovel;
+import com.yc.bean.IntroductionNovel;
 
 /**
  * @author LX
@@ -10,6 +10,4 @@ import bean.IntroductionNovel;
 public interface IntroductionService {
 
     IntroductionNovel selNovelByNid(long nid) throws IntroductionException;
-
-
 }

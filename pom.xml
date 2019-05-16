@@ -14,6 +14,7 @@
     <module>jedis</module>
       <module>upload</module>
     <module>novel-passport</module>
+      <module>bean</module>
   </modules>
 
   <!--对依赖的坐标的版本做集中的管理-->
@@ -38,12 +39,38 @@
     <redis-version>2.9.0</redis-version>
     <solr-version>4.10.4</solr-version>
     <json-version>20090211</json-version>
-
+    <spring-data-redis-version>2.1.4.RELEASE</spring-data-redis-version>
+    <novel-version>1.0-SNAPSHOT</novel-version>
   </properties>
 
   <dependencyManagement>
 
     <dependencies>
+
+      <dependency>
+        <groupId>com.yc</groupId>
+        <artifactId>bean</artifactId>
+        <version>${novel-version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.yc</groupId>
+        <artifactId>jedis</artifactId>
+        <version>${novel-version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.yc</groupId>
+        <artifactId>netty_py_client</artifactId>
+        <version>${novel-version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-redis</artifactId>
+        <version>${spring-data-redis-version}</version>
+
+      </dependency>
 
       <dependency>
         <groupId>org.json</groupId>
@@ -57,7 +84,7 @@
         <version>${solr-version}</version>
       </dependency>
 
-      <!-- https://mvnrepository.com/artifact/org.apache.thrift/libthrift -->
+      <!-- https://mvnrepository.com/artifact/org.apache.com.yc.thrift/libthrift -->
       <dependency>
         <groupId>org.apache.thrift</groupId>
         <artifactId>libthrift</artifactId>

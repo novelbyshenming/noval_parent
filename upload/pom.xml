@@ -15,6 +15,13 @@
     <name>upload Maven Webapp</name>
 
     <dependencies>
+
+
+        <dependency>
+            <groupId>com.yc</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
@@ -99,6 +106,11 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yc</groupId>
+            <artifactId>bean</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

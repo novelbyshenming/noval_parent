@@ -1,10 +1,10 @@
 package service.impl;
 
+import bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import MyException.UserException;
-import bean.User;
 import mapper.UserMapper;
 import service.UserService;
 

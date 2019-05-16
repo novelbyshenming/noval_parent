@@ -12,11 +12,7 @@ public class Test1 {
     @Test
     public void testInsert(){
 
-        Jedis jedis = new Jedis("47.106.110.16",6379);
 
-        String set = jedis.set("address", "寝室1");
-
-        System.out.println(set);
 
     }
 }

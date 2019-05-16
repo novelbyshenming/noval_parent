@@ -1,7 +1,7 @@
 package service.impl;
 
 import MyException.IntroductionException;
-import bean.IntroductionNovel;
+import com.yc.bean.IntroductionNovel;
 import mapper.IntroductionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
