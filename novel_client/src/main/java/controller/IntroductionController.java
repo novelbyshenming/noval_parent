@@ -1,8 +1,9 @@
 package controller;
 
 import MyException.IntroductionException;
-import bean.IntroductionNovel;
-import bean.ReadNovel;
+import com.yc.bean.IntroductionNovel;
+import com.yc.bean.ReadNovel;
+import com.yc.thrift.client.VipUserThriftClient;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
@@ -15,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.IntroductionService;
-import thrift.IDL.NovelChapter;
-import thrift.IDL.NovelChapterContext;
-import thrift.IDL.NovelService;
-import thrift.client.JavaClientByThrift;
+import com.yc.thrift.IDL.NovelChapter;
+import com.yc.thrift.IDL.NovelChapterContext;
+import com.yc.thrift.IDL.NovelService;
+import com.yc.thrift.client.JavaClientByThrift;
 
-import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 
 /**
  * @author LX
@@ -28,6 +29,16 @@ import java.io.UnsupportedEncodingException;
  */
 @Controller
 public class IntroductionController {
+
+    public static HashMap<Long,VipUserThriftClient> vipUserThriftClientHashMap = new HashMap<>();
+
+    static {
+        try {
+            vipUserThriftClientHashMap.put(1l, new VipUserThriftClient());
+        } catch (TTransportException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Autowired
     private IntroductionService introductionService;
@@ -71,7 +82,7 @@ public class IntroductionController {
 
     @ResponseBody
     @RequestMapping("/readNovelChapter.n")
-    public ReadNovel getNovelChapterContext(@RequestParam("nid") long nid,@RequestParam("cid") long cid){
+    public ReadNovel getNovelChapterContext(@RequestParam("nid") long nid, @RequestParam("cid") long cid){
 
         IntroductionNovel introductionNovel = null;
 

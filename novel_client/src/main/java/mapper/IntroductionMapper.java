@@ -1,6 +1,6 @@
 package mapper;
 
-import bean.IntroductionNovel;
+import com.yc.bean.IntroductionNovel;
 import org.apache.ibatis.annotations.Param;
 
 /**

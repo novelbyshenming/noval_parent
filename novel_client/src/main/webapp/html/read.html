@@ -32,9 +32,6 @@
 
 <script type="text/javascript">
 
-
-var flag = true;
-
 $(function(){
 	/*
 	url: 请求服务器地址
@@ -44,6 +41,7 @@ $(function(){
 	success请求成功执行的功能,function(data) data服务器返回的数据.
 	type:请求方式
 	*/
+
 	     var localUrl = location.search
 
 	     localUrl = localUrl.substring(1)
@@ -87,7 +85,6 @@ $(function(){
                  result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
                  $('#novelChapterTitle').append(result)
-
                  $('#novelLi1').append("<a href='/type.html?page=1&key="+data.type+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>")
                  $('#novelLi2').append("<a href='/introduction.html?nid="+nid+"'>"+data.novelName+"</a>")
                  $('#novelFoot').append("<a href='/introduction.html?nid="+nid+"' title='"+data.novelName+"'>"+data.novelName+"</a>所有内容均来自互联网，笔趣阁只为原作者 "+data.author+" 的小说进行宣传。欢迎各位书友支持 "+data.author+" 并收藏")
