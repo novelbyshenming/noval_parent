@@ -34,11 +34,12 @@
 				"/noveluser/login.u",
 				data,
                 function(data){
-                	 if(data != -1){
-                		alert("登录成功!!!");
-                		window.location.href="http://47.106.110.16/index.html?uid="+data;
+					console.info(data);
+                	 if(data.result != -1){
+                		alert(data.msg);
+                		window.location.href="http://47.106.110.16/index.html?name="+data.name;
                 	}else{
-                		alert("用户名或密码错误!!!");
+                		alert(data.msg);
                 	} 
                 });
 		}
