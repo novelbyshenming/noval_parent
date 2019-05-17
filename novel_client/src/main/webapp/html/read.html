@@ -52,6 +52,10 @@ $(function(){
 
 	     var params2 = params[1].split('=')
 
+	     var params3 = params[2].split('=')
+
+	     var uid = params3[1]
+
 	     var nid
 	     var cid
 
@@ -95,7 +99,7 @@ $(function(){
 		$.ajax({
 
 			url:'/novel/readNovelChapter.n',
-			data:{"nid":nid,"cid":cid},
+			data:{"nid":nid,"cid":cid,"uid":uid},
 			error:function(){
 				alert("请求出错.")
 			},

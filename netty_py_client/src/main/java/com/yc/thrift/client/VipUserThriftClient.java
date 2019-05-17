@@ -62,13 +62,14 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
     /**
      * 传入 一个 ReadNovel
      * 将获取的到NovelChapter 信息存入在这个里面
-     * @param NextChapterUrl
+     * @param nextChapterUrl
      * @throws TException
      */
-    public void getNextNovelChapterContextByChapterUrl(String NextChapterUrl) throws TException {
+    public void getNextNovelChapterContextByChapterUrl(String nextChapterUrl) throws TException {
 
+        System.out.println("vip           "+nextChapterUrl);
         NovelChapterContext novelChapterContext =
-                this.vipClient.getNovelChapterContextByChapterUrl(NextChapterUrl);
+                this.vipClient.getNovelChapterContextByChapterUrl(nextChapterUrl);
 
         this.nextReadNovel.setContext(novelChapterContext.getContext());
 
@@ -86,7 +87,11 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
         try {
 
+            System.out.println("thread: "+this.nextChapterUrl);
+
             if (this.nextChapterUrl == null)return;
+
+            System.out.println(this.nextChapterUrl);
             getNextNovelChapterContextByChapterUrl(this.nextChapterUrl);
 
         } catch (TException e) {

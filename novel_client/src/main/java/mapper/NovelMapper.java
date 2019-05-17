@@ -5,9 +5,8 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * @author LX
- * @date 2019/5/12 - 19:18
+ * @date 2019/5/17 - 19:44
  */
-public interface IntroductionMapper {
-
+public interface NovelMapper {
     IntroductionNovel selNovelByNid(@Param("nid") long nid);
 }
