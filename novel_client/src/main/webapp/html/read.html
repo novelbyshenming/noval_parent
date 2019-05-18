@@ -31,6 +31,7 @@
     <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190501/r20190131/show_ads_impl.js" as="script">-->
 
 <script type="text/javascript">
+ 
 
 $(function(){
 	/*
@@ -51,10 +52,6 @@ $(function(){
 	     var params1 =params[0].split('=')
 
 	     var params2 = params[1].split('=')
-
-	     /*var params3 = params[2].split('=')
-
-	     var uid = params3[1]*/
 
 	     var nid
 	     var cid
@@ -84,7 +81,7 @@ $(function(){
                  result+="<a class='blue' href='/introduction.html?nid="+nid+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
                  result+="<a class='blue' href='/search.html?page=1&key="+data.author+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
                  result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
-                 result+="<a class='red' id='' onclick=''rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
+                 result+="<a class='red' id='marker' onclick='addMarker' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
                  result+="<a href='#' class='red errorlink' target='_blank'>"
                  result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
@@ -115,8 +112,22 @@ $(function(){
 			},
 			type:'GET'
 		});
-
+		
+		function addMarker(){
+			 $.ajax({
+				url:"novel/addMarker.n" ,
+				data:{"nid":nid,"cid":cid};
+				error:function(){
+					alert("请求出错");
+				}
+				success:function(){
+					alert("恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！");
+				}
+			 });
+		} 
 });
+
+
 </script>
 
 </head>
