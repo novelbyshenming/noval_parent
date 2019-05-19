@@ -1,6 +1,6 @@
 package service;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,9 @@ public class CollectService {
 	private CollectMapper collectMapper;
 	
 	//根据用户id查询信息
-	public List<Collect> selectByUid(long uid) throws CollectException {
-		List<Collect> clist = collectMapper.selectByUid(uid);
-		return clist;
+	public Map<String,Collect> selectByUid(long uid) throws CollectException {
+		Map<String,Collect> map = collectMapper.selectByUid(uid);
+		return map;
 		
 	}
 }

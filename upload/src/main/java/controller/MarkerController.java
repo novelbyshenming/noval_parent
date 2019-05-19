@@ -2,6 +2,7 @@ package controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,8 +33,13 @@ public class MarkerController {
 		collect.setCtime(ctimes);
 		String msg = "恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！";
 		try{
-			markerservice.addMarker(collect);
-			return msg;
+			List<Collect> marlist = markerservice.selectMarker(user.getUid());
+			if(marlist.size() < 21){
+				markerservice.addMarker(collect);
+				return msg;
+			}else{
+				return "对不起，您的书架已满！（限 20 本）";
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 			return "添加失败";
@@ -51,8 +57,13 @@ public class MarkerController {
 		collect.setCtime(ctimes);
 		String msg = "恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！";
 		try{
-			markerservice.addMarker(collect);
-			return msg;
+			List<Collect> marlist = markerservice.selectMarker(user.getUid());
+			if(marlist.size() < 21){
+				markerservice.addMarker(collect);
+				return msg;
+			}else{
+				return "对不起，您的书架已满！（限 20 本）";
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 			return "添加失败";

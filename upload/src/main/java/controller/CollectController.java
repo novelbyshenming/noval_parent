@@ -1,8 +1,10 @@
 package controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,16 +24,18 @@ public class CollectController {
 	
 	@RequestMapping(value="collect.u",method= RequestMethod.POST)
 	@ResponseBody
-	public List<Collect> collect(HttpServletRequest request){
+	public Map<String,Collect> collect(HttpServletRequest request,HttpServletResponse response){
+		response.setContentType("text/html;charset=UTF-8");
 		User user = (User) request.getSession().getAttribute("user");
 		long uid = user.getUid();
-		List<Collect> clist = null;
+		Map<String,Collect> map = null;
 		try {
-			clist = collectService.selectByUid(uid);
-			return clist;
+			map = collectService.selectByUid(uid);
+			return map;
+			
 		} catch (CollectException e){
 			e.printStackTrace();
-			return clist;
+			return map;
 		}
 	}
 }

@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,10 @@ public class MarkerService {
 	
 	public void joinMarker(Collect collect)throws MarkerException{
 		markerMapper.joinMarker(collect);
+	}
+	
+	public List<Collect> selectMarker(Long uid)throws MarkerException{
+		List marlist = markerMapper.selectMarker(uid);
+		return marlist;
 	}
 }

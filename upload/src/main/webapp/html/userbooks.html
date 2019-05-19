@@ -35,6 +35,14 @@
 					alert("请求出错");
 				},
 				success:function(data){
+					var result = '';
+					var jsonObj = eval("("+data+")");
+					$.each(jsonObj, function (key,value) {
+						if(value.chapname != null){
+							result += "<td class='hidden-xs'><input type='checkbox' id='checkid[+"i"+]' name='checkid[+"i"+]' value='+"value.nid"+'></td>";
+							resutl += "<td class='even'><a href='#' target='_blank'>+"item."</a> <span class="text-red fs-12">New</span></td>"
+						}
+					});
 					
 				}
 			});
@@ -151,7 +159,7 @@
                         <th width="7%">操作</th>
                     </tr>
 
-                    <tr>
+                    <tr id="marker">
                         <td class="hidden-xs">
                             <input type="checkbox" id="checkid[]" name="checkid[]" value="33449">    </td>
                         <td class="even"><a href="https://www.biqukan.cc/book/50686/" target="_blank">都市逍遥仙帝</a> <span class="text-red fs-12">New</span></td>

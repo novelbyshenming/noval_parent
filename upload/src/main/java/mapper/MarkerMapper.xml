@@ -9,5 +9,13 @@
  		value(#{uid},#{nid},#{ctimes},#{chapname},#{cid})
  	</insert>
  	
- 	<insert id="joinMarker" parameterType="Collect"></insert>
+ 	<insert id="joinMarker" parameterType="Collect">
+ 		insert into
+ 		collect(uid,nid,ctimes,cid)
+ 		value(#{uid},#{nid},#{ctimes},#{cid})
+ 	</insert>
+ 	
+ 	<select id="selectMarker" parameterType="Long" resultType="Collect">
+ 		select * from collect where uid = #{uid}
+ 	</select>
  </mapper>
