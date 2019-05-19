@@ -30,33 +30,7 @@
     <script src="/novel/js/respond.min.js"></script><![endif]-->
     <script type="text/javascript">
 
-    	$('.novelMemory').click(function(){
-    		console.log("123");
-    		var aUrl = $("novelMemory").attr("href");
-    		var nid = aUrl.spilt('=').get(1);
-    		var uid = $('inputHidden').val();
-    		if(uid == ''){
-    			window.location.href="/introduction.html?nid="+nid;
-    		}else{
-    			$.ajax({
-    				type:'GET',
-    				url:'memory',
-    				data:{'nid':nid,'uid':uid},
-    				success:function(data){
-    					if(data == "-1"){//session_uid存在  数据库没记录
-    						window.location.href="/introduction.html?nid="+nid;
-    					}else if(data == "0"){//session_uid不存在   通过套取uid登录 
-    						alert("用户未登录，请先登录用户！");
-    					}else{//返回的data为小说章节cid   session_uid存在  数据库有记录
-    						window.location.href="/introduction.html?nid="+nid+"&cid="+data;
-    					}
-    				},
-    				error:function(){
-    					alert("系统繁忙，请稍后再试！");
-    				}
-    			});
-    		}
-    	});
+    	
     
         function search() {
             var data1 = document.getElementById("bdcsMain1").value
@@ -68,9 +42,34 @@
                  window.location.href="/search.html?page=1&key="+data2
         }
 
+        function novelMemorys(nid){
+    		console.info("123");
+    		var userUrl = window.location.search.substr(1);
 
+    			$.ajax({
+    				type:'GET',
+    				url:'memory.u',
+    				data:{'nid':nid,'userUrl':userUrl},
+    				success:function(data){
+    					if(data == "-1"){//session_uid存在  数据库没记录
+    						window.location.href="/introduction.html?nid="+nid+"&uid="+userUrl;
+    					}else if(data == "0"){//session_uid不存在   通过套取uid登录 
+    						window.location.href="/introduction.html?nid="+nid;
+    					}else{//返回的data为小说章节cid   session_uid存在  数据库有记录
+    						window.location.href="/read.html?nid="+nid+"&cid="+data+"&uid="+userUrl;
+    					}
+    				},
+    				error:function(){
+    					alert("系统繁忙，请稍后再试！");
+    				}
+    			});
+    			
+    			
+    			
+    	};
+        
         $(function () {
-
+			
             $.ajax({
                 url:'solr/collection1/select?q=*%3A*&sort=novel_updateTimes+desc&rows=30&wt=json&indent=true',
                 error:function(){
@@ -83,9 +82,9 @@
                     var start = jsonObject.response.start
                     var docs= jsonObject.response.docs
                     $(docs).each(function (index,ele) {
-
+						alert();
                         result+="<tr><td class=\"text-muted hidden-xs\" width=\"10%\">"+ele.novel_type+"</td>"
-                        result+="<td><a href=\"/introduction.html?nid="+ele.id+"\" title=\""+ele.novel_name+"\">"+ele.novel_name+"</a></td>"
+                        result+="<td><a onclick='novelMemorys("+ele.id+")' title=\""+ele.novel_name+"\">"+ele.novel_name+"</a></td>"
                         result+="<td class=\"hidden-xs\">"
                         result+="<a href=\"/read.html?nid="+ele.id+"&cid="+ele.novel_latestChaptersUrl+"\"title=\""+ele.novel_latestChapters+"\">"+ele.novel_latestChapters+"</a></td>"
                         result+="<td class=\"text-muted fs-12\" title=\""+ele.novel_author+"\">"+ele.novel_author+"</td>"
@@ -100,12 +99,13 @@
 
 
         })
+        
     </script>
 
 </head>
 <body>
 <div class="navbar navbar-inverse" id="header">
-	<input type="hidden" name="inputHidden" value="<%=uid%>">
+	<input type="hidden" id="inputHidden" value="$(user.uid)">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
@@ -184,7 +184,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"	class="novelMemory"
+                        <a class="thumbnail novelMemory"
                                                                 href="#"
                                                                 title="斗罗大陆IV终极斗罗"><img
                             src="#" alt="斗罗大陆IV终极斗罗"
@@ -197,8 +197,8 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"	class="novelMemory"
-                                                                href="https://www.biqukan.cc/book/51990/"
+                        <a class="thumbnail novelMemory"
+                                                                href="#"
                                                                 title="仙宫">
                         <img src="https://www.biqukan.cc/files/article/image/51/51990/51990s.jpg" alt="仙宫"
                             style="height:182px;">
@@ -212,8 +212,8 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail" class="novelMemory"
-                                                                href="https://www.biqukan.cc/book/41888/"
+                        <a class="thumbnail novelMemory" 
+                                                                href="#"
                                                                 title="天下第九">
                             <img
                             src="https://www.biqukan.cc/files/article/image/41/41888/41888s.jpg" alt="天下第九"
@@ -227,8 +227,8 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail" class="novelMemory"
-                                                                href="https://www.biqukan.cc/book/42287/"
+                        <a class="thumbnail novelMemory" 
+                                                                href="#"
                                                                 title="三寸人间">
                             <img
                             src="https://www.biqukan.cc/files/article/image/42/42287/42287s.jpg" alt="三寸人间"
@@ -243,7 +243,7 @@
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
                         <a class="thumbnail" class="novelMemory"
-                                                                href="https://www.biqukan.cc/book/40091/"
+                                                                href="#"
                                                                 title="重生之都市仙尊"><img
                             src="https://www.biqukan.cc/files/article/image/40/40091/40091s.jpg" alt="重生之都市仙尊"
                             style="height:182px;">
@@ -255,7 +255,7 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"  class="novelMemory"  href="https://www.biqukan.cc/book/20216/" title="飞剑问道">
+                        <a class="thumbnail"  class="novelMemory"  href="#" title="飞剑问道">
                             <img src="https://www.biqukan.cc/files/article/image/20/20216/20216s.jpg" alt="飞剑问道" style="height:182px;">
                         <div class="caption">
                             <strong>飞剑问道</strong><br><span

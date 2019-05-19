@@ -28,7 +28,7 @@ public class HistoryController {
 	 * @param history
 	 * @return
 	 */
-	@RequestMapping("mermory")
+	@RequestMapping("mermory.u")
 	@ResponseBody
 	public String mermory(HttpServletRequest request) {
 		
