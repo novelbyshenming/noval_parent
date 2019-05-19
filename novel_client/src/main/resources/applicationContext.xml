@@ -20,7 +20,6 @@
 
     <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
     <!--引入 其他配置 文件-->
-    <import resource="classpath:spring_redis.xml"></import>
     <import resource="classpath:spring_jdbc.xml"></import>
-    <!--<import resource="classpath:spring_thrift.xml"></import>-->
+    <import resource="spring_thrift.xml"></import>
 </beans>
