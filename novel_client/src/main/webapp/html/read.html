@@ -114,16 +114,20 @@ $(function(){
 		});
 		
 		function addMarker(){
+			 /* var chapname = $("#novelChapterName").val();
 			 $.ajax({
-				url:"novel/addMarker.n" ,
-				data:{"nid":nid,"cid":cid};
+				url:"http://localhost:8080/noveluser/addMarker.u" ,
+				data:{"nid":nid,"cid":cid,"chapname",chapname};
+				
 				error:function(){
 					alert("请求出错");
 				}
-				success:function(){
-					alert("恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！");
+				success:function(data){
+					alert(data);
 				}
-			 });
+				type:'GET'
+			 }); */
+			 alert(1);
 		} 
 });
 

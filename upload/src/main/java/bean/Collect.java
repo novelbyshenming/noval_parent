@@ -7,7 +7,7 @@ public class Collect {
 	
 	private long nid;
 	
-	private long ctime;
+	private String ctime;
 
 	public long getCid() {
 		return cid;
@@ -33,11 +33,11 @@ public class Collect {
 		this.nid = nid;
 	}
 
-	public long getCtime() {
+	public String getCtime() {
 		return ctime;
 	}
 
-	public void setCtime(long ctime) {
+	public void setCtime(String ctime) {
 		this.ctime = ctime;
 	}
 
