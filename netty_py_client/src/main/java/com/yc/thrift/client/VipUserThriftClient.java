@@ -10,6 +10,8 @@ import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -17,6 +19,9 @@ import org.apache.thrift.transport.TTransportException;
  * @author LX
  * @date 2019/5/14 - 1:49
  */
+@Scope("prototype")
+@Component
+
 public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
     private NovelService.Client vipClient;
