@@ -14,4 +14,6 @@ public interface UserService {
   User selectByName(String name) throws UserException;
   
   User selectByEmail(String email) throws UserException;
+  
+  Long selectUid(String name) throws UserException;
 }

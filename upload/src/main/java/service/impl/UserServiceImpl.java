@@ -41,5 +41,10 @@ public class UserServiceImpl implements UserService{
 		User user = usermapper.selectByEmail(email);
 		return user;
 	}
-
+	
+	@Override
+	public Long selectUid(String name)throws UserException{
+		Long uid = usermapper.selectUid(name);
+		return uid;
+	}
 }

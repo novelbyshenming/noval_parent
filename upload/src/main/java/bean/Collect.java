@@ -1,20 +1,27 @@
 package bean;
 
+import java.util.List;
+
 public class Collect {
-	private long cid;
+	private long coid;
 	
 	private long uid;
 	
 	private long nid;
 	
-	private long ctime;
+	private String ctime;
+	
+	private String chapname;
+	
+	private Long cid;
+	
 
-	public long getCid() {
-		return cid;
+	public long getCoid() {
+		return coid;
 	}
 
-	public void setCid(long cid) {
-		this.cid = cid;
+	public void setCoid(long coid) {
+		this.coid = coid;
 	}
 
 	public long getUid() {
@@ -33,18 +40,35 @@ public class Collect {
 		this.nid = nid;
 	}
 
-	public long getCtime() {
+	public String getCtime() {
 		return ctime;
 	}
 
-	public void setCtime(long ctime) {
+	public void setCtime(String ctime) {
 		this.ctime = ctime;
+	}
+
+	public String getChapname() {
+		return chapname;
+	}
+
+	public void setChapname(String chapname) {
+		this.chapname = chapname;
+	}
+
+	public Long getCid() {
+		return cid;
+	}
+
+	public void setCid(Long cid) {
+		this.cid = cid;
 	}
 
 	@Override
 	public String toString() {
-		return "Collect [cid=" + cid + ", uid=" + uid + ", nid=" + nid + ", ctime=" + ctime + "]";
+		return "Collect [coid=" + coid + ", uid=" + uid + ", nid=" + nid + ", ctime=" + ctime + ", chapname=" + chapname
+				+ ", cid=" + cid + "]";
 	}
-	
+
 	
 }
