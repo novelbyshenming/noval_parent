@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.NovelService;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author LX
  * @date 2019/5/17 - 19:44
@@ -26,7 +28,7 @@ public class NovelController {
      */
     @ResponseBody
     @RequestMapping("/introduction.n")
-    public IntroductionNovel getIntroductionNovel(@RequestParam("nid") long nid){
+    public IntroductionNovel getIntroductionNovel(@RequestParam("nid") long nid, HttpServletRequest req){
 
         IntroductionNovel introductionNovel = null;
         try {

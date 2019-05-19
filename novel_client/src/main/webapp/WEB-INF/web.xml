@@ -30,7 +30,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>springmvc</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>*.n</url-pattern>
   </servlet-mapping>
   <!-- 字符编码过滤器 -->
   <filter>
