@@ -14,8 +14,5 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd" default-autowire="byName">
 
 
-    <!--&lt;!&ndash;注解扫描&ndash;&gt;-->
-    <!--<context:component-scan base-package="com.yc.thrift.client" >-->
-    <!--</context:component-scan>-->
-
+   <context:component-scan base-package="com.yc.thrift.client"></context:component-scan>
 </beans>

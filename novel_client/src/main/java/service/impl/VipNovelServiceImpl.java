@@ -168,8 +168,7 @@ public class VipNovelServiceImpl implements VipNovelService {
             try {
                 IntroductionNovel introductionNovel = novelMapper.selNovelByNid(nid);
 
-                novelChapterListJson = vipUserThriftClient
-                        .getNovelChapterListByNovelUrl(introductionNovel.getUrl());
+                novelChapterListJson = vipUserThriftClient.getNovelChapterListByNovelUrl(introductionNovel.getUrl());
             } catch (TException e) {
 
                 e.printStackTrace();
