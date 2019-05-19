@@ -26,4 +26,8 @@
 	<select id="selectByEmail" parameterType="String" resultType="User">
 		select * from user WHERE email=#{email}
 	</select>
+	
+	<select id="selectUid" parameterType="String" resultType="Long">
+ 		select uid from user WHERE name = #{name}
+ 	</select>
 </mapper>
