@@ -9,11 +9,15 @@ import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import com.yc.thrift.IDL.NovelChapterContext;
 import com.yc.thrift.IDL.NovelService;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  * @author LX
  * @date 2019/5/14 - 1:56
  */
+@Scope("prototype")
+@Component
 public class UserThriftClient {
 
     private NovelService.Client client ;

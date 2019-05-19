@@ -14,13 +14,8 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd" default-autowire="byName">
 
 
-    <!--注解扫描-->
-    <context:component-scan base-package="service.impl,mapper" >
-    </context:component-scan>
+    <!--&lt;!&ndash;注解扫描&ndash;&gt;-->
+    <!--<context:component-scan base-package="com.yc.thrift.client" >-->
+    <!--</context:component-scan>-->
 
-    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
-    <!--引入 其他配置 文件-->
-    <import resource="classpath:spring_redis.xml"></import>
-    <import resource="classpath:spring_jdbc.xml"></import>
-    <!--<import resource="classpath:spring_thrift.xml"></import>-->
 </beans>
