@@ -8,11 +8,11 @@ import com.yc.util.RedisPoolUtil;
 import mapper.NovelMapper;
 import mapper.VipNovelMapper;
 import org.apache.thrift.TException;
-import org.apache.thrift.transport.TTransportException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import service.VipNovelService;
+import util.VipUtil;
 
 import java.util.HashMap;
 
@@ -23,17 +23,7 @@ import java.util.HashMap;
 @Service
 public class VipNovelServiceImpl implements VipNovelService {
 
-    public static HashMap<String,VipUserThriftClient> vipUserThriftClientHashMap = new HashMap<>();
-
-    static {
-
-        try {
-            vipUserThriftClientHashMap.put("1", new VipUserThriftClient());
-
-        } catch (TTransportException e) {
-            e.printStackTrace();
-        }
-    }
+    private HashMap<String,VipUserThriftClient> vipUserThriftClientHashMap = VipUtil.vipUserThriftClientHashMap;
 
     @Autowired
     private VipNovelMapper vipNovelMapper;
@@ -45,11 +35,11 @@ public class VipNovelServiceImpl implements VipNovelService {
      * vip用户 获取 小说章节 内容
      * @param nid
      * @param cid
-     * @param vid
+     * @param uid
      * @return
      */
     @Override
-    public ReadNovel getNovelChapterContext(long nid, long cid, String vid) {
+    public ReadNovel getNovelChapterContext(long nid, long cid, String uid) {
 
         long start = System.currentTimeMillis();
 
@@ -57,10 +47,10 @@ public class VipNovelServiceImpl implements VipNovelService {
 
         ReadNovel readNovel = null ;
 
-        if (jedis.exists("vip:"+vid)){
+        if (jedis.exists("vip:"+uid)){
 
             //代表  vip用户登陆
-            VipUserThriftClient vipUserThriftClient = vipUserThriftClientHashMap.get(vid);
+            VipUserThriftClient vipUserThriftClient = vipUserThriftClientHashMap.get(uid);
 
             try {
                 IntroductionNovel introductionNovel = novelMapper.selNovelByNid(nid);
@@ -148,22 +138,21 @@ public class VipNovelServiceImpl implements VipNovelService {
     /**
      * vip用户 获取 小说介绍页面的章节列表
      * @param nid
-     * @param vid
+     * @param uid
      * @return
      */
     @Override
-    public String getIntroductionNovelChapters(long nid, String vid) {
+    public String getIntroductionNovelChapters(long nid, String uid) {
+
         long start = System.currentTimeMillis();
+
         Jedis jedis = RedisPoolUtil.getJedis();
 
         String novelChapterListJson = null;
 
-        if(jedis.exists("ordinary:"+vid)){
-            // 代表 普通用户登陆
-            return null;
-        }else if (jedis.exists("vip:"+vid)){
+         if (jedis.exists("vip:"+uid)){
             //代表  vip用户登陆
-            VipUserThriftClient vipUserThriftClient = vipUserThriftClientHashMap.get(vid);
+            VipUserThriftClient vipUserThriftClient = vipUserThriftClientHashMap.get(uid);
 
             try {
                 IntroductionNovel introductionNovel = novelMapper.selNovelByNid(nid);

@@ -28,7 +28,7 @@ public class NovelController {
      */
     @ResponseBody
     @RequestMapping("/introduction.n")
-    public IntroductionNovel getIntroductionNovel(@RequestParam("nid") long nid, HttpServletRequest req){
+    public IntroductionNovel getIntroductionNovel(@RequestParam(value = "nid") long nid, HttpServletRequest req){
 
         IntroductionNovel introductionNovel = null;
         try {

@@ -6,6 +6,9 @@ import com.yc.bean.ReadNovel;
 import com.yc.thrift.IDL.NovelChapter;
 import com.yc.thrift.IDL.NovelChapterContext;
 import com.yc.thrift.IDL.NovelService;
+import com.yc.thrift.client.UserThriftClient;
+import com.yc.thrift.client.VipUserThriftClient;
+import com.yc.thrift.client.VisitorThriftClient;
 import mapper.NovelMapper;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
@@ -17,6 +20,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import service.VisitorNovelService;
+import util.VipUtil;
+import util.VisitorUtil;
+
+import java.util.HashMap;
 
 /**
  * @author LX
@@ -24,6 +31,8 @@ import service.VisitorNovelService;
  */
 @Service
 public class VisitorNovelServiceImpl implements VisitorNovelService {
+
+    private HashMap<String,VisitorThriftClient> visitorThriftClientHashMap = VisitorUtil.visitorThriftClientHashMap;
 
     @Autowired
     private VisitorNovelService visitorNovelService;
@@ -116,8 +125,6 @@ public class VisitorNovelServiceImpl implements VisitorNovelService {
             return  novelChaptersJson;
         } catch (TTransportException e) {
             e.printStackTrace();
-            return "出错了";
-
         } catch (TException e) {
             e.printStackTrace();
         }

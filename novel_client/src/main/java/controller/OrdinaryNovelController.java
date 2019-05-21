@@ -18,7 +18,6 @@ public class OrdinaryNovelController {
     @Autowired
     private OrdinaryNovelService ordinaryNovelService;
 
-
     @ResponseBody
     @RequestMapping(value = "/userNovelChapters.n",produces = "text/html; charset=utf-8")
     public String getNovelChapterList(@RequestParam("nid") long nid, @RequestParam("uid") String uid){
