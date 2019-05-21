@@ -1,6 +1,5 @@
 package bean;
 
-import java.util.List;
 
 public class Collect {
 	private long coid;
