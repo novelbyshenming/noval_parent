@@ -35,11 +35,11 @@
 				data,
                 function(data){
 					console.info(data);
-                	 if(data.result != -1){
-                		alert(data.msg);
-                		window.location.href="http://47.106.110.16/index.html?name="+data.name;
+                	 if(data == "-1"){
+                		alert("用户名或密码错误");
                 	}else{
-                		alert(data.msg);
+                		alert("登录成功");// vip 用户 &vip=true
+                		window.location.href="http://47.106.110.16/index.html?"+data;
                 	} 
                 });
 		}
@@ -56,7 +56,6 @@
             </button>
             <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
         </div>
-        <a href="http://localhost/novel/introduction.n?nid=666">测试88888888888888</a>
 
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">
