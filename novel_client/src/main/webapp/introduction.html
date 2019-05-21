@@ -107,7 +107,7 @@
                         result+="<button class='btn btn-sm btn-info' type='button'>"
                         result+="<i class='fa fa-thumbs-up fa-fw'></i>投票推荐"
                         result+="</button>"
-                        result+="<button class='btn btn-sm btn-success' type='button'>"
+                        result+="<button class='btn btn-sm btn-success' type='button' onclick='joinMarker()'>"
                         result+="<i class='fa fa-plus fa-fw'></i>加入书架"
                         result+="</button>"
                         result+="<a class='errorlink btn btn-sm btn-warning' href='#' target='_blank' rel='nofollow'>"
@@ -171,6 +171,21 @@
                     },
                     type:'GET'
                 });
+            joinMarker = function(){
+   			   $.ajax({
+   				url:"http://localhost:8080/noveluser/joinMarker.u" ,
+   				data:{"nid":params[1]},
+   		      	processData: false, 
+   				error:function(data){
+   					console.info(data)
+   					alert("请求出错");
+   				},
+   				success:function(data){
+   					alert(data);
+   				},
+   				type:"GET"
+   			 });   
+   		} 
 
         });
     </script>

@@ -46,15 +46,21 @@ public class MarkerController {
 		}
 	}
 	
-	@RequestMapping(value="joinMarker.u")
+	@RequestMapping(value="joinMarker.u",produces = "text/html; charset=utf-8")
 	@ResponseBody
 	public String joinMarker(Collect collect,HttpServletRequest request){
+		
+		System.out.println("joinMarker.u   ");
+		
 		SimpleDateFormat df = new SimpleDateFormat("MM-dd");
 		String ctimes = df.format(new Date());
 		User user = (User) request.getSession().getAttribute("user");
-		Long uid = user.getUid();
-		collect.setUid(uid);
-		collect.setCtime(ctimes);
+		System.out.println(user);
+		if(user != null){
+			Long uid = user.getUid();
+			collect.setUid(uid);
+			collect.setCtime(ctimes);
+		}
 		String msg = "恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！";
 		try{
 			List<Collect> marlist = markerservice.selectMarker(user.getUid());
