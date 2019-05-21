@@ -42,14 +42,14 @@
                  window.location.href="/search.html?page=1&key="+data2
         }
 
-        function novelMemorys(nid){
+        novelMemorys = function(nid){
     		console.info("123");
     		var userUrl = window.location.search.substr(1);
 
     			$.ajax({
     				type:'GET',
     				url:'memory.u',
-    				data:{'nid':nid,'userUrl':userUrl},
+    				data:{'nid':nid},
     				success:function(data){
     					if(data == "-1"){//session_uid存在  数据库没记录
     						window.location.href="/introduction.html?nid="+nid+"&uid="+userUrl;
