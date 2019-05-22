@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.junit.runners.Parameterized.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,8 @@ public class MarkerController {
 	
 	@RequestMapping(value="addMarker.u")
 	@ResponseBody
-	public String addMarker(Collect collect,HttpServletRequest request){
+	public String addMarker(Collect collect,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		SimpleDateFormat df = new SimpleDateFormat("MM-dd");
 		String ctimes = df.format(new Date());
 		User user = (User) request.getSession().getAttribute("user");
@@ -48,19 +50,18 @@ public class MarkerController {
 	
 	@RequestMapping(value="joinMarker.u",produces = "text/html; charset=utf-8")
 	@ResponseBody
-	public String joinMarker(Collect collect,HttpServletRequest request){
-		
+	public String joinMarker(Collect collect,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		System.out.println("joinMarker.u   ");
-		
 		SimpleDateFormat df = new SimpleDateFormat("MM-dd");
 		String ctimes = df.format(new Date());
-		User user = (User) request.getSession().getAttribute("user");
-		System.out.println(user);
-		if(user != null){
-			Long uid = user.getUid();
-			collect.setUid(uid);
+		/*User user = (User) request.getSession().getAttribute("user");*/
+		/*System.out.println(user);*/
+		/*if(user != null){*/
+			/*Long uid = user.getUid();
+			collect.setUid(uid);*/
 			collect.setCtime(ctimes);
-		}
+		
 		String msg = "恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！";
 		try{
 			List<Collect> marlist = markerservice.selectMarker(user.getUid());
