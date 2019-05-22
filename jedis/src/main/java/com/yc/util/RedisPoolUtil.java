@@ -15,7 +15,7 @@ public class RedisPoolUtil {
     static {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
 
-        jedisPoolConfig.setMaxTotal(5);   // 最大连接数
+        jedisPoolConfig.setMaxTotal(30);   // 最大连接数
         jedisPoolConfig.setMaxIdle(1);   // 最大空闲数
 //        Jedis jedis = new Jedis("47.106.110.16",6379);
         // 连接池

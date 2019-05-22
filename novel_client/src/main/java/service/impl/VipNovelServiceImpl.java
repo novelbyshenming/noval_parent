@@ -125,6 +125,7 @@ public class VipNovelServiceImpl implements VipNovelService {
             // 用户信息已经过期或者还未登陆  提示用户重新登陆
             return null;
         }
+        RedisPoolUtil.close(jedis);
         return readNovel;
     }
 
