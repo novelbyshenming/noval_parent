@@ -8,7 +8,7 @@ import com.yc.bean.ReadNovel;
  */
 public interface VipNovelService {
 
-    ReadNovel getNovelChapterContext(long nid , long cid , String vid);
+    ReadNovel getNovelChapterContext(long nid , long cid , String uid);
 
-    String getIntroductionNovelChapters(long nid ,String vid);
+    String getIntroductionNovelChapters(long nid ,String uid);
 }

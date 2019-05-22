@@ -30,6 +30,10 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
     private String nextChapterUrl;
 
+    private String nowUrl ;
+
+
+
     // vip用户  会走 另外一个 服务器 进行 数据 的交互
     private String host = "127.0.0.1";
 
@@ -43,21 +47,26 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
      */
     private boolean flag ;
 
+
     /**
      * vip 用户一登录  开启 另外一个 客户端  进行 获取下一个章节的信息
      * @throws TTransportException
      */
     public VipUserThriftClient() throws TTransportException {
 
-        TTransport transport = new TSocket(host,port);
+        super();
 
-        // 会有异常    抛出异常  告诉 上面 用户服务器开启失败 . ..
-
-        transport.open();
-
-        TProtocol tProtocol = new TBinaryProtocol(transport);
-
-        this.vipClient = new NovelService.Client(tProtocol);
+//        TTransport transport = new TSocket(host,port);
+//
+//        // 会有异常    抛出异常  告诉 上面 用户服务器开启失败 . ..
+//
+//        transport.open();
+//
+//        TProtocol tProtocol = new TBinaryProtocol(transport);
+//
+//        this.vipClient = new NovelService.Client(tProtocol);
+//
+//        System.out.println("vip client  初始化成功  ");
 
         this.nextReadNovel = new ReadNovel();
 
@@ -72,9 +81,9 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
      */
     public void getNextNovelChapterContextByChapterUrl(String nextChapterUrl) throws TException {
 
-        System.out.println("vip           "+nextChapterUrl);
+        System.out.println("线程查询的是: "+nextChapterUrl);
         NovelChapterContext novelChapterContext =
-                this.vipClient.getNovelChapterContextByChapterUrl(nextChapterUrl);
+                super.getClient().getNovelChapterContextByChapterUrl(nextChapterUrl);
 
         this.nextReadNovel.setContext(novelChapterContext.getContext());
 
@@ -82,8 +91,9 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
         this.nextReadNovel.setNextChapter(novelChapterContext.getNextChapter());
 
-        this.nextChapterUrl = novelChapterContext.getNextChapter();
+        System.out.println("线程查询的章节的  上下两章节的id   "+novelChapterContext.getLastChapter()+ "  "+ novelChapterContext.getNextChapter() );
 
+        this.nowUrl = nextChapterUrl ;
         this.flag = true ;
     }
 
@@ -92,12 +102,10 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
         try {
 
-            System.out.println("thread: "+this.nextChapterUrl);
-
             if (this.nextChapterUrl == null)return;
 
-            System.out.println(this.nextChapterUrl);
             getNextNovelChapterContextByChapterUrl(this.nextChapterUrl);
+            System.out.println("线程执行结束 :  "+ this.flag);
 
         } catch (TException e) {
 
@@ -106,10 +114,6 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
             e.printStackTrace();
         }
     }
-
-
-
-
 
     public ReadNovel getNextReadNovel() {
         return nextReadNovel;
@@ -133,5 +137,13 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
     public void setFlag(boolean flag) {
         this.flag = flag;
+    }
+
+    public String getNowUrl() {
+        return nowUrl;
+    }
+
+    public void setNowUrl(String nowUrl) {
+        this.nowUrl = nowUrl;
     }
 }

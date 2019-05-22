@@ -20,16 +20,16 @@ public class VipNovelController {
 
     @ResponseBody
     @RequestMapping(value = "/vipNovelChapters.n",produces = "text/html; charset=utf-8")
-    public String getNovelChapterList(@RequestParam("nid") long nid,@RequestParam("vid") String vid){
+    public String getNovelChapterList(@RequestParam("nid") long nid,@RequestParam("uid") String uid,@RequestParam(value = "vip") boolean vip){
 
-        return vipNovelService.getIntroductionNovelChapters(nid, vid);
+        return vipNovelService.getIntroductionNovelChapters(nid, uid);
     }
 
     @ResponseBody
     @RequestMapping("/vipReadNovelChapter.n")
     public ReadNovel getNovelChapterContext(@RequestParam("nid") long nid,
-                                            @RequestParam("cid") long cid, @RequestParam("vid") String vid){
+                                            @RequestParam("cid") long cid, @RequestParam("uid") String uid,@RequestParam(value = "vip") boolean vip){
 
-        return vipNovelService.getNovelChapterContext(nid, cid, vid);
+        return vipNovelService.getNovelChapterContext(nid, cid, uid);
     }
 }

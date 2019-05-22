@@ -34,13 +34,16 @@ public class UserThriftClient {
 
         // 会有异常    抛出异常  告诉 上面 用户服务器开启失败 . ..
 
+        System.out.println("6");
         transport.open();
+        System.out.println("7");
 
         TProtocol tProtocol = new TBinaryProtocol(transport);
 
         this.client = new NovelService.Client(tProtocol);
 
         this.readNovel = new ReadNovel();
+        System.out.println("8");
 
     }
 

@@ -31,7 +31,25 @@
     <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190501/r20190131/show_ads_impl.js" as="script">-->
 
 <script type="text/javascript">
-  
+   var tLocalUrl = window.location.search
+   tLocalUrl = tLocalUrl.substring(1)
+   var url = ''
+   var readUrl = '/novel/readNovelChapter.n'
+
+   if(tLocalUrl.indexOf('uid')>0){
+       // 用户登录
+       var t = tLocalUrl.split('&')
+       if(tLocalUrl.indexOf('vip')>0){
+           // vip用户登录
+           url = '&' +t[2]+'&'+t[3]
+           readUrl = '/novel/vipReadNovelChapter.n'
+       }else{
+           // 普通用户登录
+           url = '&'+t[2]
+           readUrl = '/novel/userReadNovelChapter.n'
+       }
+   }
+
 $(function(){
 	/*
 	url: 请求服务器地址
@@ -43,6 +61,8 @@ $(function(){
 	*/
 		console.info("123123");
 	     var localUrl = location.search
+
+	     var tUrl = localUrl
 
 	     localUrl = localUrl.substring(1)
 
@@ -81,25 +101,24 @@ $(function(){
                  var result =''
                  data = eval(data)
                  result+="<p class='text-center booktag'>"
-                 result+="<a class='blue' href='/novel/introduction.html?nid="+nid+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
-                 result+="<a class='blue' href='/novel/search.html?page=1&key="+data.author+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
+                 result+="<a class='blue' href='/novel/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
+                 result+="<a class='blue' href='/novel/search.html?page=1&key="+data.author+url+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
                  result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
                  result+="<a class='red' onclick='addMarker()' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
                  result+="<a href='#' class='red errorlink' target='_blank'>"
                  result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
                  $('#novelChapterTitle').append(result)
-                 $('#novelLi1').append("<a href='/novel/type.html?page=1&key="+data.type+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>")
-                 $('#novelLi2').append("<a href='/novel/introduction.html?nid="+nid+"'>"+data.novelName+"</a>")
-                 $('#novelFoot').append("<a href='/novel/introduction.html?nid="+nid+"' title='"+data.novelName+"'>"+data.novelName+"</a>所有内容均来自互联网，笔趣阁只为原作者 "+data.author+" 的小说进行宣传。欢迎各位书友支持 "+data.author+" 并收藏")
+                 $('#novelLi1').append("<a href='/novel/type.html?page=1&key="+data.type+url+"' target='_blank' title='"+data.type+"'>"+data.type+"</a>")
+                 $('#novelLi2').append("<a href='/novel/introduction.html?nid="+nid+url+"'>"+data.novelName+"</a>")
+                 $('#novelFoot').append("<a href='/novel/introduction.html?nid="+nid+url+"' title='"+data.novelName+"'>"+data.novelName+"</a>所有内容均来自互联网，笔趣阁只为原作者 "+data.author+" 的小说进行宣传。欢迎各位书友支持 "+data.author+" 并收藏")
              },
              type:'GET'
          });
 
 		$.ajax({
 
-			url:'/novel/readNovelChapter.n',
-			data:{"nid":nid,"cid":cid},
+			url:readUrl+tUrl,
 			error:function(){
 				alert("请求出错.")
 			},
@@ -107,9 +126,9 @@ $(function(){
              $("#novelLi3").append(data.novelChapterName)
 			 $('#htmlContent').append("<br>"+data.context+"<br><br><br>")
              var result =''
-             result+="<a id='linkPrev' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.lastChapter+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
-             result+="<a id='linkIndex' class='btn btn-default' href='/novel/introduction.html?nid="+nid+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
-             result+="<a id='linkNext' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.nextChapter+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             result+="<a id='linkPrev' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.lastChapter+url+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
+             result+="<a id='linkIndex' class='btn btn-default' href='/novel/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
+             result+="<a id='linkNext' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
 			},
@@ -117,27 +136,28 @@ $(function(){
 		});
 		
 		addMarker = function(){
-			 var chapname = $("#novelChapterName").val();
-			   $.ajax({
-				url:"http://localhost:8080/noveluser/addMarker.u" ,
-				data:{
-					"nid":nid,
-					"cid":cid,
-					"chapname":chapname
-				},
-				dataType:'jsonp',
-				
-				error:function(data){
-					console.info(data)
-					alert("请求出错");
-				},
-				
-				success:function(data){
-					alert(data);
-				},
-				type:"POST"
-			 });   
-		} 
+			 var chapName = $("#novelChapterName").val();
+			 $.ajax({
+	   				url:"http://localhost:8080/noveluser/addMarker.u" ,
+	   				data:{"nid":nid,
+	   					  "uid":uid,
+	   					  "chapName":chapName
+	   					   },
+	   				}
+	   				error:function(data){
+	   					alert("请求出错");
+	   				},
+	   				success:function(data){
+	   					if(data == "1"){
+	   						alert("恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！");
+	   					}else if(data == "2"){
+	   						alert("对不起，您的书架已满！（限 20 本）");
+	   					}else if(data == "-1"){
+	   						alert("添加失败");
+	   					}
+	   				},
+	   				type:"POST"
+		}  
 });
 </script>
 
