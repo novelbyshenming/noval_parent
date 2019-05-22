@@ -1,6 +1,8 @@
 package service.impl;
 
 import bean.User;
+import bean.Vip;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,5 +48,23 @@ public class UserServiceImpl implements UserService{
 	public Long selectUid(String name)throws UserException{
 		Long uid = usermapper.selectUid(name);
 		return uid;
+	}
+
+	@Override
+	public Vip selectVip(Long uid) throws UserException {
+		Vip  vip= usermapper.selectVip(uid);
+		return vip;
+	}
+
+	@Override
+	public void updateVip(Long uid) throws UserException {
+		usermapper.updateVip(uid);
+		
+	}
+
+	@Override
+	public void addVip(Vip vip) throws UserException {
+		usermapper.addVip(vip);
+		
 	}
 }

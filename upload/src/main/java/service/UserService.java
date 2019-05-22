@@ -2,6 +2,7 @@ package service;
 
 import MyException.UserException;
 import bean.User;
+import bean.Vip;
 
 
 public interface UserService {
@@ -18,4 +19,10 @@ public interface UserService {
   User selectByEmail(String email) throws UserException;
   
   Long selectUid(String name) throws UserException;
+  
+  Vip selectVip(Long uid) throws UserException;
+  
+  void updateVip(Long uid) throws UserException;
+  
+  void addVip(Vip vip)throws UserException;
 }

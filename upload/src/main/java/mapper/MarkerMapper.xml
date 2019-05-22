@@ -18,4 +18,5 @@
  	<select id="selectMarker" parameterType="Long" resultType="Collect">
  		select * from collect where uid = #{uid}
  	</select>
+ 	
  </mapper>
