@@ -81,7 +81,6 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
      */
     public void getNextNovelChapterContextByChapterUrl(String nextChapterUrl) throws TException {
 
-        System.out.println("线程查询的是: "+nextChapterUrl);
         NovelChapterContext novelChapterContext =
                 this.vipClient.getNovelChapterContextByChapterUrl(nextChapterUrl);
 
@@ -91,7 +90,7 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
         this.nextReadNovel.setNextChapter(novelChapterContext.getNextChapter());
 
-        System.out.println("线程查询的章节的  上下两章节的id   "+novelChapterContext.getLastChapter()+ "  "+ novelChapterContext.getNextChapter() );
+        this.nextReadNovel.setNovelChapterName(novelChapterContext.getNovelChapterName());
 
         this.nowUrl = nextChapterUrl ;
         this.flag = true ;
@@ -105,7 +104,6 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
             if (this.nextChapterUrl == null)return;
 
             getNextNovelChapterContextByChapterUrl(this.nextChapterUrl);
-            System.out.println("线程执行结束 :  "+ this.flag);
 
         } catch (TException e) {
 
