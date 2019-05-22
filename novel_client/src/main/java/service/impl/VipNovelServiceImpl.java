@@ -129,7 +129,7 @@ public class VipNovelServiceImpl implements VipNovelService {
         }
 
 //        System.out.println(System.currentTimeMillis()-start);
-
+        RedisPoolUtil.close(jedis);
         return readNovel;
     }
 

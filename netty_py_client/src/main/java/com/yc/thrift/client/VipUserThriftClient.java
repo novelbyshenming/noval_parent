@@ -56,17 +56,17 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
         super();
 
-        TTransport transport = new TSocket(host,port);
-
-        // 会有异常    抛出异常  告诉 上面 用户服务器开启失败 . ..
-
-        transport.open();
-
-        TProtocol tProtocol = new TBinaryProtocol(transport);
-
-        this.vipClient = new NovelService.Client(tProtocol);
-
-        System.out.println("vip client  初始化成功  ");
+//        TTransport transport = new TSocket(host,port);
+//
+//        // 会有异常    抛出异常  告诉 上面 用户服务器开启失败 . ..
+//
+//        transport.open();
+//
+//        TProtocol tProtocol = new TBinaryProtocol(transport);
+//
+//        this.vipClient = new NovelService.Client(tProtocol);
+//
+//        System.out.println("vip client  初始化成功  ");
 
         this.nextReadNovel = new ReadNovel();
 
@@ -83,7 +83,7 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
         System.out.println("线程查询的是: "+nextChapterUrl);
         NovelChapterContext novelChapterContext =
-                this.vipClient.getNovelChapterContextByChapterUrl(nextChapterUrl);
+                super.getClient().getNovelChapterContextByChapterUrl(nextChapterUrl);
 
         this.nextReadNovel.setContext(novelChapterContext.getContext());
 
