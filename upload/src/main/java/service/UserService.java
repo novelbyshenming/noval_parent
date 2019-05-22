@@ -5,6 +5,8 @@ import bean.User;
 
 
 public interface UserService {
+
+  public static final int i = 4 ;
   User loginCheck(User user) throws UserException;
   
   void register(User user) throws UserException;

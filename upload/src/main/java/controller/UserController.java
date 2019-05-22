@@ -31,11 +31,11 @@ public class UserController {
 		try{
 			if(userService.loginCheck(user) != null){
 			user.setPwd("");//不能讲pwd存入session
-			Long uid = userService.selectUid(user.getName());
-			map.put("msg", msg);//将登录结果信息压入集request.getSession().setAttribute("user", user);//将user存入session合
-			map.put("result", "1");//将登录结果压进map集合
-			map.put("name", user.getName());//将用户名压入集合
-			map.put("uid",uid);//将用户id压入集合
+				Long uid = userService.selectUid(user.getName());
+				map.put("msg", msg);//将登录结果信息压入集request.getSession().setAttribute("user", user);//将user存入session合
+				map.put("result", "1");//将登录结果压进map集合
+				map.put("name", user.getName());//将用户名压入集合
+				map.put("uid",uid);//将用户id压入集合
 			}else{
 				throw new UserException("用户名或者密码错误");
 			}

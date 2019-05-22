@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import service.VipNovelService;
+import util.ThreadPollUtil;
 import util.VipUtil;
 
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
 
 /**
  * @author LX
@@ -30,6 +32,8 @@ public class VipNovelServiceImpl implements VipNovelService {
 
     @Autowired
     private NovelMapper novelMapper;
+
+    private ExecutorService executorService = ThreadPollUtil.executorService;
 
     /**
      * vip用户 获取 小说章节 内容
@@ -71,53 +75,47 @@ public class VipNovelServiceImpl implements VipNovelService {
                  *   得重新进行  普通的client的 数据获取
                  */
 
-                System.out.println(vipUserThriftClient.isFlag());
-
                 if(! vipUserThriftClient.isFlag()){
 
                     // flag = false    vip用户通过  父类的client 方法的获取数据
-                    System.out.println("vip用户通过  父类的client 方法的获取数据");
                     readNovel = vipUserThriftClient.getNovelChapterContextByChapterUrl(nowUrl);
                     /**
                      * 进行 下一章节的获取
                      */
-                    vipUserThriftClient.setNextChapterUrl(readNovel.getNextChapter());
+                    vipUserThriftClient.setFlag(false);
 
                     vipUserThriftClient.setNextChapterUrl(introductionNovel.getUrl()+readNovel.getNextChapter()+".html");
+//                    System.out.println(readNovel.getNextChapter()+"  " +vipUserThriftClient.getNextChapterUrl()+ "此章节的 next");
 
-                    new Thread(vipUserThriftClient).start();
-
+                    executorService.execute(vipUserThriftClient);
                 }else{
 
-                    String lastChapter = vipUserThriftClient.getNextReadNovel().getLastChapter();
+                    ReadNovel nextReadNovel = vipUserThriftClient.getNextReadNovel();
 
-                    nowUrl = cid+"";
+                    String tNowUrl = vipUserThriftClient.getNowUrl();
 
-                    System.out.println("cid "+nowUrl +" lastChapter: "+ lastChapter);
-                    if(nowUrl.equals(lastChapter)){
+
+                    if(nowUrl.equals(tNowUrl)){
 
                         // flag = true  代表可以直接 从内部的 nextReadNovel 取数据
                         // 并且重新  获取 下一章节的信息
-                        System.out.println("直接 从内部的 nextReadNovel 取数据");
-                        readNovel = vipUserThriftClient.getNextReadNovel();
+                        vipUserThriftClient.setFlag(false);
+                        readNovel = nextReadNovel;
                         vipUserThriftClient.setNextChapterUrl(introductionNovel.getUrl()+readNovel.getNextChapter()+".html");
-                        new Thread(vipUserThriftClient).start();
+                        executorService.execute(vipUserThriftClient);
+//                        System.out.println("数据来自 next   ");
                     }else{
 
                         nowUrl = introductionNovel.getUrl()+cid+".html";
                         // flag = false    vip用户通过  父类的client 方法的获取数据
                         readNovel = vipUserThriftClient.getNovelChapterContextByChapterUrl(nowUrl);
 
-                        System.out.println("66 "+nowUrl);
-                        System.out.println("66 vip用户通过  父类的client 方法的获取数据 ");
                         vipUserThriftClient.setFlag(false);
-
                         /**
                          * 进行 下一章节的获取
                          */
                         vipUserThriftClient.setNextChapterUrl(introductionNovel.getUrl()+readNovel.getNextChapter()+".html");
-
-                        new Thread(vipUserThriftClient).start();
+                        executorService.execute(vipUserThriftClient);
                     }
                 }
 
@@ -130,7 +128,7 @@ public class VipNovelServiceImpl implements VipNovelService {
             return null;
         }
 
-        System.out.println(System.currentTimeMillis()-start);
+//        System.out.println(System.currentTimeMillis()-start);
 
         return readNovel;
     }
@@ -144,6 +142,7 @@ public class VipNovelServiceImpl implements VipNovelService {
     @Override
     public String getIntroductionNovelChapters(long nid, String uid) {
 
+//        System.out.println("vip.................");
         long start = System.currentTimeMillis();
 
         Jedis jedis = RedisPoolUtil.getJedis();
@@ -153,7 +152,7 @@ public class VipNovelServiceImpl implements VipNovelService {
          if (jedis.exists("vip:"+uid)){
             //代表  vip用户登陆
             VipUserThriftClient vipUserThriftClient = vipUserThriftClientHashMap.get(uid);
-
+             System.out.println("vip: "+uid);
             try {
                 IntroductionNovel introductionNovel = novelMapper.selNovelByNid(nid);
 
@@ -169,7 +168,7 @@ public class VipNovelServiceImpl implements VipNovelService {
         }
         RedisPoolUtil.close(jedis);
 
-        System.out.println(System.currentTimeMillis()-start);
+//        System.out.println(System.currentTimeMillis()-start);
 
         return novelChapterListJson;
     }

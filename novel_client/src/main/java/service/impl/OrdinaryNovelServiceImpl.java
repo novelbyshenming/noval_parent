@@ -22,11 +22,11 @@ public class OrdinaryNovelServiceImpl implements OrdinaryNovelService {
 
     @Autowired
     private OrdinaryNovelMapper ordinaryNovelMapper;
-
     @Autowired
     private NovelMapper novelMapper;
 
-    private HashMap<String,OrdinaryUserThriftClient> ordinaryUserThriftClientHashMap = OrdinaryUtil.ordinaryUserThriftClientHashMap;
+    private HashMap<String,OrdinaryUserThriftClient> ordinaryUserThriftClientHashMap
+            = OrdinaryUtil.ordinaryUserThriftClientHashMap;
     /**
      * 普通用户 访问 小说章节信息
      * @param nid
