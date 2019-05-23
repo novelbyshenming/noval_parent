@@ -95,7 +95,11 @@
 
                 localUrl = localUrl.substring(number+1)
 
-                number = localUrl.lastIndexOf('&')
+               if(url==''){
+                   number = localUrl.lastIndexOf('&')
+               }else{
+                   number =localUrl.indexOf('uid=')
+               }
 
                 var params1 = localUrl.substring(0,number)
 
