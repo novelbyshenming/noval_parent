@@ -45,6 +45,7 @@ public class VipNovelServiceImpl implements VipNovelService {
     @Override
     public ReadNovel getNovelChapterContext(long nid, long cid, String uid) {
 
+        System.out.println(88888888);
         long start = System.currentTimeMillis();
 
         Jedis jedis = RedisPoolUtil.getJedis();

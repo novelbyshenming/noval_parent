@@ -112,7 +112,12 @@ public class UserThriftClient {
         return client;
     }
 
+    public void setReadNovel(ReadNovel readNovel) {
+        this.readNovel = readNovel;
+    }
+
     public ReadNovel getReadNovel() {
         return readNovel;
+
     }
 }
