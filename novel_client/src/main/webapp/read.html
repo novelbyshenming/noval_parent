@@ -62,7 +62,7 @@ $(function(){
 	success请求成功执行的功能,function(data) data服务器返回的数据.
 	type:请求方式
 	*/
-		console.log("123123");
+	var name
 	     var localUrl = location.search
 
 	     var tUrl = localUrl
@@ -134,6 +134,7 @@ $(function(){
              result+="<a id='linkNext' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
+             name = data.novelChapterName
 			},
 			type:'GET'
 		});
@@ -141,12 +142,12 @@ $(function(){
 		addMarker = function(){
 			
 			 $.ajax({
-	   				url:"http://localhost:8080/noveluser/addMarker.u" ,
+	   				url:"http://localhost:8080/noveluser/addMarker.u",
 	   				data:{"nid":nid,
 	   					  "uid":uid,
-	   					  "chapName":$('#novelChapterName').val()
+	   					  "chapName":name
 	   					   },
-	   				error:function(data){
+	   				error:function(){
 	   					alert("请求出错");
 	   				},
 	   				success:function(data){
