@@ -45,6 +45,7 @@ public class VipNovelServiceImpl implements VipNovelService {
     @Override
     public ReadNovel getNovelChapterContext(long nid, long cid, String uid) {
 
+        System.out.println(999);
         long start = System.currentTimeMillis();
 
         Jedis jedis = RedisPoolUtil.getJedis();
@@ -85,7 +86,6 @@ public class VipNovelServiceImpl implements VipNovelService {
                     vipUserThriftClient.setFlag(false);
 
                     vipUserThriftClient.setNextChapterUrl(introductionNovel.getUrl()+readNovel.getNextChapter()+".html");
-//                    System.out.println(readNovel.getNextChapter()+"  " +vipUserThriftClient.getNextChapterUrl()+ "此章节的 next");
 
                     executorService.execute(vipUserThriftClient);
                 }else{
@@ -103,7 +103,6 @@ public class VipNovelServiceImpl implements VipNovelService {
                         readNovel = nextReadNovel;
                         vipUserThriftClient.setNextChapterUrl(introductionNovel.getUrl()+readNovel.getNextChapter()+".html");
                         executorService.execute(vipUserThriftClient);
-//                        System.out.println("数据来自 next   ");
                     }else{
 
                         nowUrl = introductionNovel.getUrl()+cid+".html";
@@ -127,8 +126,6 @@ public class VipNovelServiceImpl implements VipNovelService {
             // 用户信息已经过期或者还未登陆  提示用户重新登陆
             return null;
         }
-
-//        System.out.println(System.currentTimeMillis()-start);
         RedisPoolUtil.close(jedis);
         return readNovel;
     }
@@ -142,7 +139,6 @@ public class VipNovelServiceImpl implements VipNovelService {
     @Override
     public String getIntroductionNovelChapters(long nid, String uid) {
 
-//        System.out.println("vip.................");
         long start = System.currentTimeMillis();
 
         Jedis jedis = RedisPoolUtil.getJedis();
@@ -167,8 +163,6 @@ public class VipNovelServiceImpl implements VipNovelService {
             return null;
         }
         RedisPoolUtil.close(jedis);
-
-//        System.out.println(System.currentTimeMillis()-start);
 
         return novelChapterListJson;
     }

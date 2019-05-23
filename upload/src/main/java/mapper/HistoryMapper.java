@@ -15,5 +15,5 @@ public interface HistoryMapper {
 	int updRecord(History history);
 	
 	//查询
-	History selectRecord(long nid);
+	History selectRecord(long uid, long nid);
 }

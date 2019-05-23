@@ -28,8 +28,8 @@ public class HistoryService {
 		return historyMapper.updRecord(history);
 	}
 	
-	//修改阅览记忆章节
-	public History selRecord(long nid) throws BizException{
-		return historyMapper.selectRecord(nid);
+	//查询阅览记忆章节
+	public History selRecord(long uid,long nid) throws BizException{
+		return historyMapper.selectRecord(uid,nid);
 	}
 }
