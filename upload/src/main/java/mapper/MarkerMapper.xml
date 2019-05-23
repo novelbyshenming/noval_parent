@@ -5,8 +5,8 @@
  <mapper namespace="mapper.MarkerMapper">
  	<insert id="addMarker" parameterType="Collect">
  		insert into
- 		collect(uid,nid,ctimes,chapname,cid)
- 		value(#{uid},#{nid},#{ctimes},#{chapname},#{cid})
+ 		collect(uid,nid,ctimes,chapName,cid)
+ 		value(#{uid},#{nid},#{ctimes},#{chapName},#{cid})
  	</insert>
  	
  	<insert id="joinMarker" parameterType="Collect">
@@ -19,4 +19,39 @@
  		select * from collect where uid = #{uid}
  	</select>
  	
+ 	<select id="selectByNid" parameterType="Long" resultType="Collect">
+ 		select * from collect where nid = #{nid}
+ 	</select>
+ 	
+ 	<update id="updateMarker" parameterType="Collect">
+ 		update collect  
+ 		<trim prefix="set" suffixOverrides=",">  
+
+        <if test="uid != null">uid=#{uid},</if>  
+
+        <if test="nid != null">nid=#{nid},</if>  
+
+        <if test="ctimes != null">ctimes=#{ctimes},</if>  
+		
+		</trim> 
+		where coid = #{coid}
+ 	</update>
+ 	
+ 	<update id="updateMarker1" parameterType="Collect">
+ 		update collect  
+ 		<trim prefix="set" suffixOverrides=",">  
+
+        <if test="uid != null">uid=#{uid},</if>  
+
+        <if test="nid != null">nid=#{nid},</if>  
+
+        <if test="ctimes != null">ctimes=#{ctimes},</if>  
+
+        <if test="chapName != null">chapName=#{chapName},</if>  
+
+        <if test="cid != null">cid=#{cid},</if>  
+		
+		</trim> 
+		where coid = #{coid}
+ 	</update>
  </mapper>

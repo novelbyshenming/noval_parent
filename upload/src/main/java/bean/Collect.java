@@ -8,9 +8,9 @@ public class Collect {
 	
 	private long nid;
 	
-	private String ctime;
+	private String ctimes;
 	
-	private String chapname;
+	private String chapName;
 	
 	private Long cid;
 	
@@ -39,20 +39,20 @@ public class Collect {
 		this.nid = nid;
 	}
 
-	public String getCtime() {
-		return ctime;
+	public String getCtimes() {
+		return ctimes;
 	}
 
-	public void setCtime(String ctime) {
-		this.ctime = ctime;
+	public void setCtimes(String ctimes) {
+		this.ctimes = ctimes;
 	}
 
-	public String getChapname() {
-		return chapname;
+	public String getChapName() {
+		return chapName;
 	}
 
-	public void setChapname(String chapname) {
-		this.chapname = chapname;
+	public void setChapName(String chapName) {
+		this.chapName = chapName;
 	}
 
 	public Long getCid() {
@@ -65,7 +65,7 @@ public class Collect {
 
 	@Override
 	public String toString() {
-		return "Collect [coid=" + coid + ", uid=" + uid + ", nid=" + nid + ", ctime=" + ctime + ", chapname=" + chapname
+		return "Collect [coid=" + coid + ", uid=" + uid + ", nid=" + nid + ", ctime=" + ctimes + ", chapName=" + chapName
 				+ ", cid=" + cid + "]";
 	}
 
