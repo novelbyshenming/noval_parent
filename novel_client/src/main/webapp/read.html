@@ -34,6 +34,7 @@
    var tLocalUrl = window.location.search
    tLocalUrl = tLocalUrl.substring(1)
    var url = ''
+   var uid = ''
    var readUrl = '/novel/readNovelChapter.n'
 
    if(tLocalUrl.indexOf('uid')>0){
@@ -48,6 +49,8 @@
            url = '&'+t[2]
            readUrl = '/novel/userReadNovelChapter.n'
        }
+       uid = t[2].split('=')[1]
+
    }
 
 $(function(){
@@ -59,7 +62,7 @@ $(function(){
 	success请求成功执行的功能,function(data) data服务器返回的数据.
 	type:请求方式
 	*/
-		console.info("123123");
+		console.log("123123");
 	     var localUrl = location.search
 
 	     var tUrl = localUrl
@@ -134,16 +137,15 @@ $(function(){
 			},
 			type:'GET'
 		});
-		
+	     alert($('#novelChapterName').val())
 		addMarker = function(){
-			 var chapName = $("#novelChapterName").val();
+			
 			 $.ajax({
 	   				url:"http://localhost:8080/noveluser/addMarker.u" ,
 	   				data:{"nid":nid,
 	   					  "uid":uid,
-	   					  "chapName":chapName
+	   					  "chapName":$('#novelChapterName').val()
 	   					   },
-	   				}
 	   				error:function(data){
 	   					alert("请求出错");
 	   				},
@@ -154,11 +156,15 @@ $(function(){
 	   						alert("对不起，您的书架已满！（限 20 本）");
 	   					}else if(data == "-1"){
 	   						alert("添加失败");
+	   					}else if(data == "-2"){
+	   						alert("请先登录");
 	   					}
 	   				},
-	   				type:"POST"
-		}  
+	   				type:"GET"
+			});
+		}
 });
+
 </script>
 
 </head>

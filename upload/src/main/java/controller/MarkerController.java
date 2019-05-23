@@ -1,7 +1,5 @@
 package controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,14 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import bean.Collect;
-import bean.User;
 import service.MarkerService;
 
 @Controller
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class MarkerController {
 	@Autowired
 	private MarkerService markerservice;
@@ -27,6 +26,9 @@ public class MarkerController {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		String result = "";
 		try{
+			if(collect.getUid() == 0) {
+				return result+="-2";
+			}
 			List<Collect> marlist = markerservice.selectMarker(collect.getUid());
 			if(marlist.size() >0 && marlist.size() < 21){
 				markerservice.addMarker(collect);
@@ -46,6 +48,9 @@ public class MarkerController {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		String result = "";
 		try{
+			if(collect.getUid() == 0) {
+				return result+="-2";
+			}
 			List<Collect> marlist = markerservice.selectMarker(collect.getUid());
 			if(marlist.size() < 21){
 				markerservice.addMarker(collect);

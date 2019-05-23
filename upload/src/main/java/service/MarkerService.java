@@ -34,13 +34,13 @@ public class MarkerService {
 		SimpleDateFormat df = new SimpleDateFormat("MM-dd");
 		String ctimes = df.format(new Date());
 		Long uid = collect.getUid();
-		collect.setUid(uid);
-		collect.setCtimes(ctimes);
-		if(markerMapper.selectByNid(collect.getNid()) != null){
-			markerMapper.updateMarker1(collect);
-		}else{
-			markerMapper.joinMarker(collect);
-		}
+			collect.setUid(uid);
+			collect.setCtimes(ctimes);
+			if(markerMapper.selectByNid(collect.getNid()) != null){
+				markerMapper.updateMarker1(collect);
+			}else{
+				markerMapper.joinMarker(collect);
+			}
 	}
 	
 	public List<Collect> selectMarker(Long uid)throws MarkerException{

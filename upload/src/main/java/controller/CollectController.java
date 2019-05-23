@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,34 +10,35 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import MyException.CollectException;
 import bean.Collect;
-import bean.User;
 import service.CollectService;
 
 @Controller
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CollectController {
 	@Autowired
 	private CollectService collectService;
 	
-	@RequestMapping(value="collect.u",method= RequestMethod.POST)
+	@RequestMapping(value="search.u",method= RequestMethod.POST)
 	@ResponseBody
-	public Map<String,Collect> collect(HttpServletRequest request,HttpServletResponse response){
-		response.setContentType("text/html;charset=UTF-8");
-		User user = (User) request.getSession().getAttribute("user");
-		long uid = user.getUid();
-		Map<String,Collect> map = null;
+	public List<Collect> collect(Long uid,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		List<Collect> list = new ArrayList<Collect>();
 		try {
-			map = collectService.selectByUid(uid);
-			return map;
-			
-		} catch (CollectException e){
+			list = collectService.selectByUid(uid);
+		} catch (CollectException e) {
 			e.printStackTrace();
-			return map;
 		}
+		for(int i =0;i<list.size();i++){
+			System.out.println(list.get(i));
+		}
+		return list;
+		
 	}
 }

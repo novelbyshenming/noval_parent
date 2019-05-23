@@ -27,17 +27,41 @@
     <meta name="apple-mobile-web-app-title" content="笔趣阁">
 	<script type="text/javascript">
 		$(function(){
-			var data;
-			$.ajax({
-				url:'/noveluser/search.u',
-				data:data,
-				error:function(){
-					alert("请求出错");
-				},
-				success:function(){
-					
-				}
-			});
+		 var tLocalUrl = window.location.search
+		 tLocalUrl = tLocalUrl.substring(1)
+		 var uid = ""
+		 var t = tLocalUrl.split("=")
+		 uid = t[1]
+	 	 if(uid == undefined){
+				 alert("请先登录!");
+				 window.location.href ="/noveluser/login.html"
+		 }else{
+				$.ajax({
+					url:'/noveluser/search.u',
+					data:{"uid":uid},
+					error:function(){
+						alert("请求出错")	;
+					},
+					success:function(data){
+						/* $('data').each(function(index, value){
+                                
+								$("#collect").append(result);
+						}); */
+						var result = ''
+						$(data).each(function (index,ele) {
+							alert(ele.coid)
+							result += "<td class=\"hidden-xs\"><input type=\"checkbox\" id=\"checkid[]\" name=\"checkid[]\" value=\"33449\"></td>"
+							result += "<td class=\"even\"><a href=\"https://www.biqukan.cc/book/50686/\" target=\"_blank\">"+ele.chapName+"</a> <span class=\"text-red fs-12\">New</span></td>"
+							result += "<td class=\"odd\"><a href=\"https://www.biqukan.cc/book/50686/32339123.html\" target=\"_blank\">"+ele.chapName+"</a></td>"
+							result += "<td class=\"even\"><a href=\"https://www.biqukan.cc/book/50686/32329734.html\" target=\"_blank\">"+ele.cid+"</a></td>"
+							result += "<td class=\"hidden-xs\" align=\"center\">"+05-15+" </td>"
+							result += "<td class=\"text-danger\" align=\"center\"><a class=\"text-danger\"><i class=\"fa fa-times-circle fa-fw\"></i></a></td>"
+                     })
+                       alert(result)
+					},
+					type:"POST"
+				});
+		  }
 		});
 	</script>
 
@@ -142,7 +166,7 @@
 
                 </div>
                 <table class="table">
-                    <tbody><tr align="center">
+                    <tbody><tr align="center" >
                         <th width="5%" class="hidden-xs"><input type="checkbox" id="checkall" name="checkall" value="checkall"></th>
                         <th width="21%">文章名称</th>
                         <th width="30%">最新章节</th>
@@ -151,7 +175,7 @@
                         <th width="7%">操作</th>
                     </tr>
 
-                    <tr>
+                    <tr id="collect">
                         <td class="hidden-xs">
                             <input type="checkbox" id="checkid[]" name="checkid[]" value="33449">    </td>
                         <td class="even"><a href="https://www.biqukan.cc/book/50686/" target="_blank">都市逍遥仙帝</a> <span class="text-red fs-12">New</span></td>
