@@ -12,9 +12,13 @@ public class DateTest {
     @Test
     public void dateTest(){
 
-        Date date = new Date(1501349912000l);
+       /* Date date = new Date(1501349912000l);
 
-        System.out.println(date+"  "+System.currentTimeMillis());
+        System.out.println(date+"  "+System.currentTimeMillis());*/
+
+       long t = 45l;
+
+        System.out.println(t+"");
 
     }
 }

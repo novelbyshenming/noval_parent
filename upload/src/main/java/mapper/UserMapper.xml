@@ -22,4 +22,26 @@
 	<select id="selectByName" parameterType="String" resultType="User">
 		select * from user WHERE name=#{name}
 	</select>
+	
+	<select id="selectByEmail" parameterType="String" resultType="User">
+		select * from user WHERE email=#{email}
+	</select>
+	
+	<select id="selectUid" parameterType="String" resultType="Long">
+ 		select uid from user WHERE name = #{name}
+ 	</select>
+ 	
+ 	<select id="selectVip" parameterType="Long" resultType="Vip">
+ 		select * from vip where uid = #{uid}
+ 	</select>
+ 	
+ 	<update id="updateVip" parameterType="Long">
+ 		update vip set flag = 1 where uid = #{uid}
+ 	</update>
+ 	
+ 	<insert id="addVip" parameterType="Vip" keyProperty="uid" useGeneratedKeys="true">
+ 		insert into
+ 		vip(uid,startTimes,endTimes,flag)
+ 		value(#{uid},#{startTimes},#{endTimes},#{flag})
+ 	</insert>
 </mapper>
