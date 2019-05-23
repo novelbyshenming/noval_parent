@@ -1,6 +1,8 @@
 package mapper;
 
+
 import bean.User;
+import bean.Vip;
 
 /**
  * @author LX
@@ -17,5 +19,13 @@ public interface UserMapper {
     
     User selectByName(String name);
     
-    User selectByEmail(String Email);
+    User selectByEmail(String email);
+    
+	Long selectUid(String name);
+	
+	Vip selectVip(Long uid);
+	
+	void updateVip(Long uid);
+	
+	void addVip(Vip vip);
 }

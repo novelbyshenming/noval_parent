@@ -1,11 +1,12 @@
 package bean;
 
+import javax.annotation.Generated;
+
 /**
  * @author LX
  * @date 2019/5/1 - 18:24
  */
 public class User {
-
     private long uid;
 
     private String name;

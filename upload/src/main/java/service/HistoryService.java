@@ -1,10 +1,10 @@
 package service;
 
+import bean.History;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import MyException.BizException;
-import bean.History;
 import mapper.HistoryMapper;
 
 /**
@@ -28,8 +28,8 @@ public class HistoryService {
 		return historyMapper.updRecord(history);
 	}
 	
-	//修改阅览记忆章节
-	public History selRecord(long nid) throws BizException{
-		return historyMapper.selectRecord(nid);
+	//查询阅览记忆章节
+	public History selRecord(long uid,long nid) throws BizException{
+		return historyMapper.selectRecord(uid,nid);
 	}
 }
