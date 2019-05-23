@@ -136,6 +136,7 @@ $(function(){
              },
              type:'GET'
          });
+	     var name  =''
 
 		$.ajax({
 
@@ -152,10 +153,11 @@ $(function(){
              result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
+             name = data.novelChapterName
+             alert(name)
 			},
 			type:'GET'
 		});
-
 });
 </script>
 
