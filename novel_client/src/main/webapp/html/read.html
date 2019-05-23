@@ -149,7 +149,12 @@ $(function(){
              var result =''
              result+="<a id='linkPrev' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.lastChapter+url+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
              result+="<a id='linkIndex' class='btn btn-default' href='/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
-             result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             if( data.nextChapter =='-1' ){
+                 result+="<a id='linkNext' class='btn btn-default' onclick='tiShi()' href='javascript:void(0)'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             }else{
+                  result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             }
+
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
 			},
@@ -157,6 +162,17 @@ $(function(){
 		});
 
 });
+   function tiShi() {
+     alert("暂无下一章节")
+   }
+   function indexUrl() {
+       if (url==''){
+           window.location.href = '/index.html'
+       }else{
+           window.location.href = '/index.html?'+url.substring(1)
+       }
+
+   }
 </script>
 
 </head>
@@ -169,7 +185,7 @@ $(function(){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
+            <a href="/" class="navbar-brand logo" title="嘿 ! 污">嘿 ! 污</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav" id="titleLi">
@@ -184,7 +200,7 @@ $(function(){
 </div>
 <div class="container body-content read-container">
     <ol class="breadcrumb hidden-xs">
-        <li><a href="/" title="笔趣阁"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li><a onclick="indexUrl()" href="javascript:void(0)" title="笔趣阁"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li id="novelLi1"></li>
         <li id="novelLi2"></li>
         <li id="novelLi3" class="active"></li>
@@ -257,7 +273,7 @@ $(function(){
     <p id="novelFoot"></p>
     <footer>
         <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
-        <p>Copyright &#169; 2019 <a href="/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
+        <p>Copyright &#169; 2019 <a onclick="indexUrl()" href="javascript:void(0)">嘿 ! 污</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
     </footer>
     <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1254.5px; display: none;"><i class="fa fa-chevron-up"></i></div>
 
