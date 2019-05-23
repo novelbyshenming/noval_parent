@@ -82,7 +82,7 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
     public void getNextNovelChapterContextByChapterUrl(String nextChapterUrl) throws TException {
 
 //      每一次线程 缓存下一章节的时候 总会吧 当前的章节回写给 父类的 readNovel
-        super.setReadNovel(this.nextReadNovel);
+//        super.setReadNovel(this.nextReadNovel);
 
         NovelChapterContext novelChapterContext =
                 super.getClient().getNovelChapterContextByChapterUrl(nextChapterUrl);
@@ -106,7 +106,6 @@ public class VipUserThriftClient extends UserThriftClient implements Runnable{
 
             if (this.nextChapterUrl == null)return;
 
-            System.out.println(6666666);
             getNextNovelChapterContextByChapterUrl(this.nextChapterUrl);
 
         } catch (TException e) {
