@@ -112,7 +112,6 @@
         $(function () {
 
             $('#titleLi').append(result)
-
             $.ajax({
                 url:'solr/collection1/select?q=*%3A*&sort=novel_updateTimes+desc&rows=30&wt=json&indent=true',
                 error:function(){
@@ -127,11 +126,7 @@
                     $(docs).each(function (index,ele) {
 						alert();
                         result+="<tr><td class=\"text-muted hidden-xs\" width=\"10%\">"+ele.novel_type+"</td>"
-<<<<<<< HEAD
-                        result+="<td><a onclick='novelMemorys("+ele.id+")' title=\""+ele.novel_name+"\">"+ele.novel_name+"</a></td>"
-=======
                         result+="<td><a href=\"/introduction.html?nid="+ele.id+url+"\" title=\""+ele.novel_name+"\">"+ele.novel_name+"</a></td>"
->>>>>>> branch 'master' of git@github.com:novelbyshenming/noval_parent.git
                         result+="<td class=\"hidden-xs\">"
                         result+="<a href=\"/read.html?nid="+ele.id+"&cid="+ele.novel_latestChaptersUrl+url+"\"title=\""+ele.novel_latestChapters+"\">"+ele.novel_latestChapters+"</a></td>"
                         result+="<td class=\"text-muted fs-12\" title=\""+ele.novel_author+"\">"+ele.novel_author+"</td>"
@@ -213,7 +208,8 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"  href="#"
+                        <a class="thumbnail"
+                                                                href="#"
                                                                 title="仙宫">
                         <img src="https://www.biqukan.cc/files/article/image/51/51990/51990s.jpg" alt="仙宫"
                             style="height:182px;">
@@ -227,7 +223,8 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"  href="#"
+                        <a class="thumbnail"
+                                                                href="#"
                                                                 title="天下第九">
                             <img
                             src="https://www.biqukan.cc/files/article/image/41/41888/41888s.jpg" alt="天下第九"
@@ -279,7 +276,9 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
+
                         <a class="thumbnail" href="#"  title="开天录">
+
                         <img  src="https://www.biqukan.cc/files/article/image/47/47583/47583s.jpg" alt="开天录"  style="height:182px;">
                         <div class="caption"><strong>开天录</strong><br><span
                                 class="text-muted fs-12">血红 / 著</span><br><span
@@ -288,8 +287,9 @@
                     </a>
                     </div>
                     <div class="col-md-3 col-xs-6 mb10 mt10">
-                        <a class="thumbnail"   href="#"
-                                                                title="好想住你隔壁">
+
+
+                        <a class="thumbnail" href="#" title="好想住你隔壁">
                             <img
                             src="https://www.biqukan.cc/files/article/image/50/50793/50793s.jpg" alt="好想住你隔壁"
                             style="height:182px;">

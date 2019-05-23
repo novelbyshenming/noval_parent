@@ -21,11 +21,10 @@ public class HistoryController {
 	
 	@Autowired
 	private HistoryService historyService;
-	
-	
+
+
 	/**
 	 * @param request
-	 * @param history
 	 * @return
 	 */
 	@RequestMapping("mermory.u")

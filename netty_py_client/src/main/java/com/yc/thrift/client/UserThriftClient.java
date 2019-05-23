@@ -105,6 +105,8 @@ public class UserThriftClient {
 
         this.readNovel.setNextChapter(novelChapterContext.getNextChapter());
 
+        this.readNovel.setNovelChapterName(novelChapterContext.getNovelChapterName());
+
         return true;
     }
 
