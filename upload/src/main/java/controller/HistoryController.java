@@ -43,7 +43,6 @@ public class HistoryController {
 					return history.getLatestChaptersUrl();
 				else //为空 返回-1
 					return "-1";
-				
 			} catch (BizException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
