@@ -85,8 +85,8 @@
 						$(data).each(function (index,ele) {
 							result += "<tr><td class=\"hidden-xs\"><input type=\"checkbox\" id=\"checkid["+index+"]\" name=\"checkid[]\" value=\"33449\"></td>"
 							result += "<td class=\"even\"><a href=\"http://localhost/novel/introduction.html?nid="+ele.nid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.name+"</a> <span class=\"text-red fs-12\">New</span></td>"
-							result += "<td class=\"odd\"><a href=\"#\" target=\"_blank\">"+ele.chapName+"</a></td>"
-							result += "<td class=\"even\"><a href=\"#\" target=\"_blank\">"+ele.cid+"</a></td>"
+							result += "<td class=\"odd\"><a href=\"http://localhost/novel/read.html?nid="+ele.nid+"&cid="+ele.cid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.nid+"</a></td>"
+							result += "<td class=\"even\"><a href=\"http://localhost/novel/read.html?nid="+ele.nid+"&cid="+ele.cid+"&uid="+ele.uid+"&vip=true\" target=\"_blank\">"+ele.chapName+"</a></td>"
 							result += "<td class=\"hidden-xs\" align=\"center\">"+ele.ctimes+" </td>"
 							result += "<td class=\"text-danger\" align=\"center\"><a class=\"text-danger\"><a class=\"text-danger\" href=\"javascript:if(confirm('确实要将本书移出书架么？')) document.location='/noveluser/userbooks.html?uid="+ele.uid+"'\"><i class=\"fa fa-times-circle fa-fw\"></i></a></td></tr>"
 							i++
@@ -194,7 +194,7 @@
                         <th width="5%" class="hidden-xs">
                         <input type="checkbox" id="checkall" name="checkall" value="checkall" onclick="javascript: for (var i=0;i<this.form.elements.length;i++){ if (this.form.elements[i].name != 'checkkall') this.form.elements[i].checked = form.checkall.checked; }"></th>
                         <th width="21%">文章名称</th>
-                        <th width="30%">最新章节</th>
+                        <th width="30%">小说id</th>
                         <th width="30%">书签</th>
                         <th width="7%" class="hidden-xs">更新</th>
                         <th width="7%">操作</th>
