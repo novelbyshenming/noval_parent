@@ -28,7 +28,7 @@
 	function login(){
 		var name = $('#name').val()
 		var pwd = $('#pwd').val()
-			var data = { 
+			var data = {
 				name:name,
 				pwd:pwd
 			};
@@ -43,7 +43,7 @@
 				data,
                 function(data){
                 	 if(data != -1){
-                		window.location.href="http://localhost:80/novel/html/index.html?uid="+data;
+                		window.location.href="http://localhost:80/novel/index.html?"+data;
                 	}else{
                 		alert(data);
                 	} 
