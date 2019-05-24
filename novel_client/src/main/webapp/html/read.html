@@ -36,7 +36,7 @@
    tLocalUrl = tLocalUrl.substring(1)
    var url = ''
    var readUrl = '/novel/readNovelChapter.n'
-   var uid = ''
+
    if(tLocalUrl.indexOf('uid')>0){
        // 用户登录
        var t = tLocalUrl.split('&')
@@ -49,7 +49,6 @@
            url = '&'+t[2]
            readUrl = '/novel/userReadNovelChapter.n'
        }
-       uid = t[2].split('=')[1]
    }
 
    var result = ''
@@ -126,7 +125,7 @@ $(function(){
                  result+="<a class='blue' href='/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
                  result+="<a class='blue' href='/search.html?page=1&key="+data.author+url+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
                  result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
-                 result+="<a class='red'  onclick='addMarker()'rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
+                 result+="<a class='red' id='' onclick=''rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
                  result+="<a href='#' class='red errorlink' target='_blank'>"
                  result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
@@ -137,7 +136,6 @@ $(function(){
              },
              type:'GET'
          });
-	     var name  =''
 
 		$.ajax({
 
@@ -151,38 +149,30 @@ $(function(){
              var result =''
              result+="<a id='linkPrev' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.lastChapter+url+"'><i class='fa fa-arrow-circle-left fa-fw'></i>上一章</a>"
              result+="<a id='linkIndex' class='btn btn-default' href='/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>章节目录</a>"
-             result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             if( data.nextChapter =='-1' ){
+                 result+="<a id='linkNext' class='btn btn-default' onclick='tiShi()' href='javascript:void(0)'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             }else{
+                  result+="<a id='linkNext' class='btn btn-default' href='/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
+             }
+
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
-             name = data.novelChapterName
-             alert(name)
 			},
 			type:'GET'
 		});
 
-		addMarker = function(){
-			   var chapName = $("#novelChapterName").val();
-			   $.ajax({
-				url:"http://localhost:8080/noveluser/addMarker.u" ,
-				data:{"nid":nid,
-					  "uid":uid,
-					  "chapName":chapName},
-				error:function(data){
-					alert("请求出错");
-				},
-				success:function(data){
-					if(data == "1"){
-						alert("恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！");
-					}else if(data == "2"){
-						alert("对不起，您的书架已满！（限 20 本）");
-					}else if(data == "-1"){
-						alert("添加失败");
-					}
-				},
-				type:"POST"
-			 });   
-		} 
 });
+   function tiShi() {
+     alert("暂无下一章节")
+   }
+   function indexUrl() {
+       if (url==''){
+           window.location.href = '/index.html'
+       }else{
+           window.location.href = '/index.html?'+url.substring(1)
+       }
+
+   }
 </script>
 
 </head>
@@ -195,7 +185,7 @@ $(function(){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
+            <a href="/" class="navbar-brand logo" title="嘿 ! 污">嘿 ! 污</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav" id="titleLi">
@@ -210,7 +200,7 @@ $(function(){
 </div>
 <div class="container body-content read-container">
     <ol class="breadcrumb hidden-xs">
-        <li><a href="/" title="笔趣阁"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li><a onclick="indexUrl()" href="javascript:void(0)" title="笔趣阁"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li id="novelLi1"></li>
         <li id="novelLi2"></li>
         <li id="novelLi3" class="active"></li>
@@ -283,7 +273,7 @@ $(function(){
     <p id="novelFoot"></p>
     <footer>
         <p>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏，如有侵权请 <a href="https://www.biqukan.cc/newmessage.php?tosys=1" style="text-decoration: underline;">联系我们</a>，我们会尽快处理。</p>
-        <p>Copyright &#169; 2019 <a href="/">笔趣阁</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
+        <p>Copyright &#169; 2019 <a onclick="indexUrl()" href="javascript:void(0)">嘿 ! 污</a>(www.biqukan.cc) All Rights Reserved. 沪ICP备19819998号</p>
     </footer>
     <div class="back-to-top" id="back-to-top" title="返回顶部" style="left: 1254.5px; display: none;"><i class="fa fa-chevron-up"></i></div>
 
