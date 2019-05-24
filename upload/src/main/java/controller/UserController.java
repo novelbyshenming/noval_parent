@@ -46,6 +46,7 @@ public class UserController {
 					if(nowTimes > vip.getEndTimes()){//判断该用户vip是否过期
 						userService.updateVip(uid);//过期则修改数据库
 						jedis.set("user:"+uid, uid+"");
+						result += "uid="+uid;
 					}else{
 						//没有过期
 						jedis.set("vip:"+uid, uid+"");
@@ -64,6 +65,7 @@ public class UserController {
 			result += "-1";
 		}
 		jedis.close();
+		System.out.println("result   "+result);
 		return result;
 	}
 	

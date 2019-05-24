@@ -42,12 +42,10 @@
 				"/noveluser/login.u",
 				data,
                 function(data){
-					console.info(data);
-                	 if(data.result != -1){
-                		alert(data.msg);
-                		window.location.href="http://localhost:80/novel/html/index.html?uid="+data.uid;
+                	 if(data != -1){
+                		window.location.href="http://localhost:80/novel/html/index.html?uid="+data;
                 	}else{
-                		alert(data.msg);
+                		alert(data);
                 	} 
                 });
 			}
