@@ -24,34 +24,10 @@
  	</select>
  	
  	<update id="updateMarker" parameterType="Collect">
- 		update collect  
- 		<trim prefix="set" suffixOverrides=",">  
-
-        <if test="uid != null">uid=#{uid},</if>  
-
-        <if test="nid != null">nid=#{nid},</if>  
-
-        <if test="ctimes != null">ctimes=#{ctimes},</if>  
-		
-		</trim> 
-		where coid = #{coid}
+ 		update collect  set uid=#{uid},nid=#{nid},ctimes=#{ctimes} where nid = #{nid}
  	</update>
  	
  	<update id="updateMarker1" parameterType="Collect">
- 		update collect  
- 		<trim prefix="set" suffixOverrides=",">  
-
-        <if test="uid != null">uid=#{uid},</if>  
-
-        <if test="nid != null">nid=#{nid},</if>  
-
-        <if test="ctimes != null">ctimes=#{ctimes},</if>  
-
-        <if test="chapName != null">chapName=#{chapName},</if>  
-
-        <if test="cid != null">cid=#{cid},</if>  
-		
-		</trim> 
-		where coid = #{coid}
+ 		update collect  set ctimes=#{ctimes},chapName=#{chapName},cid=#{cid} where nid = #{nid}
  	</update>
  </mapper>

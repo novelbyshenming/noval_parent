@@ -17,30 +17,27 @@ public class MarkerService {
 	private MarkerMapper markerMapper;
 	
 	public void addMarker(Collect collect)throws MarkerException{
+		Collect collect1 = new Collect();
 		SimpleDateFormat df = new SimpleDateFormat("MM-dd");
 		String ctimes = df.format(new Date());
-		System.out.println(ctimes);
-		Long uid = collect.getUid();
-		collect.setUid(uid);
 		collect.setCtimes(ctimes);
-		if(markerMapper.selectByNid(collect.getNid()) != null){
-			markerMapper.updateMarker(collect);
+		collect1 = markerMapper.selectByNid(collect.getNid());
+		if(collect1 != null){
+			markerMapper.updateMarker1(collect);
 		}else{
-			markerMapper.joinMarker(collect);
+			markerMapper.addMarker(collect);
 		}
 	}
 	
 	public void joinMarker(Collect collect)throws MarkerException{
 		SimpleDateFormat df = new SimpleDateFormat("MM-dd");
 		String ctimes = df.format(new Date());
-		Long uid = collect.getUid();
-			collect.setUid(uid);
-			collect.setCtimes(ctimes);
-			if(markerMapper.selectByNid(collect.getNid()) != null){
-				markerMapper.updateMarker1(collect);
-			}else{
-				markerMapper.joinMarker(collect);
-			}
+		collect.setCtimes(ctimes);
+		if(markerMapper.selectByNid(collect.getNid()) != null){
+			markerMapper.updateMarker(collect);
+		}else{
+			markerMapper.joinMarker(collect);
+		}
 	}
 	
 	public List<Collect> selectMarker(Long uid)throws MarkerException{

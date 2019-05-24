@@ -14,6 +14,18 @@ public class Collect {
 	
 	private Long cid;
 	
+	private String name;
+	
+   
+    
+    
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public long getCoid() {
 		return coid;
@@ -65,9 +77,10 @@ public class Collect {
 
 	@Override
 	public String toString() {
-		return "Collect [coid=" + coid + ", uid=" + uid + ", nid=" + nid + ", ctime=" + ctimes + ", chapName=" + chapName
-				+ ", cid=" + cid + "]";
+		return "Collect [coid=" + coid + ", uid=" + uid + ", nid=" + nid + ", ctimes=" + ctimes + ", chapName="
+				+ chapName + ", cid=" + cid + ", name=" + name + "]";
 	}
+
 
 	
 }

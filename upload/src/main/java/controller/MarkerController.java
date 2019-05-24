@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,15 +23,16 @@ public class MarkerController {
 	
 	@RequestMapping(value="addMarker.u")
 	@ResponseBody
-	public String addMarker(Collect collect,HttpServletRequest request,HttpServletResponse response){
+	public String addMarker(Collect collect,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException{
 		response.setHeader("Access-Control-Allow-Origin", "*");
+		System.out.println(collect.getChapName());
+		System.out.println(collect.getNid());
+		System.out.println(collect.getCid());
+		System.out.println(collect.getUid());
 		String result = "";
 		try{
-			if(collect.getUid() == 0) {
-				return result+="-2";
-			}
 			List<Collect> marlist = markerservice.selectMarker(collect.getUid());
-			if(marlist.size() >0 && marlist.size() < 21){
+			if(marlist.size() >=0 && marlist.size() < 21){
 				markerservice.addMarker(collect);
 				return result+="1";
 			}else{
@@ -53,7 +55,7 @@ public class MarkerController {
 			}
 			List<Collect> marlist = markerservice.selectMarker(collect.getUid());
 			if(marlist.size() < 21){
-				markerservice.addMarker(collect);
+				markerservice.joinMarker(collect);
 				return result+="1";
 			}else{
 				return result+="2";

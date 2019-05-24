@@ -4,7 +4,7 @@ package bean;
  * @author LX
  * @date 2019/5/2 - 21:08
  */
-public class IntroductionNovel {
+public class Novel {
 
     private long nid;
 

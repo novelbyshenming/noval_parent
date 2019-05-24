@@ -62,7 +62,6 @@ $(function(){
 	success请求成功执行的功能,function(data) data服务器返回的数据.
 	type:请求方式
 	*/
-		console.log("123123");
 	     var localUrl = location.search
 
 	     var tUrl = localUrl
@@ -118,7 +117,7 @@ $(function(){
              },
              type:'GET'
          });
-
+	     var name = ''
 		$.ajax({
 
 			url:readUrl+tUrl,
@@ -134,34 +133,37 @@ $(function(){
              result+="<a id='linkNext' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
+             name = data.novelChapterName
 			},
 			type:'GET'
 		});
 	    
 		addMarker = function(){
-			
-			 $.ajax({
-	   				url:"http://localhost:8080/noveluser/addMarker.u" ,
-	   				data:{"nid":nid,
-	   					  "uid":uid,
-	   					  "chapName":$('#novelChapterName').val()
-	   					   },
-	   				error:function(data){
-	   					alert("请求出错");
-	   				},
-	   				success:function(data){
-	   					if(data == "1"){
-	   						alert("恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！");
-	   					}else if(data == "2"){
-	   						alert("对不起，您的书架已满！（限 20 本）");
-	   					}else if(data == "-1"){
-	   						alert("添加失败");
-	   					}else if(data == "-2"){
-	   						alert("请先登录");
-	   					}
-	   				},
-	   				type:"GET"
-			});
+			if(uid == ""){
+				alert("请先登录,才能使用书签功能")
+			}else{
+				 $.ajax({
+		   				url:"http://localhost:8080/noveluser/addMarker.u" ,
+		   				data:{"nid":nid,
+		   					  "uid":uid,
+		   					  "cid":cid,
+		   					  "chapName":name
+		   					   },
+		   				error:function(data){
+		   					alert("请求出错");
+		   				},
+		   				success:function(data){
+		   					if(data == "1"){
+		   						alert("恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！");
+		   					}else if(data == "2"){
+		   						alert("对不起，您的书架已满！（限 20 本）");
+		   					}else if(data == "-1"){
+		   						alert("添加失败");
+		   					}
+		   				},
+		   				type:"POST"
+				});
+			}
 		}
 });
 

@@ -7,4 +7,8 @@
 		select * from collect where uid = #{uid}
 	</select>
 	
+	<select id="selectByNid" parameterType="Long" resultType="Novel">
+		select * from novel where nid = #{nid}
+	</select>
+	
 </mapper>
