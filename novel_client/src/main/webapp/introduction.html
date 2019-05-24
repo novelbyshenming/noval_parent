@@ -161,7 +161,7 @@
                         result+="<button class='btn btn-sm btn-info' type='button'>"
                         result+="<i class='fa fa-thumbs-up fa-fw'></i>投票推荐"
                         result+="</button>"
-                        result+="<button class='btn btn-sm btn-success' type='button'>"
+                        result+="<button class='btn btn-sm btn-success' type='button' onclick='joinMarker()'>"
                         result+="<i class='fa fa-plus fa-fw'></i>加入书架"
                         result+="</button>"
                         result+="<a class='errorlink btn btn-sm btn-warning' href='#' target='_blank' rel='nofollow'>"
@@ -224,6 +224,29 @@
                     },
                     type:'GET'
                 });
+            joinMarker = function(){
+            	if(uid == ""){
+            		alert("请先登录,才能使用书签功能")
+    			}else{
+	   			   $.ajax({
+	   				url:"http://localhost:8080/noveluser/joinMarker.u" ,
+	   				data:{"nid":nid,"uid":uid},
+	   				error:function(data){
+	   					alert("请求出错");
+	   				},
+	   				success:function(data){
+	   					if(data == "1"){
+	   						alert("恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！");
+	   					}else if(data == "2"){
+	   						alert("对不起，您的书架已满！（限 20 本）");
+	   					}else if(data == "-1"){
+	   						alert("添加失败");
+	   					}
+	   				},
+	   				type:"POST"
+	   			 });
+    		 }
+   		} 
 
         });
     </script>

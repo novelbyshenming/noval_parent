@@ -31,11 +31,10 @@
     <link rel="preload" href="https://pagead2.googlesyndication.com/pagead/js/r20190501/r20190131/show_ads_impl.js" as="script">-->
 
 <script type="text/javascript">
-
-   var uid
    var tLocalUrl = window.location.search
    tLocalUrl = tLocalUrl.substring(1)
    var url = ''
+   var uid = ''
    var readUrl = '/novel/readNovelChapter.n'
 
    if(tLocalUrl.indexOf('uid')>0){
@@ -51,6 +50,7 @@
            readUrl = '/novel/userReadNovelChapter.n'
        }
        uid = t[2].split('=')[1]
+
    }
 
 $(function(){
@@ -62,6 +62,8 @@ $(function(){
 	success请求成功执行的功能,function(data) data服务器返回的数据.
 	type:请求方式
 	*/
+
+	var name
 
 	     var localUrl = location.search
 
@@ -107,7 +109,7 @@ $(function(){
                  result+="<a class='blue' href='/novel/introduction.html?nid="+nid+url+"'><i class='fa fa-list fa-fw'></i>"+data.novelName+"</a>"
                  result+="<a class='blue' href='/novel/search.html?page=1&key="+data.author+url+"' target='_blank' title='"+data.author+"'>作者："+data.author+"</a>"
                  result+="<a class='blue' rel='nofollow'><i class='fa fa-thumbs-up fa-fw'></i>投票推荐</a>"
-                 result+="<a class='red' id='' onclick=''rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
+                 result+="<a class='red' onclick='addMarker()' rel='nofollow'><i class='fa fa-bookmark fa-fw'></i>加入书签</a>"
                  result+="<a href='#' class='red errorlink' target='_blank'>"
                  result+="<i class='fa fa-comments fa-fw'></i>留言反馈</a></p>"
 
@@ -118,7 +120,7 @@ $(function(){
              },
              type:'GET'
          });
-
+	     var name = ''
 		$.ajax({
 
 			url:readUrl+tUrl,
@@ -134,11 +136,41 @@ $(function(){
              result+="<a id='linkNext' class='btn btn-default' href='/novel/read.html?nid="+nid+"&cid="+data.nextChapter+url+"'>下一章<i class='fa fa-arrow-circle-right fa-fw'></i></a>"
              $('#novelTS').append(result)
              $('#novelChapterName').append(data.novelChapterName)
+             name = data.novelChapterName
 			},
 			type:'GET'
 		});
+	    
+		addMarker = function(){
+			if(uid == ""){
+				alert("请先登录,才能使用书签功能")
+			}else{
+				 $.ajax({
+		   				url:"http://localhost:8080/noveluser/addMarker.u" ,
+		   				data:{"nid":nid,
+		   					  "uid":uid,
+		   					  "cid":cid,
+		   					  "chapName":name
+		   					   },
+		   				error:function(data){
+		   					alert("请求出错");
+		   				},
+		   				success:function(data){
+		   					if(data == "1"){
+		   						alert("恭喜您，该章节已经加入到您的书签，您可以关闭本窗口！");
+		   					}else if(data == "2"){
+		   						alert("对不起，您的书架已满！（限 20 本）");
+		   					}else if(data == "-1"){
+		   						alert("添加失败");
+		   					}
+		   				},
+		   				type:"POST"
+				});
+			}
 
+		}
 });
+
 </script>
 
 </head>

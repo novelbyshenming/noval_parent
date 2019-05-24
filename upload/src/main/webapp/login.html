@@ -26,22 +26,29 @@
     <script src="/noveluser/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript">
 	function login(){
+		var name = $('#name').val()
+		var pwd = $('#pwd').val()
 			var data = { 
-				name:$('#name').val(),
-				pwd:$('#pwd').val()
+				name:name,
+				pwd:pwd
 			};
+			if(name == ""){
+				alert("请先输入用户名")
+			}
+			else if(pwd == ""){
+				alert("请先输入密码")
+			}else{
 			 $.post(
 				"/noveluser/login.u",
 				data,
                 function(data){
-					console.info(data);
-                	 if(data == "-1"){
-                		alert("用户名或密码错误");
+                	 if(data != -1){
+                		window.location.href="http://localhost:80/novel/html/index.html?uid="+data;
                 	}else{
-                		alert("登录成功");// vip 用户 &vip=true
-                		window.location.href="http://127.0.0.1/novel/index.html?"+data;
+                		alert(data);
                 	} 
                 });
+			}
 		}
 	</script>
 </head>

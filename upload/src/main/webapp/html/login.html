@@ -26,10 +26,18 @@
     <script src="/noveluser/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript">
 	function login(){
+		var name = $('#name').val()
+		var pwd = $('#pwd').val()
 			var data = { 
-				name:$('#name').val(),
-				pwd:$('#pwd').val()
+				name:name,
+				pwd:pwd
 			};
+			if(name == ""){
+				alert("请先输入用户名")
+			}
+			else if(pwd == ""){
+				alert("请先输入密码")
+			}else{
 			 $.post(
 				"/noveluser/login.u",
 				data,
@@ -42,6 +50,7 @@
                 		alert(data.msg);
                 	} 
                 });
+			}
 		}
 	</script>
 </head>
@@ -56,7 +65,6 @@
             </button>
             <a href="/" class="navbar-brand logo" title="笔趣阁">笔趣阁</a>
         </div>
-        <a href="http://localhost/novel/introduction.n?nid=666">测试88888888888888</a>
 
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" id="nav-header">
             <ul class="nav navbar-nav">

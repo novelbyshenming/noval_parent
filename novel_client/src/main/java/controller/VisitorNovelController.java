@@ -23,7 +23,6 @@ public class VisitorNovelController {
     @RequestMapping("/readNovelChapter.n")
     public ReadNovel getNovelChapterContext(@RequestParam("nid") long nid, @RequestParam("cid") long cid){
 
-        System.out.println("visitorNovel");
         return visitorNovelService.getNovelChapterContext(nid, cid);
     }
 
@@ -31,7 +30,6 @@ public class VisitorNovelController {
     @RequestMapping(value = "/novelChapters.n",produces = "text/html; charset=utf-8")
     public String getNovelChapterList(@RequestParam("nid") long nid){
 
-        System.out.println("visitor :  novelChapters.n  ");
         return visitorNovelService.getIntroductionNovelChapters(nid);
     }
 

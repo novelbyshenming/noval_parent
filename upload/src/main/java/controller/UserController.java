@@ -32,16 +32,21 @@ public class UserController {
 	@ResponseBody
 	public String login(User user,HttpServletRequest request) throws UserException, Exception{
 		String result="";
+		System.out.println(user);
+		 Jedis jedis = new Jedis("47.106.110.16",6379);
+	        jedis.auth("li157922018");
 		if(userService.loginCheck(user) != null){//登录成功
+			System.out.println(userService.loginCheck(user));
 			Long uid = userService.selectUid(user.getName());//获得uid
 			Vip vip = userService.selectVip(uid);//得到vip
 			Long nowTimes = System.currentTimeMillis();//获取当前时间
-			Jedis jedis = RedisPoolUtil.getJedis();//redis
+			
 			if(vip != null){
 				if(vip.getFlag() == 1){//判断该用户是否为vip
 					if(nowTimes > vip.getEndTimes()){//判断该用户vip是否过期
 						userService.updateVip(uid);//过期则修改数据库
 						jedis.set("user:"+uid, uid+"");
+						result += "uid="+uid;
 					}else{
 						//没有过期
 						jedis.set("vip:"+uid, uid+"");
@@ -56,8 +61,11 @@ public class UserController {
 				result += "uid="+uid;
 			}
 		}else{
+			System.out.println(userService.loginCheck(user));
 			result += "-1";
 		}
+		jedis.close();
+		System.out.println("result   "+result);
 		return result;
 	}
 	

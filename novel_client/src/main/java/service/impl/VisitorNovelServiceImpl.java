@@ -104,6 +104,8 @@ public class VisitorNovelServiceImpl implements VisitorNovelService {
 
         } catch (TException e) {
             e.printStackTrace();
+        }finally {
+            transport.close();
         }
         return readNovel;
     }
@@ -127,6 +129,8 @@ public class VisitorNovelServiceImpl implements VisitorNovelService {
             e.printStackTrace();
         } catch (TException e) {
             e.printStackTrace();
+        }finally {
+            transport.close();
         }
         return "出错了";
     }

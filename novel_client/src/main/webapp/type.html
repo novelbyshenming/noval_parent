@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,21 +87,20 @@
             var params=''
             var pageNumber
 
-            var localUrl = window.location.href;
+            var localUrl = window.location.search;
 
-            var number = localUrl.lastIndexOf('?')
-
-            if (number >0 ){
+            var number = localUrl.indexOf('?')
+            if (number >=0 ){
 
                 localUrl = localUrl.substring(number+1)
 
-                number = localUrl.lastIndexOf('&')
+                var t = localUrl.split('&')
 
-                var params1 = localUrl.substring(0,number)
+                var params1 = t[0]
 
                 var tparams1 = params1.split('=')
 
-                var params2 = localUrl.substring(number+1)
+                var params2 = t[1]
 
                 var tparams2 = params2.split('=')
 
@@ -123,20 +120,6 @@
 
                     params = params2
                     ajaxType(target,tparams1[1])
-                }else{
-
-                    var start = (tparams2[1]-1)*28
-
-                    if (tparams1[1]=='complete'){
-
-                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_state:已完成'
-                    }else{
-
-                        target='solr/collection1/select?sort=novel_updateTimes+desc&start='+start+'&rows=28&wt=json&indent=true&q=novel_type:'+tparams1[1]
-                    }
-
-                    params = params1
-                    ajaxType(target,tparams2[1])
                 }
             }
 

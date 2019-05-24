@@ -1,9 +1,12 @@
 package mapper;
 
-import java.util.Map;
-
+import java.util.List;
 import bean.Collect;
+import bean.Novel;
 
 public interface CollectMapper {
-	Map<String,Collect> selectByUid(Long uid);
+	List<Collect> selectByUid(Long uid);
+	
+	Novel selectByNid(Long nid);
+	
 }

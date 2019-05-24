@@ -5,8 +5,8 @@
  <mapper namespace="mapper.MarkerMapper">
  	<insert id="addMarker" parameterType="Collect">
  		insert into
- 		collect(uid,nid,ctimes,chapname,cid)
- 		value(#{uid},#{nid},#{ctimes},#{chapname},#{cid})
+ 		collect(uid,nid,ctimes,chapName,cid)
+ 		value(#{uid},#{nid},#{ctimes},#{chapName},#{cid})
  	</insert>
  	
  	<insert id="joinMarker" parameterType="Collect">
@@ -19,4 +19,15 @@
  		select * from collect where uid = #{uid}
  	</select>
  	
+ 	<select id="selectByNid" parameterType="Long" resultType="Collect">
+ 		select * from collect where nid = #{nid}
+ 	</select>
+ 	
+ 	<update id="updateMarker" parameterType="Collect">
+ 		update collect  set uid=#{uid},nid=#{nid},ctimes=#{ctimes} where nid = #{nid}
+ 	</update>
+ 	
+ 	<update id="updateMarker1" parameterType="Collect">
+ 		update collect  set ctimes=#{ctimes},chapName=#{chapName},cid=#{cid} where nid = #{nid}
+ 	</update>
  </mapper>
